@@ -1,15 +1,14 @@
+server:
+  port: 8080
+
 spring:
   application:
-    name: eventos-core
-  
-  profiles:
-    active: ${SPRING_PROFILES_ACTIVE:local}
-  
+    name: core-integration
   kafka:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
       acks: all
       retries: 3
       properties:
@@ -17,112 +16,99 @@ spring:
         max.in.flight.requests.per.connection: 5
         delivery.timeout.ms: 120000
     consumer:
-      group-id: ${KAFKA_CONSUMER_GROUP:eventos-core-group}
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.json.JsonDeserializer
+      group-id: core-integration-group
       auto-offset-reset: earliest
       enable-auto-commit: false
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       properties:
-        spring.json.trusted.packages: com.integracion.eventos.core.domain
-        spring.json.value.default.type: com.integracion.eventos.core.domain.EventoNovedad
-    listener:
-      ack-mode: manual_immediate
-      concurrency: 3
+        isolation.level: read_committed
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+    deserialization:
+      fail-on-unknown-properties: false
 
-  data:
-    redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      password: ${REDIS_PASSWORD:}
-      timeout: 5000ms
-      lettuce:
-        pool:
-          max-active: 8
-          max-idle: 8
-          min-idle: 2
-          max-wait: -1ms
+camel:
+  spring:
+    java-routes-exclude-pattern: "*"
+  kafka:
+    component:
+     brokers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+  route:
+    event:
+      input-topic: core-transactions
+      output-topic: core-transactions-processed
+      dlq-topic: core-transactions-dlq
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.H2Dialect
-
-server:
-  port: ${SERVER_PORT:8080}
-
-# Configuración del bus de eventos
-eventos:
-  topic:
-    novedades: eventos-novedades
-    dlq: eventos-novedades-dlq
-  idempotencia:
-    clave: numeroOperacion
-    ttl-horas: 72
+integration:
+  idempotency:
+    enabled: true
+    ttl-hours: 24
+    key-prefix: "IDEM"
   retry:
     max-attempts: 3
     initial-interval-ms: 1000
     multiplier: 2.0
     max-interval-ms: 10000
+  circuit-breaker:
+    enabled: true
+    failure-rate-threshold: 50
+    wait-duration-in-open-state-ms: 30000
+    sliding-window-size: 10
+    permitted-number-of-calls-in-half-open-state: 3
+  core-banking:
+    base-url: ${CORE_BANKING_BASE_URL:http://localhost:8081}
+    timeout-ms: 5000
+    connection-pool-size: 10
 
-# Configuración de Resilience4j
 resilience4j:
   circuitbreaker:
     instances:
-      eventoProducer:
+      coreBanking:
         registerHealthIndicator: true
         slidingWindowSize: 10
         minimumNumberOfCalls: 5
         permittedNumberOfCallsInHalfOpenState: 3
         automaticTransitionFromOpenToHalfOpenEnabled: true
-        waitDurationInOpenState: 5s
+        waitDurationInOpenState: 30s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
         recordExceptions:
-          - org.apache.kafka.common.errors.TimeoutException
-          - org.apache.kafka.common.errors.LeaderNotAvailableException
           - java.io.IOException
-      liquidador:
-        registerHealthIndicator: true
-        slidingWindowSize: 10
-        minimumNumberOfCalls: 5
-        permittedNumberOfCallsInHalfOpenState: 3
-        waitDurationInOpenState: 10s
-        failureRateThreshold: 50
+          - java.util.concurrent.TimeoutException
+          - org.springframework.web.client.ResourceAccessException
   retry:
     instances:
-      eventoProducer:
+      coreBanking:
         maxAttempts: 3
         waitDuration: 2s
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
         retryExceptions:
-          - org.apache.kafka.common.errors.TimeoutException
-          - org.apache.kafka.common.errors.NetworkException
           - java.io.IOException
-      liquidador:
-        maxAttempts: 3
-        waitDuration: 1s
-        retryExceptions:
-          - java.io.IOException
-          - org.springframework.dao.TransientDataAccessException
+          - java.util.concurrent.TimeoutException
 
-# Logging
 logging:
   level:
     root: INFO
-    com.integracion.eventos: DEBUG
-    org.apache.kafka: WARN
-    org.springframework.kafka: WARN
+    com.banco.core: DEBUG
     org.apache.camel: INFO
+    org.springframework.kafka: WARN
+    io.github.resilience4j: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
-# Configuración de Camel
-camel:
-  springboot:
-    use-mdc-logging: true
-    tracing: false
-  component:
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,camelroutes
+  endpoint:
+    health:
+      show-details: always
+  health:
+    camel:
+      enabled: true
     kafka:
-     brokers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+      enabled: true
