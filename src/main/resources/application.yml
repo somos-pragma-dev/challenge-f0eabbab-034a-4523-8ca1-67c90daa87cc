@@ -1,0 +1,128 @@
+spring:
+  application:
+    name: eventos-core
+  
+  profiles:
+    active: ${SPRING_PROFILES_ACTIVE:local}
+  
+  kafka:
+    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      acks: all
+      retries: 3
+      properties:
+        enable.idempotence: true
+        max.in.flight.requests.per.connection: 5
+        delivery.timeout.ms: 120000
+    consumer:
+      group-id: ${KAFKA_CONSUMER_GROUP:eventos-core-group}
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.json.JsonDeserializer
+      auto-offset-reset: earliest
+      enable-auto-commit: false
+      properties:
+        spring.json.trusted.packages: com.integracion.eventos.core.domain
+        spring.json.value.default.type: com.integracion.eventos.core.domain.EventoNovedad
+    listener:
+      ack-mode: manual_immediate
+      concurrency: 3
+
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6379}
+      password: ${REDIS_PASSWORD:}
+      timeout: 5000ms
+      lettuce:
+        pool:
+          max-active: 8
+          max-idle: 8
+          min-idle: 2
+          max-wait: -1ms
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+
+server:
+  port: ${SERVER_PORT:8080}
+
+# Configuración del bus de eventos
+eventos:
+  topic:
+    novedades: eventos-novedades
+    dlq: eventos-novedades-dlq
+  idempotencia:
+    clave: numeroOperacion
+    ttl-horas: 72
+  retry:
+    max-attempts: 3
+    initial-interval-ms: 1000
+    multiplier: 2.0
+    max-interval-ms: 10000
+
+# Configuración de Resilience4j
+resilience4j:
+  circuitbreaker:
+    instances:
+      eventoProducer:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+        failureRateThreshold: 50
+        eventConsumerBufferSize: 10
+        recordExceptions:
+          - org.apache.kafka.common.errors.TimeoutException
+          - org.apache.kafka.common.errors.LeaderNotAvailableException
+          - java.io.IOException
+      liquidador:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+  retry:
+    instances:
+      eventoProducer:
+        maxAttempts: 3
+        waitDuration: 2s
+        enableExponentialBackoff: true
+        exponentialBackoffMultiplier: 2
+        retryExceptions:
+          - org.apache.kafka.common.errors.TimeoutException
+          - org.apache.kafka.common.errors.NetworkException
+          - java.io.IOException
+      liquidador:
+        maxAttempts: 3
+        waitDuration: 1s
+        retryExceptions:
+          - java.io.IOException
+          - org.springframework.dao.TransientDataAccessException
+
+# Logging
+logging:
+  level:
+    root: INFO
+    com.integracion.eventos: DEBUG
+    org.apache.kafka: WARN
+    org.springframework.kafka: WARN
+    org.apache.camel: INFO
+
+# Configuración de Camel
+camel:
+  springboot:
+    use-mdc-logging: true
+    tracing: false
+  component:
+    kafka:
+     brokers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
