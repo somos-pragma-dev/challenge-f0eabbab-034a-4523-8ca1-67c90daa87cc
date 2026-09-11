@@ -1,6 +1,6 @@
-# Integración de Core Bancario con Bus de Eventos
+# Integración del core con el bus de eventos de novedades
 
-El equipo de desarrollo de un banco necesita integrar el sistema core con un bus de eventos para manejar novedades de forma asincronosa. El sistema core genera eventos de transacciones financieras que deben ser capturados y procesados por el bus de eventos. Los eventos incluyen transacciones de débito y crédito, con claves de negocio únicas para cada transacción. Se requiere aplicar idempotencia por clave de negocio y manejar correctamente los reprocesos.
+La empresa de fintech necesita integrar su sistema core con el bus de eventos de novedades para asegurar que todas las transacciones sean registradas y emitidas de manera idempotente. El sistema debe manejar la recepción de eventos desde el core, aplicar idempotencia por clave de negocio (número de operación + canal), y emitir eventos al bus de novedades. Los eventos recibidos deben ser procesados en tiempo real, con una latencia máxima de 500ms. En caso de fallo del bus de novedades, el sistema debe mantener los eventos en una cola de reproceso y reintentar la emisión cada 5 minutos hasta un máximo de 3 intentos.
 
 ## Informacion General
 
@@ -9,7 +9,7 @@ El equipo de desarrollo de un banco necesita integrar el sistema core con un bus
 | **Tema** | Integracion orientada a eventos |
 | **Nivel** | senior-l2 |
 | **Tipo** | practical |
-| **Tiempo estimado** | 10 horas |
+| **Tiempo estimado** | 8 horas |
 
 ## Fases del Reto
 
@@ -38,85 +38,84 @@ El equipo de desarrollo de un banco necesita integrar el sistema core con un bus
 
 </details>
 
-### Fase 1: Establecer Conexión Inicial
+### Fase 1: Recepción y persistencia de eventos
 
-**Objetivo:** Configurar y probar la conexión entre el sistema core y el bus de eventos.
-
-**Tiempo estimado:** 3 horas
-
-**Instrucciones:**
-
-- Identificar los eventos generados por el sistema core y sus claves de negocio.
-- Configurar el bus de eventos para recibir eventos del sistema core.
-- Verificar que los eventos se capturen correctamente en el bus de eventos.
-
-**Entregable:** Conexión operativa entre el sistema core y el bus de eventos, con eventos capturados y almacenados.
-
-<details>
-<summary>Pistas de conocimiento</summary>
-
-- Considerar la latencia aceptable para la captura de eventos.
-- Evaluar la consistencia de los eventos recibidos.
-
-</details>
-
-### Fase 2: Implementar Idempotencia
-
-**Objetivo:** Aplicar idempotencia por clave de negocio para evitar duplicados en el bus de eventos.
-
-**Tiempo estimado:** 4 horas
-
-**Instrucciones:**
-
-- Identificar las claves de negocio únicas para cada evento.
-- Implementar la lógica de idempotencia para asegurar que cada evento se procese una sola vez.
-- Probar la idempotencia con eventos duplicados.
-
-**Entregable:** Lógica de idempotencia implementada y probada, asegurando que cada evento se procese una sola vez.
-
-<details>
-<summary>Pistas de conocimiento</summary>
-
-- Considerar el tiempo de vida de la idempotencia.
-- Evaluar el impacto en la latencia de la implementación de idempotencia.
-
-</details>
-
-### Fase 3: Manejo de Reproceso
-
-**Objetivo:** Implementar la lógica para manejar correctamente los reprocesos de eventos.
+**Objetivo:** Implementar la recepción de eventos desde el core y persistirlos de manera idempotente.
 
 **Tiempo estimado:** 3 horas
 
 **Instrucciones:**
 
-- Identificar escenarios de reproceso comunes.
-- Implementar la lógica para manejar reprocesos sin duplicar el procesamiento de eventos.
-- Probar la lógica de reproceso con eventos repetidos.
+- Diseñar la estructura de datos para los eventos recibidos, incluyendo la clave de idempotencia (número de operación + canal).
+- Implementar la recepción de eventos desde el core y almacenarlos en un repositorio idempotente.
+- Asegurar que eventos con la misma clave de idempotencia no sean duplicados.
 
-**Entregable:** Lógica de manejo de reproceso implementada y probada, asegurando procesamiento único de eventos repetidos.
+**Entregable:** Repositorio idempotente de eventos recibidos.
 
 <details>
 <summary>Pistas de conocimiento</summary>
 
-- Evaluar el impacto en la consistencia de los datos durante reprocesos.
-- Considerar la latencia aceptable para reprocesos.
+- Considera el uso de una estructura de datos que permita la búsqueda rápida por clave de idempotencia.
+- Evalúa diferentes estrategias para asegurar la idempotencia en la persistencia de eventos.
+
+</details>
+
+### Fase 2: Emisión de eventos al bus de novedades
+
+**Objetivo:** Implementar la emisión de eventos al bus de novedades, manejando posibles fallos y reintentos.
+
+**Tiempo estimado:** 3 horas
+
+**Instrucciones:**
+
+- Diseñar la lógica para emitir eventos al bus de novedades, asegurando que se cumpla la latencia máxima de 500ms.
+- Implementar el manejo de fallos del bus de novedades, incluyendo la retención de eventos en una cola de reproceso y reintentos cada 5 minutos hasta un máximo de 3 intentos.
+
+**Entregable:** Lógica de emisión de eventos al bus de novedades con manejo de fallos y reintentos.
+
+<details>
+<summary>Pistas de conocimiento</summary>
+
+- Considera el uso de una cola de mensajes para la retención de eventos en caso de fallo del bus de novedades.
+- Evalúa diferentes estrategias para el reintento de emisión de eventos.
+
+</details>
+
+### Fase 3: Integración completa y verificación
+
+**Objetivo:** Integrar las fases anteriores y verificar el funcionamiento completo del sistema.
+
+**Tiempo estimado:** 2 horas
+
+**Instrucciones:**
+
+- Integrar la recepción y persistencia de eventos con la emisión de eventos al bus de novedades.
+- Verificar que el sistema cumple con los requisitos de idempotencia, latencia y manejo de fallos.
+- Realizar pruebas de integración y asegurar que el sistema funciona correctamente en diferentes escenarios.
+
+**Entregable:** Sistema integrado y verificado que cumple con los requisitos de idempotencia, latencia y manejo de fallos.
+
+<details>
+<summary>Pistas de conocimiento</summary>
+
+- Considera la realización de pruebas de carga para asegurar que el sistema puede manejar un volumen alto de eventos.
+- Evalúa diferentes escenarios de fallo para asegurar que el sistema se comporta correctamente.
 
 </details>
 
 ## Dimensiones Evaluadas
 
-- **queEs**: ¿Qué es la idempotencia y por qué es importante en la integración de sistemas?
-- **paraQueSirve**: ¿Para qué sirve la integración de sistemas en un contexto bancario?
-- **comoSeUsa**: ¿Cómo se aplica la idempotencia en la integración de sistemas?
-- **erroresComunes**: ¿Cuáles son los errores comunes al implementar idempotencia y cómo se pueden evitar?
-- **queDecisionesImplica**: ¿Qué decisiones implica el manejo de reprocesos en la integración de sistemas?
+- **queEs**: ¿Qué es la idempotencia y cómo se aplica en la integración de eventos?
+- **paraQueSirve**: ¿Para qué sirve la idempotencia en la integración de eventos?
+- **comoSeUsa**: ¿Cómo se usa la idempotencia para asegurar la consistencia en la integración de eventos?
+- **erroresComunes**: ¿Cuáles son los errores comunes al implementar la idempotencia en la integración de eventos?
+- **queDecisionesImplica**: ¿Qué decisiones implica la implementación de la idempotencia en la integración de eventos?
 
 ## Criterios de Evaluacion
 
-- Configuración correcta de la conexión entre el sistema core y el bus de eventos.
-- Implementación efectiva de la idempotencia por clave de negocio.
-- Manejo correcto de reprocesos sin duplicar el procesamiento de eventos.
+- Implementación correcta de la recepción y persistencia idempotente de eventos.
+- Implementación correcta de la emisión de eventos al bus de novedades con manejo de fallos y reintentos.
+- Verificación del funcionamiento completo del sistema integrado.
 
 ## Como trabajar con un asistente de IA
 

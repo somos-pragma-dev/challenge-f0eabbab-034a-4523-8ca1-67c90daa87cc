@@ -20,60 +20,40 @@ Esto NO lo tenes que adivinar: salio de comparar el proyecto contra la arquitect
 
 Cada una rompe la compilacion:
 
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `IdempotencyStatus`: IdempotencyStatus se usa en el cuerpo del archivo pero no esta importado. El proyecto lo declara en com.banco.core.domain.IdempotencyStatus.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `IdempotencyStatus`: IdempotencyStatus se usa en el cuerpo del archivo pero no esta importado. El proyecto lo declara en com.banco.core.domain.IdempotencyStatus.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `IdempotencyStatus`: IdempotencyStatus se usa en el cuerpo del archivo pero no esta importado. El proyecto lo declara en com.banco.core.domain.IdempotencyStatus.
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `TransactionEvent.getCorrelationId`: Se invoca `getCorrelationId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `TransactionEvent.getTransactionId`: Se invoca `getTransactionId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `TransactionEvent.getIdempotencyKey`: Se invoca `getIdempotencyKey` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `IdempotencyKey.getRetryCount`: Se invoca `getRetryCount` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `TransactionEvent.getEventId`: Se invoca `getEventId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/application/EventOrchestrator.java` — `TransactionEvent.getTransactionType`: Se invoca `getTransactionType` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getEventId`: Se invoca `getEventId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getTransactionId`: Se invoca `getTransactionId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getEventType`: Se invoca `getEventType` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getAccountId`: Se invoca `getAccountId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getAmount`: Se invoca `getAmount` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getCurrency`: Se invoca `getCurrency` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getTransactionType`: Se invoca `getTransactionType` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getTimestamp`: Se invoca `getTimestamp` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getCorrelationId`: Se invoca `getCorrelationId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getIdempotencyKey`: Se invoca `getIdempotencyKey` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getDescription`: Se invoca `getDescription` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java` — `TransactionEvent.getSourceSystem`: Se invoca `getSourceSystem` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java` — `TransactionEvent.getIdempotencyKey`: Se invoca `getIdempotencyKey` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java` — `TransactionEvent.getEventId`: Se invoca `getEventId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java` — `TransactionEvent.getTransactionId`: Se invoca `getTransactionId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java` — `TransactionEvent.getEventType`: Se invoca `getEventType` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java` — `TransactionEvent.getAccountId`: Se invoca `getAccountId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java` — `TransactionEvent.getAmount`: Se invoca `getAmount` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/core/CoreBankingClient.java` — `TransactionEvent.getTransactionId`: Se invoca `getTransactionId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/idempotency/IdempotencyRepository.java` — `IdempotencyKey.getKey`: Se invoca `getKey` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/main/java/com/banco/core/infrastructure/idempotency/IdempotencyRepository.java` — `IdempotencyKey.getRetryCount`: Se invoca `getRetryCount` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `TransactionEvent.getIdempotencyKey`: Se invoca `getIdempotencyKey` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `TransactionEvent.getEventId`: Se invoca `getEventId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `TransactionEvent.getTransactionId`: Se invoca `getTransactionId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `TransactionEvent.getCorrelationId`: Se invoca `getCorrelationId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `IdempotencyKey.getKey`: Se invoca `getKey` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `IdempotencyKey.getBusinessKey`: Se invoca `getBusinessKey` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `IdempotencyKey.getStatus`: Se invoca `getStatus` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/application/EventOrchestratorTest.java` — `IdempotencyKey.getRetryCount`: Se invoca `getRetryCount` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventProducerTest.java` — `TransactionEvent.getEventId`: Se invoca `getEventId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getEventId`: Se invoca `getEventId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getTransactionId`: Se invoca `getTransactionId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getEventType`: Se invoca `getEventType` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getAccountId`: Se invoca `getAccountId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getAmount`: Se invoca `getAmount` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getCurrency`: Se invoca `getCurrency` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getTransactionType`: Se invoca `getTransactionType` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getTimestamp`: Se invoca `getTimestamp` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getCorrelationId`: Se invoca `getCorrelationId` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getIdempotencyKey`: Se invoca `getIdempotencyKey` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getDescription`: Se invoca `getDescription` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `TransactionEvent.getSourceSystem`: Se invoca `getSourceSystem` sobre `TransactionEvent`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `IdempotencyKey.getKey`: Se invoca `getKey` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `IdempotencyKey.getBusinessKey`: Se invoca `getBusinessKey` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
-- `src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java` — `IdempotencyKey.getLastError`: Se invoca `getLastError` sobre `IdempotencyKey`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/retry/EventRetryHandler.java` — `IdempotencyKey`: IdempotencyKey se usa en el cuerpo del archivo pero no esta importado. El proyecto lo declara en com.fintech.integration.domain.IdempotencyKey.
+- `src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java` — `IdempotencyKey`: El import com.fintech.integration.domain.IdempotencyKey no se usa en ningun lado del cuerpo del archivo. Se puede eliminar.
+- `src/main/java/com/fintech/integration/infrastructure/events/DeadLetterQueueConsumer.java` — `IdempotencyKey`: El import com.fintech.integration.domain.IdempotencyKey no se usa en ningun lado del cuerpo del archivo. Se puede eliminar.
+- `src/main/java/com/fintech/integration/infrastructure/core/EventRepository.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `org.slf4j`: El import org.slf4j.Logger pertenece a org.slf4j, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `reactor.core.publisher`: El import reactor.core.publisher.Flux pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/application/EventOrchestrator.java` — `org.slf4j`: El import org.slf4j.Logger pertenece a org.slf4j, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/application/EventOrchestrator.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/events/EventProducer.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java` — `org.slf4j`: El import org.slf4j.Logger pertenece a org.slf4j, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/events/DeadLetterQueueConsumer.java` — `org.slf4j`: El import org.slf4j.Logger pertenece a org.slf4j, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/events/DeadLetterQueueConsumer.java` — `reactor.core.publisher`: El import reactor.core.publisher.Flux pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/retry/RetryPolicy.java` — `org.slf4j`: El import org.slf4j.Logger pertenece a org.slf4j, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/retry/RetryPolicy.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/retry/RetryPolicy.java` — `reactor.core.scheduler`: El import reactor.core.scheduler.Schedulers pertenece a reactor.core.scheduler, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/retry/EventRetryHandler.java` — `org.slf4j`: El import org.slf4j.Logger pertenece a org.slf4j, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/retry/EventRetryHandler.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/retry/EventRetryHandler.java` — `reactor.util.retry`: El import reactor.util.retry.RetryBackoffSpec pertenece a reactor.util.retry, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/test/java/com/fintech/integration/application/EventOrchestratorTest.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/test/java/com/fintech/integration/infrastructure/events/KafkaEventProducerTest.java` — `reactor.core.publisher`: El import reactor.core.publisher.Mono pertenece a reactor.core.publisher, pero ninguna dependencia declarada en el pom.xml cubre ese paquete. Falta agregar la dependencia o el import esta mal (libreria equivocada).
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.operationNumber`: Se invoca `operationNumber` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.channel`: Se invoca `channel` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.eventType`: Se invoca `eventType` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.payload`: Se invoca `payload` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.timestamp`: Se invoca `timestamp` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.idempotencyKey`: Se invoca `idempotencyKey` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.metadata`: Se invoca `metadata` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java` — `Event.retryCount`: Se invoca `retryCount` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java` — `Event.getOperationNumber`: Se invoca `getOperationNumber` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java` — `Event.getChannel`: Se invoca `getChannel` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java` — `Event.getTimestamp`: Se invoca `getTimestamp` sobre `Event`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/events/DeadLetterQueueConsumer.java` — `EventRetryHandler.calculateNextRetryDelay`: Se invoca `calculateNextRetryDelay` sobre `EventRetryHandler`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
+- `src/main/java/com/fintech/integration/infrastructure/events/DeadLetterQueueConsumer.java` — `EventRetryHandler.scheduleRetry`: Se invoca `scheduleRetry` sobre `EventRetryHandler`, pero esa clase no declara ese metodo. Agregalo con su implementacion real, o usa uno de los que si declara.
 
 ## Como saber que terminaste
 
@@ -102,14 +82,14 @@ Integrar el core con el bus de eventos de novedades
 - Tema: Integracion orientada a eventos
 - Seniority: senior-l2
 - Tipo: practical
-- Título: Integración de Core Bancario con Bus de Eventos
-- Tiempo estimado: 10 horas
+- Título: Integración del core con el bus de eventos de novedades
+- Tiempo estimado: 8 horas
 
 ### Fases (trabajo del HUMANO — PROHIBIDO completarlas)
 No implementes estos entregables. Dejalos como hueco pedagógico. El asistente solo materializa el proyecto arrancable para que el participante pueda trabajar.
-- Fase 1: Establecer Conexión Inicial — objetivo: Configurar y probar la conexión entre el sistema core y el bus de eventos. — entregable (NO resolver): Conexión operativa entre el sistema core y el bus de eventos, con eventos capturados y almacenados.
-- Fase 2: Implementar Idempotencia — objetivo: Aplicar idempotencia por clave de negocio para evitar duplicados en el bus de eventos. — entregable (NO resolver): Lógica de idempotencia implementada y probada, asegurando que cada evento se procese una sola vez.
-- Fase 3: Manejo de Reproceso — objetivo: Implementar la lógica para manejar correctamente los reprocesos de eventos. — entregable (NO resolver): Lógica de manejo de reproceso implementada y probada, asegurando procesamiento único de eventos repetidos.
+- Fase 1: Recepción y persistencia de eventos — objetivo: Implementar la recepción de eventos desde el core y persistirlos de manera idempotente. — entregable (NO resolver): Repositorio idempotente de eventos recibidos.
+- Fase 2: Emisión de eventos al bus de novedades — objetivo: Implementar la emisión de eventos al bus de novedades, manejando posibles fallos y reintentos. — entregable (NO resolver): Lógica de emisión de eventos al bus de novedades con manejo de fallos y reintentos.
+- Fase 3: Integración completa y verificación — objetivo: Integrar las fases anteriores y verificar el funcionamiento completo del sistema. — entregable (NO resolver): Sistema integrado y verificado que cumple con los requisitos de idempotencia, latencia y manejo de fallos.
 
 Eres un asistente experto en análisis, corrección y generación de archivos de cualquier tipo:
 código fuente, documentación, hojas de cálculo, documentos Word, configuraciones, entre otros.
@@ -260,21 +240,19 @@ Aquí está la cadena con los archivos:
         <relativePath/>
     </parent>
 
-    <groupId>com.banco</groupId>
-    <artifactId>core-integration</artifactId>
+    <groupId>com.fintech</groupId>
+    <artifactId>integration</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>Core Integration</name>
-    <description>Integración del Core Bancario con Bus de Eventos</description>
+    <name>FinTech Integration Service</name>
+    <description>Integración del core con el bus de eventos de novedades</description>
 
     <properties>
         <java.version>21</java.version>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <camel.version>4.4.0</camel.version>
+        <camel.version>4.8.0</camel.version>
         <resilience4j.version>2.2.0</resilience4j.version>
-        <spring-kafka.version>3.2.0</spring-kafka.version>
     </properties>
 
     <dependencyManagement>
@@ -294,82 +272,59 @@ Aquí está la cadena con los archivos:
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-kafka</artifactId>
         </dependency>
-
         <dependency>
-            <groupId>io.projectreactor</groupId>
-            <artifactId>reactor-core</artifactId>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-jackson</artifactId>
         </dependency>
 
         <dependency>
             <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot3</artifactId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-            <version>${spring-kafka.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-validation</artifactId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
+            <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.10.0</version>
+            <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>5.11.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.11.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka-test</artifactId>
-            <version>${spring-kafka.version}</version>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test-spring-junit5</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -379,219 +334,126 @@ Aquí está la cadena con los archivos:
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.11.0</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>21</source>
                     <target>21</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.30</version>
-                        </path>
-                    </annotationProcessorPaths>
+                    <compilerArgs>
+                        <arg>--enable-preview</arg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.2</version>
+                <version>3.2.5</version>
             </plugin>
         </plugins>
     </build>
 </project>
 
-// === ARCHIVO: src/main/java/com/banco/core/CoreIntegrationApplication.java ===
-package com.banco.core;
+// === ARCHIVO: src/main/java/com/fintech/integration/IntegrationApplication.java ===
+package com.fintech.integration;
 
 import org.apache.camel.CamelContext;
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.kafka.KafkaComponent;
 import org.apache.camel.spring.boot.CamelAutoConfiguration;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.listener.KafkaMessageListenerContainer;
+import org.springframework.context.annotation.Import;
 
-import com.banco.core.application.EventOrchestrator;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.core.CoreBankingClient;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import com.banco.core.infrastructure.kafka.KafkaEventConsumer;
-import com.banco.core.infrastructure.kafka.KafkaEventProducer;
-import com.banco.core.infrastructure.resilience.CircuitBreakerConfig;
-
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.time.Duration;
-import java.util.UUID;
-import java.util.function.Supplier;
-
-/**
- * Punto de entrada principal de la aplicación de integración.
- * Configura el contexto de Spring Boot y Camel para la integración
- * del sistema Core Bancario con el bus de eventos (Kafka).
- */
 @SpringBootApplication
-@ImportAutoConfiguration(CamelAutoConfiguration.class)
-@RequiredArgsConstructor
-@Slf4j
-public class CoreIntegrationApplication {
+@Import(CamelAutoConfiguration.class)
+public class IntegrationApplication {
 
-    private final EventOrchestrator eventOrchestrator;
-    private final KafkaEventProducer eventProducer;
-    private final KafkaEventConsumer eventConsumer;
-    private final CoreBankingClient coreBankingClient;
-    private final IdempotencyRepository idempotencyRepository;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-
-    public static void main(String[] args) {
-        log.info("Iniciando aplicación de integración Core Bancario -> Bus de Eventos");
-        log.info("CorrelationID inicial: {}", UUID.randomUUID().toString());
-        SpringApplication.run(CoreIntegrationApplication.class, args);
+    public static void main(final String[] args) {
+        SpringApplication.run(IntegrationApplication.class, args);
     }
 
     @Bean
-    public RouteBuilder eventRouteBuilder() {
-        return new RouteBuilder() {
-            @Override
-            public void configure() throws Exception {
-                from("kafka:core-transactions?groupId=core-integration-group")
-                    .routeId("core-transactions-route")
-                    .log("Evento recibido de Kafka: ${body}")
-                    .process(exchange -> {
-                        String correlationId = exchange.getIn().getHeader("correlationId", String.class);
-                        if (correlationId == null || correlationId.isBlank()) {
-                            correlationId = UUID.randomUUID().toString();
-                            exchange.getIn().setHeader("correlationId", correlationId);
-                        }
-                        log.info("Procesando evento con correlationId: {}", correlationId);
-                    })
-                    .bean(eventOrchestrator, "processEvent")
-                    .choice()
-                        .when(exchange -> exchange.getIn().getHeader("PROCESSED", Boolean.class, false))
-                            .log("Evento procesado exitosamente")
-                        .otherwise()
-                            .log("Evento no procesado - enviando a DLQ")
-                            .to("kafka:core-transactions-dlq?brokers=${env:KAFKA_BOOTSTRAP_SERVERS}")
-                    .end();
-            }
-        };
-    }
-
-    @Bean
-    public KafkaComponent kafkaComponent(KafkaTemplate<String, String> kafkaTemplate) {
-        KafkaComponent kafka = new KafkaComponent();
-        kafka.setKafkaTemplate(kafkaTemplate);
-        return kafka;
-    }
-
-    @Bean
-    public Supplier<TransactionEvent> transactionEventSupplier() {
-        return () -> {
-            log.info("Generando evento de prueba para el bus de eventos");
-            return TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .transactionId("TXN-" + System.currentTimeMillis())
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-" + (int)(Math.random() * 10000))
-                .amount(Math.random() * 10000)
-                .currency("USD")
-                .transactionType(Math.random() > 0.5 ? "DEBIT" : "CREDIT")
-                .timestamp(java.time.Instant.now().toString())
-                .correlationId(UUID.randomUUID().toString())
-                .idempotencyKey("IDEM-" + System.currentTimeMillis())
-                .build();
-        };
+    public CamelContext customizeCamelContext(final CamelContext camelContext) throws Exception {
+        camelContext.setUseMDCLogging(true);
+        camelContext.setTracing(false);
+        camelContext.getTypeConverterRegistry().addTypeConverter(
+            String.class, 
+            byte[].class, 
+            new org.apache.camel.impl.conversion.StringToByteArrayConverter()
+        );
+        return camelContext;
     }
 }
 
 // === ARCHIVO: src/main/resources/application.yml ===
-server:
-  port: 8080
-
 spring:
   application:
-    name: core-integration
-  kafka:
-    bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-      acks: all
-      retries: 3
-      properties:
-        enable.idempotence: true
-        max.in.flight.requests.per.connection: 5
-        delivery.timeout.ms: 120000
-    consumer:
-      group-id: core-integration-group
-      auto-offset-reset: earliest
-      enable-auto-commit: false
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      properties:
-        isolation.level: read_committed
-  jackson:
-    serialization:
-      write-dates-as-timestamps: false
-    deserialization:
-      fail-on-unknown-properties: false
+    name: fintech-integration-service
+  main:
+    web-application-type: reactive
 
 camel:
-  spring:
-    java-routes-exclude-pattern: "*"
-  kafka:
-    component:
-     brokers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
-  route:
-    event:
-      input-topic: core-transactions
-      output-topic: core-transactions-processed
-      dlq-topic: core-transactions-dlq
+  springboot:
+    name: fintech-integration-camel
+    tracing: false
+  component:
+    kafka:
+      brokers: ${KAFKA_BROKERS:localhost:9092}
+      consumer:
+        auto-commit-enable: false
+        max-poll-records: 100
+      producer:
+        key-serializer: org.apache.kafka.common.serialization.StringSerializer
+        value-serializer: org.apache.kafka.common.serialization.StringSerializer
 
-integration:
-  idempotency:
-    enabled: true
-    ttl-hours: 24
-    key-prefix: "IDEM"
-  retry:
-    max-attempts: 3
-    initial-interval-ms: 1000
-    multiplier: 2.0
-    max-interval-ms: 10000
-  circuit-breaker:
-    enabled: true
-    failure-rate-threshold: 50
-    wait-duration-in-open-state-ms: 30000
-    sliding-window-size: 10
-    permitted-number-of-calls-in-half-open-state: 3
-  core-banking:
-    base-url: ${CORE_BANKING_BASE_URL:http://localhost:8081}
-    timeout-ms: 5000
-    connection-pool-size: 10
+kafka:
+  bootstrap:
+    servers: ${KAFKA_BROKERS:localhost:9092}
+  topics:
+    events: fintech.events.novedades
+    dead-letter: fintech.events.novedades.dlq
+  consumer:
+    group-id: fintech-integration-consumer
+    auto-offset-reset: earliest
+    enable-auto-commit: false
+    properties:
+      max.poll.interval.ms: 300000
+      session.timeout.ms: 45000
+
+retry:
+  max-attempts: 3
+  initial-interval-ms: 5000
+  multiplier: 1.5
+  max-interval-ms: 60000
+
+processing:
+  max-latency-ms: 500
+  batch-size: 50
+  concurrency: 10
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  metrics:
+    tags:
+      application: ${spring.application.name}
+    enable:
+      all: true
+
+logging:
+  level:
+    root: INFO
+    com.fintech.integration: DEBUG
+    org.apache.camel: INFO
 
 resilience4j:
   circuitbreaker:
     instances:
-      coreBanking:
+      kafkaProducer:
         registerHealthIndicator: true
         slidingWindowSize: 10
         minimumNumberOfCalls: 5
@@ -600,1584 +462,977 @@ resilience4j:
         waitDurationInOpenState: 30s
         failureRateThreshold: 50
         eventConsumerBufferSize: 10
-        recordExceptions:
-          - java.io.IOException
-          - java.util.concurrent.TimeoutException
-          - org.springframework.web.client.ResourceAccessException
   retry:
     instances:
-      coreBanking:
+      kafkaProducer:
         maxAttempts: 3
-        waitDuration: 2s
+        waitDuration: 5s
         enableExponentialBackoff: true
         exponentialBackoffMultiplier: 2
-        retryExceptions:
-          - java.io.IOException
-          - java.util.concurrent.TimeoutException
+  timelimiter:
+    instances:
+      kafkaProducer:
+        timeoutDuration: 500ms
+        cancelRunningFuture: true
 
-logging:
-  level:
-    root: INFO
-    com.banco.core: DEBUG
-    org.apache.camel: INFO
-    org.springframework.kafka: WARN
-    io.github.resilience4j: WARN
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+// === ARCHIVO: src/main/java/com/fintech/integration/domain/Event.java ===
+package com.fintech.integration.domain;
 
-management:
-  endpoints:
-    web:
-      exposure:
-        include: health,info,metrics,camelroutes
-  endpoint:
-    health:
-      show-details: always
-  health:
-    camel:
-      enabled: true
-    kafka:
-      enabled: true
-
-// === ARCHIVO: src/main/java/com/banco/core/domain/TransactionEvent.java ===
-package com.banco.core.domain;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.math.BigDecimal;
 import java.time.Instant;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-/**
- * Modelo canónico del evento de transacción financiera.
- * Representa el contrato entre el sistema Core Bancario y el bus de eventos.
- * Este record contiene toda la información necesaria para procesar una
- * transacción de forma idempotente y trazable.
- */
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Slf4j
-public class TransactionEvent {
-
-    @NotBlank(message = "El eventId es obligatorio")
-    private String eventId;
-
-    @NotBlank(message = "El transactionId es obligatorio")
-    private String transactionId;
-
-    @NotBlank(message = "El eventType es obligatorio")
-    private String eventType;
-
-    @NotBlank(message = "El accountId es obligatorio")
-    private String accountId;
-
-    @NotNull(message = "El amount es obligatorio")
-    @Positive(message = "El amount debe ser positivo")
-    private Double amount;
-
-    @NotBlank(message = "El currency es obligatorio")
-    private String currency;
-
-    @NotBlank(message = "El transactionType es obligatorio")
-    private String transactionType;
-
-    @NotBlank(message = "El timestamp es obligatorio")
-    private String timestamp;
-
-    private String correlationId;
-
-    @NotBlank(message = "El idempotencyKey es obligatorio")
-    private String idempotencyKey;
-
-    private String description;
-
-    private String sourceSystem;
-
-    private Map<String, Object> metadata;
-
-    public boolean isDebit() {
-        return "DEBIT".equalsIgnoreCase(this.transactionType);
+public record Event(
+    String operationNumber,
+    String channel,
+    String eventType,
+    Map<String, Object> payload,
+    Instant timestamp,
+    IdempotencyKey idempotencyKey
+) {
+    public Event {
+        Objects.requireNonNull(operationNumber, "operationNumber cannot be null");
+        Objects.requireNonNull(channel, "channel cannot be null");
+        Objects.requireNonNull(eventType, "eventType cannot be null");
+        Objects.requireNonNull(payload, "payload cannot be null");
+        Objects.requireNonNull(timestamp, "timestamp cannot be null");
+        Objects.requireNonNull(idempotencyKey, "idempotencyKey cannot be null");
     }
 
-    public boolean isCredit() {
-        return "CREDIT".equalsIgnoreCase(this.transactionType);
+    public static Event create(final String operationNumber, final String channel,
+                               final String eventType, final Map<String, Object> payload) {
+        final IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+        return new Event(operationNumber, channel, eventType, payload, Instant.now(), key);
     }
 
-    public String getBusinessKey() {
-        return String.format("%s:%s:%s", this.accountId, this.transactionId, this.idempotencyKey);
+    public String getIdempotencyKeyValue() {
+        return idempotencyKey.toString();
     }
 
-    public void addMetadata(String key, Object value) {
-        if (this.metadata == null) {
-            this.metadata = new HashMap<>();
+    public boolean isDuplicateOf(final Event other) {
+        if (other == null) {
+            return false;
         }
-        this.metadata.put(key, value);
+        return this.idempotencyKey.equals(other.idempotencyKey);
     }
 
-    public Object getMetadata(String key) {
-        return this.metadata != null ? this.metadata.get(key) : null;
+    public Event withUpdatedTimestamp() {
+        return new Event(operationNumber, channel, eventType, payload, Instant.now(), idempotencyKey);
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TransactionEvent that = (TransactionEvent) o;
-        return Objects.equals(eventId, that.eventId) && 
-               Objects.equals(transactionId, that.transactionId) &&
-               Objects.equals(idempotencyKey, that.idempotencyKey);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(eventId, transactionId, idempotencyKey);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("TransactionEvent{eventId='%s', transactionId='%s', eventType='%s', " +
-                "accountId='%s', amount=%s, currency='%s', transactionType='%s', correlationId='%s', " +
-                "idempotencyKey='%s'}",
-                eventId, transactionId, eventType, accountId, amount, currency, 
-                transactionType, correlationId, idempotencyKey);
-    }
-
-    public static TransactionEventBuilder builder() {
-        return new TransactionEventBuilder();
-    }
-
-    public static class TransactionEventBuilder {
-        private String eventId;
-        private String transactionId;
-        private String eventType = "TRANSACTION_CREATED";
-        private String accountId;
-        private Double amount;
-        private String currency = "USD";
-        private String transactionType;
-        private String timestamp = Instant.now().toString();
-        private String correlationId;
-        private String idempotencyKey;
-        private String description;
-        private String sourceSystem = "CORE_BANKING";
-        private Map<String, Object> metadata = new HashMap<>();
-
-        public TransactionEventBuilder eventId(String eventId) {
-            this.eventId = eventId;
-            return this;
-        }
-
-        public TransactionEventBuilder transactionId(String transactionId) {
-            this.transactionId = transactionId;
-            return this;
-        }
-
-        public TransactionEventBuilder eventType(String eventType) {
-            this.eventType = eventType;
-            return this;
-        }
-
-        public TransactionEventBuilder accountId(String accountId) {
-            this.accountId = accountId;
-            return this;
-        }
-
-        public TransactionEventBuilder amount(Double amount) {
-            this.amount = amount;
-            return this;
-        }
-
-        public TransactionEventBuilder currency(String currency) {
-            this.currency = currency;
-            return this;
-        }
-
-        public TransactionEventBuilder transactionType(String transactionType) {
-            this.transactionType = transactionType;
-            return this;
-        }
-
-        public TransactionEventBuilder timestamp(String timestamp) {
-            this.timestamp = timestamp;
-            return this;
-        }
-
-        public TransactionEventBuilder correlationId(String correlationId) {
-            this.correlationId = correlationId;
-            return this;
-        }
-
-        public TransactionEventBuilder idempotencyKey(String idempotencyKey) {
-            this.idempotencyKey = idempotencyKey;
-            return this;
-        }
-
-        public TransactionEventBuilder description(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public TransactionEventBuilder sourceSystem(String sourceSystem) {
-            this.sourceSystem = sourceSystem;
-            return this;
-        }
-
-        public TransactionEventBuilder metadata(Map<String, Object> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
-        public TransactionEvent build() {
-            TransactionEvent event = new TransactionEvent();
-            event.setEventId(this.eventId);
-            event.setTransactionId(this.transactionId);
-            event.setEventType(this.eventType);
-            event.setAccountId(this.accountId);
-            event.setAmount(this.amount);
-            event.setCurrency(this.currency);
-            event.setTransactionType(this.transactionType);
-            event.setTimestamp(this.timestamp);
-            event.setCorrelationId(this.correlationId);
-            event.setIdempotencyKey(this.idempotencyKey);
-            event.setDescription(this.description);
-            event.setSourceSystem(this.sourceSystem);
-            event.setMetadata(this.metadata);
-            return event;
-        }
+    public String getEventId() {
+        return idempotencyKey.toString() + "_" + timestamp.toEpochMilli();
     }
 }
 
-// === ARCHIVO: src/main/java/com/banco/core/domain/IdempotencyKey.java ===
-package com.banco.core.domain;
+// === ARCHIVO: src/main/java/com/fintech/integration/domain/IdempotencyKey.java ===
+package com.fintech.integration.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.time.Instant;
 import java.util.Objects;
 
-/**
- * Modelo para manejar claves de idempotencia por negocio.
- * Almacena la clave única que identifica un evento de forma única
- * en el contexto de negocio, permitiendo detectar duplicados.
- */
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Slf4j
-public class IdempotencyKey {
+public final class IdempotencyKey {
 
-    private String key;
-    private String businessKey;
-    private String eventId;
-    private String transactionId;
-    private Instant createdAt;
-    private Instant expiresAt;
-    private IdempotencyStatus status;
-    private int retryCount;
-    private String lastError;
+    private final String operationNumber;
+    private final String channel;
+    private final String compositeKey;
 
-    public enum IdempotencyStatus {
-        PENDING,
-        PROCESSING,
-        COMPLETED,
-        FAILED,
-        DUPLICATE
+    public IdempotencyKey(final String operationNumber, final String channel) {
+        Objects.requireNonNull(operationNumber, "operationNumber cannot be null");
+        Objects.requireNonNull(channel, "channel cannot be null");
+        this.operationNumber = operationNumber;
+        this.channel = channel;
+        this.compositeKey = buildCompositeKey(operationNumber, channel);
     }
 
-    public boolean isExpired() {
-        return expiresAt != null && Instant.now().isAfter(expiresAt);
+    private static String buildCompositeKey(final String operationNumber, final String channel) {
+        return operationNumber.trim().toUpperCase() + "|" + channel.trim().toUpperCase();
     }
 
-    public boolean isCompleted() {
-        return status == IdempotencyStatus.COMPLETED;
+    public String getOperationNumber() {
+        return operationNumber;
     }
 
-    public boolean isProcessing() {
-        return status == IdempotencyStatus.PROCESSING;
+    public String getChannel() {
+        return channel;
     }
 
-    public boolean isDuplicate() {
-        return status == IdempotencyStatus.DUPLICATE;
-    }
-
-    public boolean canRetry() {
-        return status == IdempotencyStatus.FAILED && retryCount < 3;
-    }
-
-    public void markAsProcessing() {
-        this.status = IdempotencyStatus.PROCESSING;
-        log.debug("Marcando clave de idempotencia {} como PROCESSING", this.key);
-    }
-
-    public void markAsCompleted() {
-        this.status = IdempotencyStatus.COMPLETED;
-        log.info("Clave de idempotencia {} marcada como COMPLETED", this.key);
-    }
-
-    public void markAsFailed(String error) {
-        this.status = IdempotencyStatus.FAILED;
-        this.lastError = error;
-        this.retryCount++;
-        log.warn("Clave de idempotencia {} marcada como FAILED. Error: {}. Reintentos: {}", 
-                this.key, error, this.retryCount);
-    }
-
-    public void markAsDuplicate() {
-        this.status = IdempotencyStatus.DUPLICATE;
-        log.info("Clave de idempotencia {} detectada como DUPLICATE", this.key);
+    public String getCompositeKey() {
+        return compositeKey;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        IdempotencyKey that = (IdempotencyKey) o;
-        return Objects.equals(key, that.key) && Objects.equals(businessKey, that.businessKey);
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        final IdempotencyKey that = (IdempotencyKey) o;
+        return Objects.equals(compositeKey, that.compositeKey);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(key, businessKey);
+        return Objects.hash(compositeKey);
     }
 
     @Override
     public String toString() {
-        return String.format("IdempotencyKey{key='%s', businessKey='%s', eventId='%s', " +
-                "transactionId='%s', status=%s, retryCount=%d}",
-                key, businessKey, eventId, transactionId, status, retryCount);
+        return compositeKey;
     }
 
-    public static IdempotencyKeyBuilder builder() {
-        return new IdempotencyKeyBuilder();
+    public int compareTo(final IdempotencyKey other) {
+        if (other == null) {
+            throw new NullPointerException("Cannot compare with null IdempotencyKey");
+        }
+        return this.compositeKey.compareTo(other.compositeKey);
     }
 
-    public static class IdempotencyKeyBuilder {
-        private String key;
-        private String businessKey;
-        private String eventId;
-        private String transactionId;
-        private Instant createdAt = Instant.now();
-        private Instant expiresAt;
-        private IdempotencyStatus status = IdempotencyStatus.PENDING;
-        private int retryCount = 0;
-        private String lastError;
-
-        public IdempotencyKeyBuilder key(String key) {
-            this.key = key;
-            return this;
+    public boolean isSameOperation(final String operationNumber, final String channel) {
+        if (operationNumber == null || channel == null) {
+            return false;
         }
-
-        public IdempotencyKeyBuilder businessKey(String businessKey) {
-            this.businessKey = businessKey;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder eventId(String eventId) {
-            this.eventId = eventId;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder transactionId(String transactionId) {
-            this.transactionId = transactionId;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder createdAt(Instant createdAt) {
-            this.createdAt = createdAt;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder expiresAt(Instant expiresAt) {
-            this.expiresAt = expiresAt;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder status(IdempotencyStatus status) {
-            this.status = status;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder retryCount(int retryCount) {
-            this.retryCount = retryCount;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder lastError(String lastError) {
-            this.lastError = lastError;
-            return this;
-        }
-
-        public IdempotencyKey build() {
-            IdempotencyKey idempotencyKey = new IdempotencyKey();
-            idempotencyKey.setKey(this.key);
-            idempotencyKey.setBusinessKey(this.businessKey);
-            idempotencyKey.setEventId(this.eventId);
-            idempotencyKey.setTransactionId(this.transactionId);
-            idempotencyKey.setCreatedAt(this.createdAt);
-            idempotencyKey.setExpiresAt(this.expiresAt);
-            idempotencyKey.setStatus(this.status);
-            idempotencyKey.setRetryCount(this.retryCount);
-            idempotencyKey.setLastError(this.lastError);
-            return idempotencyKey;
-        }
+        return this.compositeKey.equals(buildCompositeKey(operationNumber, channel));
     }
 }
 
-// === ARCHIVO: src/main/java/com/banco/core/application/EventOrchestrator.java ===
-package com.banco.core.application;
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/core/EventRepository.java ===
+package com.fintech.integration.infrastructure.core;
 
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.core.CoreBankingClient;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import com.banco.core.infrastructure.kafka.KafkaEventProducer;
-import com.banco.core.infrastructure.resilience.CircuitBreakerConfig;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-
-import java.time.Duration;
-import java.time.Instant;
-import java.util.UUID;
-import java.util.function.Supplier;
-import java.util.function.Consumer;
-
-/**
- * Orquestador principal de la integración que aplica patrones EIP.
- * Coordina el flujo de eventos desde el sistema Core Bancario hasta el bus de eventos,
- * gestionando idempotencia, retry y circuit breaker.
- */
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class EventOrchestrator {
-
-    private final KafkaEventProducer eventProducer;
-    private final IdempotencyRepository idempotencyRepository;
-    private final CoreBankingClient coreBankingClient;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-    private final RetryRegistry retryRegistry;
-
-    private static final String CIRCUIT_BREAKER_NAME = "coreBanking";
-    private static final String RETRY_NAME = "coreBanking";
-
-    /**
-     * Procesa un evento de transacción aplicando los patrones EIP:
-     * 1. Validación del evento
-     * 2. Verificación de idempotencia
-     * 3. Enriquecimiento del evento
-     * 4. Retry con circuit breaker
-     * 5. Publicación al bus de eventos
-     */
-    public void processEvent(TransactionEvent event) {
-        String correlationId = event.getCorrelationId();
-        if (correlationId == null || correlationId.isBlank()) {
-            correlationId = UUID.randomUUID().toString();
-            event.setCorrelationId(correlationId);
-        }
-
-        log.info("Iniciando procesamiento de evento. CorrelationId: {}, TransactionId: {}", 
-                correlationId, event.getTransactionId());
-
-        try {
-            validateEvent(event);
-            
-            IdempotencyKey idempotencyKey = checkIdempotency(event);
-            
-            if (idempotencyKey.isDuplicate()) {
-                log.warn("Evento duplicado detectado. CorrelationId: {}, IdempotencyKey: {}",
-                        correlationId, event.getIdempotencyKey());
-                return;
-            }
-
-            enrichEvent(event, correlationId);
-            
-            processWithResilience(event);
-            
-            publishEvent(event);
-            
-            markIdempotencyAsCompleted(event.getIdempotencyKey());
-            
-            log.info("Evento procesado exitosamente. CorrelationId: {}, TransactionId: {}",
-                    correlationId, event.getTransactionId());
-                    
-        } catch (Exception e) {
-            log.error("Error al procesar evento. CorrelationId: {}, Error: {}", 
-                    correlationId, e.getMessage(), e);
-            handleFailure(event, e);
-            throw e;
-        }
-    }
-
-    private void validateEvent(TransactionEvent event) {
-        if (event == null) {
-            throw new IllegalArgumentException("El evento no puede ser null");
-        }
-        if (event.getTransactionId() == null || event.getTransactionId().isBlank()) {
-            throw new IllegalArgumentException("El transactionId es obligatorio");
-        }
-        if (event.getIdempotencyKey() == null || event.getIdempotencyKey().isBlank()) {
-            throw new IllegalArgumentException("El idempotencyKey es obligatorio");
-        }
-        log.debug("Evento validado correctamente: {}", event.getTransactionId());
-    }
-
-    private IdempotencyKey checkIdempotency(TransactionEvent event) {
-        String idempotencyKey = event.getIdempotencyKey();
-        String businessKey = event.getBusinessKey();
-        
-        log.debug("Verificando idempotencia para key: {}, businessKey: {}", 
-                idempotencyKey, businessKey);
-
-        IdempotencyKey existingKey = idempotencyRepository.findByKey(idempotencyKey);
-        
-        if (existingKey != null) {
-            if (existingKey.isCompleted()) {
-                existingKey.markAsDuplicate();
-                return existingKey;
-            }
-            if (existingKey.isProcessing()) {
-                log.warn("Evento ya está siendo procesado. CorrelationId: {}", 
-                        event.getCorrelationId());
-                return existingKey;
-            }
-            if (existingKey.canRetry()) {
-                log.info("Reintentando evento. RetryCount: {}", existingKey.getRetryCount());
-            }
-        }
-
-        IdempotencyKey newKey = IdempotencyKey.builder()
-                .key(idempotencyKey)
-                .businessKey(businessKey)
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .expiresAt(Instant.now().plus(Duration.ofHours(24)))
-                .status(IdempotencyKey.IdempotencyStatus.PROCESSING)
-                .build();
-
-        idempotencyRepository.save(newKey);
-        return newKey;
-    }
-
-    private void enrichEvent(TransactionEvent event, String correlationId) {
-        event.addMetadata("correlationId", correlationId);
-        event.addMetadata("processedAt", Instant.now().toString());
-        event.addMetadata("processor", "EventOrchestrator");
-        event.addMetadata("version", "1.0.0");
-        
-        log.debug("Evento enriquecido. CorrelationId: {}", correlationId);
-    }
-
-    private void processWithResilience(TransactionEvent event) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        Retry retry = retryRegistry.retry(RETRY_NAME);
-
-        Supplier<String> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                Retry.decorateSupplier(
-                        retry,
-                        () -> {
-                            log.debug("Ejecutando llamada al Core Bancario. TransactionId: {}", 
-                                    event.getTransactionId());
-                            return coreBankingClient.sendTransactionConfirmation(event);
-                        }
-                )
-        );
-
-        try {
-            String result = decoratedSupplier.get();
-            log.info("Confirmación enviada al Core Bancario. TransactionId: {}, Result: {}",
-                    event.getTransactionId(), result);
-        } catch (Exception e) {
-            log.error("Error en procesamiento resiliente. TransactionId: {}, Error: {}",
-                    event.getTransactionId(), e.getMessage());
-            throw e;
-        }
-    }
-
-    private void publishEvent(TransactionEvent event) {
-        log.debug("Publicando evento al bus de eventos. TransactionId: {}", event.getTransactionId());
-        eventProducer.sendEvent(event);
-        log.info("Evento publicado exitosamente. TransactionId: {}", event.getTransactionId());
-    }
-
-    private void markIdempotencyAsCompleted(String idempotencyKey) {
-        IdempotencyKey key = idempotencyRepository.findByKey(idempotencyKey);
-        if (key != null) {
-            key.markAsCompleted();
-            idempotencyRepository.save(key);
-            log.debug("Clave de idempotencia marcada como completada: {}", idempotencyKey);
-        }
-    }
-
-    private void handleFailure(TransactionEvent event, Exception e) {
-        IdempotencyKey key = idempotencyRepository.findByKey(event.getIdempotencyKey());
-        if (key != null) {
-            key.markAsFailed(e.getMessage());
-            idempotencyRepository.save(key);
-        }
-        
-        log.error("Manejo de falla completado. TransactionId: {}, IdempotencyKey: {}",
-                event.getTransactionId(), event.getIdempotencyKey());
-    }
-
-    /**
-     * Procesa eventos en lote aplicando splitter y aggregator.
-     */
-    public void processBatch(java.util.List<TransactionEvent> events) {
-        log.info("Procesando lote de {} eventos", events.size());
-        
-        events.forEach(this::processEvent);
-        
-        log.info("Lote de {} eventos procesado completamente", events.size());
-    }
-
-    /**
-     * Router que determina el flujo según el tipo de transacción.
-     */
-    public String routeByTransactionType(TransactionEvent event) {
-        if (event.isDebit()) {
-            return "debitFlow";
-        } else if (event.isCredit()) {
-            return "creditFlow";
-        } else {
-            log.warn("Tipo de transacción desconocido: {}", event.getTransactionType());
-            return "unknownFlow";
-        }
-    }
-}
-
-
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java ===
-package com.banco.core.infrastructure.kafka;
-
-import com.banco.core.domain.TransactionEvent;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import org.apache.camel.CamelExecutionException;
-import org.apache.camel.ProducerTemplate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Component;
-
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
-
-@Component
-public class KafkaEventProducer {
-
-    private static final Logger log = LoggerFactory.getLogger(KafkaEventProducer.class);
-    private static final String CIRCUIT_BREAKER_NAME = "kafkaProducerCircuitBreaker";
-    private static final int MAX_RETRY_ATTEMPTS = 3;
-    private static final long RETRY_WAIT_MS = 1000L;
-
-    private final KafkaTemplate<String, String> kafkaTemplate;
-    private final ProducerTemplate producerTemplate;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-
-    @Value("${app.kafka.topics.transaction-events:transaction-events}")
-    private String transactionEventsTopic;
-
-    @Value("${app.kafka.topics.dlq:transaction-events-dlq}")
-    private String dlqTopic;
-
-    @Value("${app.kafka.producer.acks:all}")
-    private String acks;
-
-    @Value("${app.kafka.producer.retries:3}")
-    private int retries;
-
-    public KafkaEventProducer(
-            KafkaTemplate<String, String> kafkaTemplate,
-            ProducerTemplate producerTemplate,
-            CircuitBreakerRegistry circuitBreakerRegistry) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.producerTemplate = producerTemplate;
-        this.circuitBreakerRegistry = circuitBreakerRegistry;
-    }
-
-    public void sendEvent(TransactionEvent event) {
-        String key = event.getEventId();
-        String payload = serializeEvent(event);
-
-        log.info("Sending event to Kafka. EventId={}, TransactionId={}, Topic={}",
-                event.getEventId(), event.getTransactionId(), transactionEventsTopic);
-
-        sendWithResilience(key, payload, event);
-    }
-
-    public void sendToDlq(TransactionEvent event, String errorMessage) {
-        String key = event.getEventId();
-        String payload = serializeEventWithError(event, errorMessage);
-
-        log.warn("Sending event to DLQ. EventId={}, Error={}, Topic={}",
-                event.getEventId(), errorMessage, dlqTopic);
-
-        try {
-            kafkaTemplate.send(dlqTopic, key, payload)
-                    .get(10, TimeUnit.SECONDS);
-            log.info("Event sent to DLQ successfully. EventId={}", event.getEventId());
-        } catch (Exception e) {
-            log.error("Failed to send event to DLQ. EventId={}, Error={}",
-                    event.getEventId(), e.getMessage(), e);
-            throw new RuntimeException("DLQ send failed", e);
-        }
-    }
-
-    private void sendWithResilience(String key, String payload, TransactionEvent event) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-
-        Supplier<String> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                () -> sendWithRetry(key, payload, event)
-        );
-
-        try {
-            decoratedSupplier.get();
-        } catch (CircuitBreakerOpenException e) {
-            log.error("Circuit breaker is open. Failing fast for EventId={}", event.getEventId());
-            throw new RuntimeException("Circuit breaker open - cannot send event", e);
-        } catch (Exception e) {
-            log.error("Failed to send event after all retry attempts. EventId={}, Error={}",
-                    event.getEventId(), e.getMessage());
-            sendToDlq(event, e.getMessage());
-            throw e;
-        }
-    }
-
-    private String sendWithRetry(String key, String payload, TransactionEvent event) {
-        int attempt = 0;
-        Exception lastException = null;
-
-        while (attempt < MAX_RETRY_ATTEMPTS) {
-            try {
-                SendResult<String, String> result = kafkaTemplate.send(transactionEventsTopic, key, payload)
-                        .get(30, TimeUnit.SECONDS);
-
-                log.info("Event sent successfully. EventId={}, Partition={}, Offset={}, Attempt={}",
-                        event.getEventId(),
-                        result.getRecordMetadata().partition(),
-                        result.getRecordMetadata().offset(),
-                        attempt + 1);
-
-                return "OK";
-            } catch (Exception e) {
-                attempt++;
-                lastException = e;
-                log.warn("Send attempt {} failed for EventId={}. Error={}",
-                        attempt, event.getEventId(), e.getMessage());
-
-                if (attempt < MAX_RETRY_ATTEMPTS) {
-                    try {
-                        Thread.sleep(RETRY_WAIT_MS * attempt);
-                    } catch (InterruptedException ie) {
-                        Thread.currentThread().interrupt();
-                        throw new RuntimeException("Interrupted during retry wait", ie);
-                    }
-                }
-            }
-        }
-
-        throw new RuntimeException("Failed after " + MAX_RETRY_ATTEMPTS + " attempts", lastException);
-    }
-
-    private String serializeEvent(TransactionEvent event) {
-        return String.format(
-                "{\"eventId\":\"%s\",\"transactionId\":\"%s\",\"eventType\":\"%s\",\"accountId\":\"%s\",\"amount\":%.2f,\"currency\":\"%s\",\"transactionType\":\"%s\",\"timestamp\":\"%s\",\"correlationId\":\"%s\",\"idempotencyKey\":\"%s\",\"description\":\"%s\",\"sourceSystem\":\"%s\"}",
-                event.getEventId(),
-                event.getTransactionId(),
-                event.getEventType(),
-                event.getAccountId(),
-                event.getAmount(),
-                event.getCurrency(),
-                event.getTransactionType(),
-                event.getTimestamp(),
-                event.getCorrelationId(),
-                event.getIdempotencyKey(),
-                event.getDescription() != null ? event.getDescription() : "",
-                event.getSourceSystem()
-        );
-    }
-
-    private String serializeEventWithError(TransactionEvent event, String errorMessage) {
-        return String.format(
-                "{\"eventId\":\"%s\",\"transactionId\":\"%s\",\"error\":\"%s\",\"originalEvent\":%s}",
-                event.getEventId(),
-                event.getTransactionId(),
-                errorMessage != null ? errorMessage.replace("\"", "'") : "Unknown error",
-                serializeEvent(event)
-        );
-    }
-
-    public boolean isCircuitBreakerOpen() {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        return CircuitBreaker.State.OPEN.equals(circuitBreaker.getState());
-    }
-
-    public void sendEventWithCamel(TransactionEvent event) {
-        log.debug("Sending event via Camel. EventId={}", event.getEventId());
-
-        try {
-            producerTemplate.sendBodyAndHeader(
-                    "kafka:" + transactionEventsTopic + "?brokers={{spring.kafka.bootstrap-servers}}",
-                    serializeEvent(event),
-                    "eventId",
-                    event.getEventId()
-            );
-            log.info("Event sent via Camel. EventId={}", event.getEventId());
-        } catch (CamelExecutionException e) {
-            log.error("Camel send failed for EventId={}. Error={}", event.getEventId(), e.getMessage());
-            throw new RuntimeException("Camel producer failed", e);
-        }
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/kafka/KafkaEventConsumer.java ===
-package com.banco.core.infrastructure.kafka;
-
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.IdempotencyKey.IdempotencyStatus;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.stereotype.Component;
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import reactor.core.publisher.Mono;
 
 import java.time.Instant;
-import java.util.function.Supplier;
-
-@Component
-public class KafkaEventConsumer {
-
-    private static final Logger log = LoggerFactory.getLogger(KafkaEventConsumer.class);
-    private static final String CIRCUIT_BREAKER_NAME = "kafkaConsumerCircuitBreaker";
-    private static final int MAX_PROCESSING_TIME_SECONDS = 30;
-
-    private final IdempotencyRepository idempotencyRepository;
-    private final KafkaEventProducer eventProducer;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-
-    @Value("${app.kafka.consumer.group-id:core-integration-group}")
-    private String groupId;
-
-    @Value("${app.kafka.consumer.max-poll-records:10}")
-    private int maxPollRecords;
-
-    @Value("${app.kafka.consumer.auto-offset-reset:earliest}")
-    private String autoOffsetReset;
-
-    public KafkaEventConsumer(
-            IdempotencyRepository idempotencyRepository,
-            KafkaEventProducer eventProducer,
-            CircuitBreakerRegistry circuitBreakerRegistry) {
-        this.idempotencyRepository = idempotencyRepository;
-        this.eventProducer = eventProducer;
-        this.circuitBreakerRegistry = circuitBreakerRegistry;
-    }
-
-    @KafkaListener(
-            topics = "${app.kafka.topics.transaction-events:transaction-events}",
-            groupId = "${app.kafka.consumer.group-id:core-integration-group}"
-    )
-    public void consume(ConsumerRecord<String, String> record) {
-        String eventId = record.key();
-        String payload = record.value();
-
-        log.info("Consuming event. EventId={}, Partition={}, Offset={}",
-                eventId, record.partition(), record.offset());
-
-        try {
-            TransactionEvent event = deserializeEvent(payload, eventId);
-
-            if (event == null) {
-                log.error("Failed to deserialize event. EventId={}", eventId);
-                return;
-            }
-
-            processWithIdempotency(event);
-
-            log.info("Event processed successfully. EventId={}", eventId);
-        } catch (Exception e) {
-            log.error("Error processing event. EventId={}, Error={}", eventId, e.getMessage(), e);
-            handleProcessingError(eventId, payload, e);
-        }
-    }
-
-    private void processWithIdempotency(TransactionEvent event) {
-        String idempotencyKey = event.getIdempotencyKey();
-
-        if (idempotencyKey == null || idempotencyKey.isBlank()) {
-            idempotencyKey = event.getBusinessKey();
-        }
-
-        IdempotencyKey existingKey = idempotencyRepository.findByKey(idempotencyKey);
-
-        if (existingKey != null) {
-            if (existingKey.isCompleted()) {
-                log.info("Duplicate event detected - already completed. Key={}, EventId={}",
-                        idempotencyKey, event.getEventId());
-                return;
-            }
-
-            if (existingKey.isProcessing()) {
-                log.warn("Event currently being processed. Key={}, EventId={}",
-                        idempotencyKey, event.getEventId());
-                return;
-            }
-
-            if (existingKey.canRetry()) {
-                existingKey.markAsProcessing();
-                idempotencyRepository.save(existingKey);
-                processEventWithCircuitBreaker(event);
-                existingKey.markAsCompleted();
-                idempotencyRepository.save(existingKey);
-            } else {
-                log.error("Max retry attempts reached for key. Key={}", idempotencyKey);
-                eventProducer.sendToDlq(event, "Max retry attempts exceeded");
-            }
-        } else {
-            IdempotencyKey newKey = IdempotencyKey.builder()
-                    .key(idempotencyKey)
-                    .businessKey(event.getBusinessKey())
-                    .eventId(event.getEventId())
-                    .transactionId(event.getTransactionId())
-                    .createdAt(Instant.now())
-                    .expiresAt(Instant.now().plusSeconds(86400))
-                    .status(IdempotencyStatus.PROCESSING)
-                    .retryCount(0)
-                    .build();
-
-            idempotencyRepository.save(newKey);
-
-            try {
-                processEventWithCircuitBreaker(event);
-                newKey.markAsCompleted();
-            } catch (Exception e) {
-                newKey.markAsFailed(e.getMessage());
-                throw e;
-            } finally {
-                idempotencyRepository.save(newKey);
-            }
-        }
-    }
-
-    private void processEventWithCircuitBreaker(TransactionEvent event) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-
-        Supplier<Void> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                () -> {
-                    executeEventProcessing(event);
-                    return null;
-                }
-        );
-
-        try {
-            decoratedSupplier.get();
-        } catch (io.github.resilience4j.circuitbreaker.CallNotPermittedException e) {
-            log.error("Circuit breaker is open. EventId={}", event.getEventId());
-            throw new RuntimeException("Circuit breaker open - cannot process event", e);
-        }
-    }
-
-    private void executeEventProcessing(TransactionEvent event) {
-        log.debug("Executing event processing logic. EventId={}, Type={}",
-                event.getEventId(), event.getEventType());
-
-        if (event.isDebit()) {
-            log.info("Processing DEBIT transaction. AccountId={}, Amount={}",
-                    event.getAccountId(), event.getAmount());
-        } else if (event.isCredit()) {
-            log.info("Processing CREDIT transaction. AccountId={}, Amount={}",
-                    event.getAccountId(), event.getAmount());
-        }
-
-        validateEventIntegrity(event);
-    }
-
-    private void validateEventIntegrity(TransactionEvent event) {
-        if (event.getEventId() == null || event.getEventId().isBlank()) {
-            throw new IllegalArgumentException("EventId cannot be null or empty");
-        }
-
-        if (event.getTransactionId() == null || event.getTransactionId().isBlank()) {
-            throw new IllegalArgumentException("TransactionId cannot be null or empty");
-        }
-
-        if (event.getAmount() == null || event.getAmount() <= 0) {
-            throw new IllegalArgumentException("Amount must be positive");
-        }
-    }
-
-    private TransactionEvent deserializeEvent(String payload, String eventId) {
-        try {
-            return parseTransactionEvent(payload);
-        } catch (Exception e) {
-            log.error("Failed to parse event payload. EventId={}, Error={}",
-                    eventId, e.getMessage());
-            return null;
-        }
-    }
-
-    private TransactionEvent parseTransactionEvent(String payload) {
-        String eventId = extractJsonField(payload, "eventId");
-        String transactionId = extractJsonField(payload, "transactionId");
-        String eventType = extractJsonField(payload, "eventType");
-        String accountId = extractJsonField(payload, "accountId");
-        Double amount = parseDouble(extractJsonField(payload, "amount"));
-        String currency = extractJsonField(payload, "currency");
-        String transactionType = extractJsonField(payload, "transactionType");
-        String timestamp = extractJsonField(payload, "timestamp");
-        String correlationId = extractJsonField(payload, "correlationId");
-        String idempotencyKey = extractJsonField(payload, "idempotencyKey");
-        String description = extractJsonField(payload, "description");
-        String sourceSystem = extractJsonField(payload, "sourceSystem");
-
-        return TransactionEvent.builder()
-                .eventId(eventId)
-                .transactionId(transactionId)
-                .eventType(eventType)
-                .accountId(accountId)
-                .amount(amount)
-                .currency(currency)
-                .transactionType(transactionType)
-                .timestamp(timestamp)
-                .correlationId(correlationId)
-                .idempotencyKey(idempotencyKey)
-                .description(description)
-                .sourceSystem(sourceSystem)
-                .build();
-    }
-
-    private String extractJsonField(String json, String field) {
-        String pattern = "\"" + field + "\":\"";
-        int start = json.indexOf(pattern);
-        if (start == -1) {
-            pattern = "\"" + field + "\":";
-            start = json.indexOf(pattern);
-            if (start == -1) {
-                return null;
-            }
-            start += pattern.length();
-            int end = json.indexOf(",", start);
-            if (end == -1) {
-                end = json.indexOf("}", start);
-            }
-            return json.substring(start, end).trim().replace("\"", "");
-        }
-        start += pattern.length();
-        int end = json.indexOf("\"", start);
-        return json.substring(start, end);
-    }
-
-    private Double parseDouble(String value) {
-        if (value == null || value.isBlank()) {
-            return 0.0;
-        }
-        try {
-            return Double.parseDouble(value);
-        } catch (NumberFormatException e) {
-            return 0.0;
-        }
-    }
-
-    private void handleProcessingError(String eventId, String payload, Exception e) {
-        log.error("Handling processing error for event. EventId={}", eventId);
-
-        try {
-            TransactionEvent event = parseTransactionEvent(payload);
-            if (event != null) {
-                eventProducer.sendToDlq(event, e.getMessage());
-            }
-        } catch (Exception ex) {
-            log.error("Failed to send to DLQ. EventId={}, Error={}", eventId, ex.getMessage());
-        }
-    }
-
-    public String getConsumerGroupId() {
-        return this.groupId;
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/core/CoreBankingClient.java ===
-package com.banco.core.infrastructure.core;
-
-import com.banco.core.domain.TransactionEvent;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestClientException;
-import org.springframework.web.client.RestTemplate;
-
-import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
-import java.util.function.Supplier;
+import java.util.Optional;
 
-@Component
-public class CoreBankingClient {
+public interface EventRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(CoreBankingClient.class);
-    private static final String CIRCUIT_BREAKER_NAME = "coreBankingCircuitBreaker";
-    private static final String RETRY_NAME = "coreBankingRetry";
+    Mono<Boolean> existsByIdempotencyKey(IdempotencyKey key);
 
-    private final RestTemplate restTemplate;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-    private final RetryRegistry retryRegistry;
+    Mono<Event> save(Event event);
 
-    @Value("${app.core-banking.base-url:http://localhost:8080/api}")
-    private String baseUrl;
+    Mono<Optional<Event>> findByIdempotencyKey(IdempotencyKey key);
 
-    @Value("${app.core-banking.timeout-ms:5000}")
-    private int timeoutMs;
+    Mono<List<Event>> findAll();
 
-    @Value("${app.core-banking.endpoints.transactions:/transactions}")
-    private String transactionsEndpoint;
+    Mono<List<Event>> findByChannel(String channel);
 
-    @Value("${app.core-banking.endpoints.accounts:/accounts}")
-    private String accountsEndpoint;
+    Mono<List<Event>> findByEventType(String eventType);
 
-    @Value("${app.core-banking.endpoints.balance:/balance}")
-    private String balanceEndpoint;
+    Mono<List<Event>> findByTimestampBetween(Instant start, Instant end);
 
-    public CoreBankingClient(
-            RestTemplate restTemplate,
-            CircuitBreakerRegistry circuitBreakerRegistry,
-            RetryRegistry retryRegistry) {
-        this.restTemplate = restTemplate;
-        this.circuitBreakerRegistry = circuitBreakerRegistry;
-        this.retryRegistry = retryRegistry;
-    }
+    Mono<Long> count();
 
-    public TransactionEvent fetchTransaction(String transactionId) {
-        log.info("Fetching transaction from Core Banking. TransactionId={}", transactionId);
+    Mono<Boolean> deleteByIdempotencyKey(IdempotencyKey key);
 
-        String url = buildUrl(transactionsEndpoint) + "/" + transactionId;
+    Mono<Void> deleteAll();
 
-        Supplier<TransactionEvent> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME),
-                Retry.decorateSupplier(
-                        retryRegistry.retry(RETRY_NAME),
-                        () -> executeFetchTransaction(url, transactionId)
-                )
-        );
+    Mono<List<Event>> findByRetryCountLessThan(int maxRetries);
 
-        try {
-            return decoratedSupplier.get();
-        } catch (Exception e) {
-            log.error("Failed to fetch transaction. TransactionId={}, Error={}",
-                    transactionId, e.getMessage());
-            throw new CoreBankingException("Failed to fetch transaction: " + transactionId, e);
-        }
-    }
-
-    private TransactionEvent executeFetchTransaction(String url, String transactionId) {
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-
-            TransactionEvent[] response = restTemplate.exchange(
-                    url,
-                    HttpMethod.GET,
-                    entity,
-                    TransactionEvent[].class
-            ).getBody();
-
-            if (response != null && response.length > 0) {
-                log.info("Transaction fetched successfully. TransactionId={}", transactionId);
-                return response[0];
-            }
-
-            log.warn("No transaction found. TransactionId={}", transactionId);
-            return null;
-        } catch (RestClientException e) {
-            log.error("RestClient error fetching transaction. TransactionId={}, Error={}",
-                    transactionId, e.getMessage());
-            throw e;
-        }
-    }
-
-    public List<TransactionEvent> fetchRecentTransactions(String accountId, int limit) {
-        log.info("Fetching recent transactions. AccountId={}, Limit={}", accountId, limit);
-
-        String url = buildUrl(transactionsEndpoint) + "/recent?accountId=" + accountId + "&limit=" + limit;
-
-        Supplier<List<TransactionEvent>> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME),
-                () -> executeFetchRecentTransactions(url)
-        );
-
-        try {
-            return decoratedSupplier.get();
-        } catch (Exception e) {
-            log.error("Failed to fetch recent transactions. AccountId={}, Error={}",
-                    accountId, e.getMessage());
-            throw new CoreBankingException("Failed to fetch recent transactions", e);
-        }
-    }
-
-    private List<TransactionEvent> executeFetchRecentTransactions(String url) {
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-
-            TransactionEvent[] response = restTemplate.exchange(
-                    url,
-                    HttpMethod.GET,
-                    entity,
-                    TransactionEvent[].class
-            ).getBody();
-
-            if (response != null) {
-                log.info("Fetched {} recent transactions", response.length);
-                return Arrays.asList(response);
-            }
-
-            return List.of();
-        } catch (RestClientException e) {
-            log.error("RestClient error fetching recent transactions. Error={}", e.getMessage());
-            throw e;
-        }
-    }
-
-    public void validateAccount(String accountId) {
-        log.info("Validating account. AccountId={}", accountId);
-
-        String url = buildUrl(accountsEndpoint) + "/" + accountId + "/validate";
-
-        Supplier<Boolean> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME),
-                () -> executeValidateAccount(url)
-        );
-
-        try {
-            Boolean isValid = decoratedSupplier.get();
-            if (!Boolean.TRUE.equals(isValid)) {
-                throw new CoreBankingException("Account validation failed: " + accountId);
-            }
-            log.info("Account validated successfully. AccountId={}", accountId);
-        } catch (Exception e) {
-            log.error("Failed to validate account. AccountId={}, Error={}",
-                    accountId, e.getMessage());
-            throw new CoreBankingException("Account validation failed", e);
-        }
-    }
-
-    private Boolean executeValidateAccount(String url) {
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-
-            return restTemplate.exchange(
-                    url,
-                    HttpMethod.GET,
-                    entity,
-                    Boolean.class
-            ).getBody();
-        } catch (RestClientException e) {
-            log.error("RestClient error validating account. Error={}", e.getMessage());
-            throw e;
-        }
-    }
-
-    public Double getAccountBalance(String accountId) {
-        log.info("Fetching account balance. AccountId={}", accountId);
-
-        String url = buildUrl(balanceEndpoint) + "/" + accountId;
-
-        Supplier<Double> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME),
-                () -> executeGetAccountBalance(url)
-        );
-
-        try {
-            return decoratedSupplier.get();
-        } catch (Exception e) {
-            log.error("Failed to fetch account balance. AccountId={}, Error={}",
-                    accountId, e.getMessage());
-            throw new CoreBankingException("Failed to fetch account balance", e);
-        }
-    }
-
-    private Double executeGetAccountBalance(String url) {
-        try {
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-
-            HttpEntity<String> entity = new HttpEntity<>(headers);
-
-            Double balance = restTemplate.exchange(
-                    url,
-                    HttpMethod.GET,
-                    entity,
-                    Double.class
-            ).getBody();
-
-            log.info("Account balance fetched. AccountId={}, Balance={}",
-                    extractAccountIdFromUrl(url), balance);
-            return balance != null ? balance : 0.0;
-        } catch (RestClientException e) {
-            log.error("RestClient error fetching balance. Error={}", e.getMessage());
-            throw e;
-        }
-    }
-
-    private String buildUrl(String endpoint) {
-        return baseUrl + endpoint;
-    }
-
-    private String extractAccountIdFromUrl(String url) {
-        String[] parts = url.split("/");
-        return parts[parts.length - 1];
-    }
-
-    public boolean isCircuitBreakerOpen() {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        return CircuitBreaker.State.OPEN.equals(circuitBreaker.getState());
-    }
-
-    public CircuitBreaker.Metrics getCircuitBreakerMetrics() {
-        return circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME).getMetrics();
-    }
-
-    public static class CoreBankingException extends RuntimeException {
-        public CoreBankingException(String message) {
-            super(message);
-        }
-
-        public CoreBankingException(String message, Throwable cause) {
-            super(message, cause);
-        }
-    }
+    Mono<Event> incrementRetryCount(Event event);
 }
 
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/idempotency/IdempotencyRepository.java ===
-package com.banco.core.infrastructure.idempotency;
 
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.IdempotencyKey.IdempotencyStatus;
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/core/InMemoryEventRepository.java ===
+package com.fintech.integration.infrastructure.core;
+
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
-import java.time.Duration;
 import java.time.Instant;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicLong;
+import java.util.stream.Collectors;
 
 @Repository
-public class IdempotencyRepository {
+public class InMemoryEventRepository implements EventRepository {
 
-    private static final Logger log = LoggerFactory.getLogger(IdempotencyRepository.class);
-    private static final Duration DEFAULT_TTL = Duration.ofHours(24);
-    private static final int MAX_RETRY_COUNT = 3;
-    private static final long CLEANUP_INTERVAL_MINUTES = 15;
+    private static final Logger log = LoggerFactory.getLogger(InMemoryEventRepository.class);
 
-    private final Map<String, IdempotencyKey> storage;
-    private final ScheduledExecutorService cleanupExecutor;
-    private final Duration ttlDuration;
+    private final Map<String, Event> eventsById = new ConcurrentHashMap<>();
+    private final Map<String, Event> eventsByIdempotencyKey = new ConcurrentHashMap<>();
+    private final AtomicLong idGenerator = new AtomicLong(1);
 
-    public IdempotencyRepository() {
-        this(DEFAULT_TTL);
-    }
-
-    public IdempotencyRepository(Duration ttlDuration) {
-        this.storage = new ConcurrentHashMap<>();
-        this.ttlDuration = ttlDuration != null ? ttlDuration : DEFAULT_TTL;
-        this.cleanupExecutor = Executors.newSingleThreadScheduledExecutor(r -> {
-            Thread t = new Thread(r, "idempotency-cleanup");
-            t.setDaemon(true);
-            return t;
-        });
-        startCleanupTask();
-        log.info("IdempotencyRepository inicializado con TTL de {} minutos", ttlDuration.toMinutes());
-    }
-
-    public IdempotencyKey save(IdempotencyKey idempotencyKey) {
-        if (idempotencyKey == null) {
-            throw new IllegalArgumentException("La clave de idempotencia no puede ser nula");
+    @Override
+    public Mono<Boolean> existsByIdempotencyKey(final IdempotencyKey key) {
+        if (key == null || key.getCompositeKey() == null) {
+            log.warn("IdempotencyKey inválida proporcionada");
+            return Mono.just(false);
         }
-        if (idempotencyKey.getKey() == null || idempotencyKey.getKey().isBlank()) {
-            throw new IllegalArgumentException("La clave de idempotencia debe tener un valor válido");
+        final boolean exists = eventsByIdempotencyKey.containsKey(key.getCompositeKey());
+        log.debug("Verificando existencia de clave idempotente {}: {}", key.getCompositeKey(), exists);
+        return Mono.just(exists);
+    }
+
+    @Override
+    public Mono<Event> save(final Event event) {
+        if (event == null) {
+            log.error("Intento de guardar evento nulo");
+            return Mono.error(new IllegalArgumentException("El evento no puede ser nulo"));
         }
 
-        String key = idempotencyKey.getKey();
-        IdempotencyKey existing = storage.get(key);
+        final String idempotencyKeyValue = event.getIdempotencyKeyValue();
+        final Event existingEvent = eventsByIdempotencyKey.get(idempotencyKeyValue);
 
-        if (existing != null) {
-            if (existing.isCompleted()) {
-                log.debug("Clave de idempotencia {} ya procesada completamente", key);
-                return existing;
-            }
-            if (existing.isProcessing()) {
-                log.warn("Clave de idempotencia {} actualmente en procesamiento", key);
-                return existing;
-            }
-            if (existing.canRetry() && existing.getRetryCount() < MAX_RETRY_COUNT) {
-                existing.markAsProcessing();
-                log.info("Reintentando clave de idempotencia {} (intento {})", key, existing.getRetryCount() + 1);
-                return storage.put(key, existing);
-            }
-            log.warn("Clave de idempotencia {} excedió máximo de reintentos", key);
-            return existing;
+        if (existingEvent != null) {
+            log.info("Evento duplicado detectado para clave idempotente: {}", idempotencyKeyValue);
+            return Mono.just(existingEvent);
         }
 
-        idempotencyKey.markAsProcessing();
-        storage.put(key, idempotencyKey);
-        log.info("Clave de idempotencia {} almacenada", key);
-        return idempotencyKey;
-    }
-
-    public Optional<IdempotencyKey> findByKey(String key) {
-        if (key == null || key.isBlank()) {
-            return Optional.empty();
-        }
-
-        IdempotencyKey idempotencyKey = storage.get(key);
-        if (idempotencyKey == null) {
-            log.debug("No se encontró clave de idempotencia para: {}", key);
-            return Optional.empty();
-        }
-
-        if (idempotencyKey.isExpired()) {
-            log.info("Clave de idempotencia {} expirada, removiendo", key);
-            storage.remove(key);
-            return Optional.empty();
-        }
-
-        return Optional.of(idempotencyKey);
-    }
-
-    public boolean existsByKey(String key) {
-        return findByKey(key).map(IdempotencyKey::isCompleted).orElse(false);
-    }
-
-    public boolean isDuplicate(String key) {
-        return findByKey(key).map(ik -> ik.isDuplicate() || ik.isCompleted()).orElse(false);
-    }
-
-    public void markAsCompleted(String key) {
-        findByKey(key).ifPresent(ik -> {
-            ik.markAsCompleted();
-            log.info("Clave de idempotencia {} marcada como completada", key);
-        });
-    }
-
-    public void markAsFailed(String key, String error) {
-        findByKey(key).ifPresent(ik -> {
-            ik.markAsFailed(error);
-            log.warn("Clave de idempotencia {} marcada como fallida: {}", key, error);
-        });
-    }
-
-    public void markAsDuplicate(String key) {
-        findByKey(key).ifPresent(ik -> {
-            ik.markAsDuplicate();
-            log.info("Clave de idempotencia {} marcada como duplicada", key);
-        });
-    }
-
-    public void delete(String key) {
-        if (key != null) {
-            storage.remove(key);
-            log.debug("Clave de idempotencia {} eliminada", key);
-        }
-    }
-
-    public int count() {
-        return storage.size();
-    }
-
-    public Map<String, IdempotencyKey> findAll() {
-        return Map.copyOf(storage);
-    }
-
-    public Map<String, IdempotencyKey> findExpiredKeys() {
-        return storage.entrySet().stream()
-                .filter(e -> e.getValue().isExpired())
-                .collect(java.util.stream.Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
-    }
-
-    public void cleanupExpired() {
-        Map<String, IdempotencyKey> expired = findExpiredKeys();
-        expired.keySet().forEach(storage::remove);
-        log.info("Limpiadas {} claves de idempotencia expiradas", expired.size());
-    }
-
-    private void startCleanupTask() {
-        cleanupExecutor.scheduleAtFixedRate(
-                this::cleanupExpired,
-                CLEANUP_INTERVAL_MINUTES,
-                CLEANUP_INTERVAL_MINUTES,
-                TimeUnit.MINUTES
+        final String eventId = "EVT-" + idGenerator.getAndIncrement();
+        final Event eventToSave = new Event(
+            eventId,
+            event.operationNumber(),
+            event.channel(),
+            event.eventType(),
+            event.payload(),
+            event.timestamp(),
+            event.idempotencyKey(),
+            0,
+            event.metadata()
         );
+
+        eventsById.put(eventId, eventToSave);
+        eventsByIdempotencyKey.put(idempotencyKeyValue, eventToSave);
+
+        log.info("Evento guardado exitosamente con ID: {}, clave idempotente: {}", 
+            eventId, idempotencyKeyValue);
+        return Mono.just(eventToSave);
     }
 
-    public void shutdown() {
-        cleanupExecutor.shutdown();
-        try {
-            if (!cleanupExecutor.awaitTermination(5, TimeUnit.SECONDS)) {
-                cleanupExecutor.shutdownNow();
-            }
-        } catch (InterruptedException e) {
-            cleanupExecutor.shutdownNow();
-            Thread.currentThread().interrupt();
+    @Override
+    public Mono<Optional<Event>> findByIdempotencyKey(final IdempotencyKey key) {
+        if (key == null || key.getCompositeKey() == null) {
+            return Mono.just(Optional.empty());
         }
-        log.info("IdempotencyRepository cerrado");
+        final Event event = eventsByIdempotencyKey.get(key.getCompositeKey());
+        return Mono.just(Optional.ofNullable(event));
+    }
+
+    @Override
+    public Mono<List<Event>> findAll() {
+        final List<Event> allEvents = eventsById.values().stream()
+            .sorted((e1, e2) -> e2.timestamp().compareTo(e1.timestamp()))
+            .collect(Collectors.toList());
+        log.debug("Recuperados {} eventos en total", allEvents.size());
+        return Mono.just(allEvents);
+    }
+
+    @Override
+    public Mono<List<Event>> findByChannel(final String channel) {
+        if (channel == null || channel.isBlank()) {
+            return Mono.just(List.of());
+        }
+        final List<Event> events = eventsById.values().stream()
+            .filter(e -> channel.equals(e.channel()))
+            .sorted((e1, e2) -> e2.timestamp().compareTo(e1.timestamp()))
+            .collect(Collectors.toList());
+        log.debug("Recuperados {} eventos para el canal: {}", events.size(), channel);
+        return Mono.just(events);
+    }
+
+    @Override
+    public Mono<List<Event>> findByEventType(final String eventType) {
+        if (eventType == null || eventType.isBlank()) {
+            return Mono.just(List.of());
+        }
+        final List<Event> events = eventsById.values().stream()
+            .filter(e -> eventType.equals(e.eventType()))
+            .sorted((e1, e2) -> e2.timestamp().compareTo(e1.timestamp()))
+            .collect(Collectors.toList());
+        log.debug("Recuperados {} eventos para el tipo: {}", events.size(), eventType);
+        return Mono.just(events);
+    }
+
+    @Override
+    public Mono<List<Event>> findByTimestampBetween(final Instant start, final Instant end) {
+        if (start == null || end == null || start.isAfter(end)) {
+            log.warn("Rango de tiempo inválido: start={}, end={}", start, end);
+            return Mono.just(List.of());
+        }
+        final List<Event> events = eventsById.values().stream()
+            .filter(e -> !e.timestamp().isBefore(start) && !e.timestamp().isAfter(end))
+            .sorted((e1, e2) -> e2.timestamp().compareTo(e1.timestamp()))
+            .collect(Collectors.toList());
+        log.debug("Recuperados {} eventos entre {} y {}", events.size(), start, end);
+        return Mono.just(events);
+    }
+
+    @Override
+    public Mono<Long> count() {
+        final long count = eventsById.size();
+        log.debug("Total de eventos en repositorio: {}", count);
+        return Mono.just(count);
+    }
+
+    @Override
+    public Mono<Boolean> deleteByIdempotencyKey(final IdempotencyKey key) {
+        if (key == null || key.getCompositeKey() == null) {
+            return Mono.just(false);
+        }
+        final Event removed = eventsByIdempotencyKey.remove(key.getCompositeKey());
+        if (removed != null) {
+            eventsById.remove(removed.getEventId());
+            log.info("Evento eliminado para clave idempotente: {}", key.getCompositeKey());
+            return Mono.just(true);
+        }
+        return Mono.just(false);
+    }
+
+    @Override
+    public Mono<Void> deleteAll() {
+        eventsById.clear();
+        eventsByIdempotencyKey.clear();
+        log.info("Todos los eventos eliminados del repositorio");
+        return Mono.empty();
+    }
+
+    @Override
+    public Mono<List<Event>> findByRetryCountLessThan(final int maxRetries) {
+        if (maxRetries < 0) {
+            return Mono.just(List.of());
+        }
+        final List<Event> events = eventsById.values().stream()
+            .filter(e -> e.retryCount() < maxRetries)
+            .sorted((e1, e2) -> e1.timestamp().compareTo(e2.timestamp()))
+            .collect(Collectors.toList());
+        log.debug("Recuperados {} eventos con reintentos menores a {}", events.size(), maxRetries);
+        return Mono.just(events);
+    }
+
+    @Override
+    public Mono<Event> incrementRetryCount(final Event event) {
+        if (event == null) {
+            return Mono.error(new IllegalArgumentException("El evento no puede ser nulo"));
+        }
+        final int newRetryCount = event.retryCount() + 1;
+        final Event updatedEvent = new Event(
+            event.getEventId(),
+            event.operationNumber(),
+            event.channel(),
+            event.eventType(),
+            event.payload(),
+            event.timestamp(),
+            event.idempotencyKey(),
+            newRetryCount,
+            event.metadata()
+        );
+        eventsById.put(event.getEventId(), updatedEvent);
+        eventsByIdempotencyKey.put(event.getIdempotencyKeyValue(), updatedEvent);
+        log.info("Incrementado retryCount para evento {}: {} -> {}", 
+            event.getEventId(), event.retryCount(), newRetryCount);
+        return Mono.just(updatedEvent);
     }
 }
 
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/resilience/CircuitBreakerConfig.java ===
-package com.banco.core.infrastructure.resilience;
+// === ARCHIVO: src/main/java/com/fintech/integration/application/EventOrchestrator.java ===
+package com.fintech.integration.application;
 
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import com.fintech.integration.infrastructure.core.EventRepository;
+import com.fintech.integration.infrastructure.events.EventProducer;
+import com.fintech.integration.infrastructure.retry.RetryPolicy;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import io.github.resilience4j.retry.annotation.Retry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import reactor.core.publisher.Mono;
+
+import java.time.Instant;
+import java.util.Map;
+import java.util.UUID;
+
+@Service
+public class EventOrchestrator {
+
+    private static final Logger log = LoggerFactory.getLogger(EventOrchestrator.class);
+    private static final int MAX_RETRY_COUNT = 3;
+    private static final long PROCESSING_TIMEOUT_MS = 500;
+
+    private final EventRepository eventRepository;
+    private final EventProducer eventProducer;
+    private final RetryPolicy retryPolicy;
+
+    public EventOrchestrator(
+            final EventRepository eventRepository,
+            final EventProducer eventProducer,
+            final RetryPolicy retryPolicy) {
+        this.eventRepository = eventRepository;
+        this.eventProducer = eventProducer;
+        this.retryPolicy = retryPolicy;
+    }
+
+    @CircuitBreaker(name = "eventProcessing", fallbackMethod = "processEventFallback")
+    @Retry(name = "eventProcessing")
+    public Mono<Event> processEvent(final String operationNumber, final String channel,
+            final String eventType, final Map<String, Object> payload) {
+        log.info("Iniciando procesamiento de evento: operationNumber={}, channel={}, eventType={}",
+            operationNumber, channel, eventType);
+
+        final long startTime = System.currentTimeMillis();
+
+        return Mono.defer(() -> {
+            final IdempotencyKey idempotencyKey = new IdempotencyKey(operationNumber, channel);
+            
+            return eventRepository.existsByIdempotencyKey(idempotencyKey)
+                .flatMap(exists -> {
+                    if (exists) {
+                        log.info("Evento duplicado detectado, recuperandolo del repositorio");
+                        return eventRepository.findByIdempotencyKey(idempotencyKey)
+                            .flatMap(optEvent -> {
+                                if (optEvent.isPresent()) {
+                                    return Mono.just(optEvent.get());
+                                }
+                                return persistAndEmitEvent(operationNumber, channel, eventType, payload);
+                            });
+                    }
+                    return persistAndEmitEvent(operationNumber, channel, eventType, payload);
+                })
+                .doOnSuccess(event -> {
+                    final long duration = System.currentTimeMillis() - startTime;
+                    if (duration > PROCESSING_TIMEOUT_MS) {
+                        log.warn("Tiempo de procesamiento excedido: {}ms > {}ms", 
+                            duration, PROCESSING_TIMEOUT_MS);
+                    } else {
+                        log.info("Evento procesado exitosamente en {}ms", duration);
+                    }
+                })
+                .doOnError(error -> 
+                    log.error("Error en procesamiento de evento: {}", error.getMessage(), error));
+        });
+    }
+
+    private Mono<Event> persistAndEmitEvent(final String operationNumber, final String channel,
+            final String eventType, final Map<String, Object> payload) {
+        log.debug("Persistiendo nuevo evento para operación: {}", operationNumber);
+        
+        final Event event = Event.create(operationNumber, channel);
+        final Event eventWithDetails = new Event(
+            event.getEventId(),
+            event.operationNumber(),
+            event.channel(),
+            eventType,
+            payload,
+            Instant.now(),
+            event.idempotencyKey(),
+            0,
+            Map.of("source", "core-system", "correlationId", UUID.randomUUID().toString())
+        );
+
+        return eventRepository.save(eventWithDetails)
+            .flatMap(savedEvent -> emitToEventBus(savedEvent)
+                .thenReturn(savedEvent)
+                .onErrorResume(emitError -> {
+                    log.error("Error al emitir evento al bus, marcando para reintento: {}", 
+                        emitError.getMessage());
+                    return handleEmitFailure(savedEvent);
+                }));
+    }
+
+    private Mono<Void> emitToEventBus(final Event event) {
+        log.debug("Emitiendo evento al bus de novedades: {}", event.getEventId());
+        return eventProducer.send(event)
+            .doOnSuccess(unused -> log.info("Evento emitido exitosamente: {}", event.getEventId()))
+            .doOnError(error -> log.error("Fallo al emitir evento {}: {}", 
+                event.getEventId(), error.getMessage()));
+    }
+
+    private Mono<Event> handleEmitFailure(final Event event) {
+        log.warn("Manejando fallo de emisión para evento: {}, incrementando retryCount", 
+            event.getEventId());
+        return eventRepository.incrementRetryCount(event)
+            .flatMap(updatedEvent -> retryPolicy.scheduleRetry(updatedEvent));
+    }
+
+    @SuppressWarnings("unused")
+    private Mono<Event> processEventFallback(final String operationNumber, final String channel,
+            final String eventType, final Map<String, Object> payload, final Throwable throwable) {
+        log.error("Circuit breaker abierto para procesamiento de eventos: {}", throwable.getMessage());
+        return Mono.error(new RuntimeException("Sistema temporalmente no disponible, intente más tarde"));
+    }
+
+    public Mono<Event> reprocessEvent(final Event event) {
+        log.info("Reintentando procesamiento de evento: {}", event.getEventId());
+        
+        if (event.retryCount() >= MAX_RETRY_COUNT) {
+            log.error("Evento agotó reintentos máximos: {}", event.getEventId());
+            return Mono.error(new IllegalStateException(
+                "Evento agotó reintentos máximos: " + event.getEventId()));
+        }
+
+        return emitToEventBus(event)
+            .thenReturn(event)
+            .onErrorResume(error -> {
+                log.error("Reintento fallido para evento {}: {}", event.getEventId(), error.getMessage());
+                return handleEmitFailure(event);
+            });
+    }
+
+    public Mono<Long> getPendingEventsCount() {
+        return eventRepository.findByRetryCountLessThan(MAX_RETRY_COUNT)
+            .map(List::size)
+            .doOnSuccess(count -> log.info("Eventos pendientes de reintento: {}", count));
+    }
+}
+
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/events/EventProducer.java ===
+package com.fintech.integration.infrastructure.events;
+
+import com.fintech.integration.domain.Event;
+import reactor.core.publisher.Mono;
+
+public interface EventProducer {
+
+    Mono<Void> send(Event event);
+
+    Mono<Void> sendWithKey(Event event, String key);
+
+    Mono<Boolean> isAvailable();
+
+    String getTopic();
+}
+
+
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/events/KafkaEventProducer.java ===
+package com.fintech.integration.infrastructure.events;
+
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import com.fintech.integration.infrastructure.core.EventRepository;
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import org.apache.camel.CamelContext;
+import org.apache.camel.ProducerTemplate;
+import org.apache.camel.component.kafka.KafkaConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+import reactor.core.publisher.MonoSink;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
+
+@Component
+public class KafkaEventProducer implements EventProducer {
+
+    private static final Logger logger = LoggerFactory.getLogger(KafkaEventProducer.class);
+    private static final String KAFKA_TOPIC = "fintech.novedades";
+    private static final String DLQ_TOPIC = "fintech.novedades.dlq";
+
+    private final ProducerTemplate producerTemplate;
+    private final CamelContext camelContext;
+    private final EventRepository eventRepository;
+    private final CircuitBreakerRegistry circuitBreakerRegistry;
+
+    @Value("${integration.kafka.bootstrap-servers:localhost:9092}")
+    private String bootstrapServers;
+
+    @Value("${integration.retry.max-attempts:3}")
+    private int maxRetryAttempts;
+
+    @Value("${integration.retry.wait-duration-ms:300000}")
+    private long waitDurationMs;
+
+    @Autowired
+    public KafkaEventProducer(
+            final ProducerTemplate producerTemplate,
+            final CamelContext camelContext,
+            final EventRepository eventRepository,
+            final CircuitBreakerRegistry circuitBreakerRegistry) {
+        this.producerTemplate = producerTemplate;
+        this.camelContext = camelContext;
+        this.eventRepository = eventRepository;
+        this.circuitBreakerRegistry = circuitBreakerRegistry;
+    }
+
+    @Override
+    public Mono<Boolean> sendEvent(final Event event) {
+        return Mono.create((final MonoSink<Boolean> sink) -> {
+            try {
+                final CircuitBreaker circuitBreaker = getOrCreateCircuitBreaker(event.getEventType());
+                final CircuitBreaker.State initialState = circuitBreaker.getState();
+
+                if (initialState == CircuitBreaker.State.OPEN) {
+                    logger.warn("Circuit breaker OPEN para tipo {}, enviando a DLQ", event.getEventType());
+                    sendToDeadLetterQueue(event, "CIRCUIT_BREAKER_OPEN");
+                    sink.success(false);
+                    return;
+                }
+
+                circuitBreaker.executeRunnable(() -> {
+                    sendToKafka(event);
+                });
+
+                logger.info("Evento {} enviado exitosamente a Kafka", event.getEventId());
+                sink.success(true);
+
+            } catch (final Exception e) {
+                logger.error("Error al enviar evento {} a Kafka: {}", event.getEventId(), e.getMessage(), e);
+                handleSendFailure(event, e);
+                sink.success(false);
+            }
+        });
+    }
+
+    private void sendToKafka(final Event event) {
+        final Map<String, Object> headers = new HashMap<>();
+        headers.put(KafkaConstants.TOPIC, KAFKA_TOPIC);
+        headers.put(KafkaConstants.KEY, event.getIdempotencyKeyValue());
+        headers.put("eventId", event.getEventId());
+        headers.put("eventType", event.getEventType());
+        headers.put("operationNumber", event.getOperationNumber());
+        headers.put("channel", event.getChannel());
+        headers.put("timestamp", event.getTimestamp().toString());
+        headers.put("correlationId", generateCorrelationId(event));
+
+        final String jsonPayload = serializeEvent(event);
+
+        producerTemplate.sendBodyAndHeaders("direct:kafka-out", jsonPayload, headers);
+        logger.debug("Evento serializado y enviado a topic {}: {}", KAFKA_TOPIC, jsonPayload);
+    }
+
+    private void sendToDeadLetterQueue(final Event event, final String reason) {
+        try {
+            final Map<String, Object> dlqHeaders = new HashMap<>();
+            dlqHeaders.put(KafkaConstants.TOPIC, DLQ_TOPIC);
+            dlqHeaders.put("dlq-reason", reason);
+            dlqHeaders.put("original-event-id", event.getEventId());
+            dlqHeaders.put("dlq-timestamp", System.currentTimeMillis());
+
+            final String dlqPayload = serializeEvent(event);
+            producerTemplate.sendBodyAndHeaders("direct:dlq-out", dlqPayload, dlqHeaders);
+            logger.warn("Evento {} enviado a DLQ por: {}", event.getEventId(), reason);
+        } catch (final Exception e) {
+            logger.error("Error al enviar evento {} a DLQ: {}", event.getEventId(), e.getMessage(), e);
+        }
+    }
+
+    private void handleSendFailure(final Event event, final Exception e) {
+        final String errorType = e.getClass().getSimpleName();
+        final String errorMessage = e.getMessage();
+
+        if (isRetryableError(e)) {
+            logger.warn("Error recuperable para evento {}: {}", event.getEventId(), errorMessage);
+            sendToDeadLetterQueue(event, "RETRYABLE_ERROR:" + errorType);
+        } else {
+            logger.error("Error no recuperable para evento {}: {}", event.getEventId(), errorMessage);
+            sendToDeadLetterQueue(event, "NON_RETRYABLE_ERROR:" + errorType);
+        }
+    }
+
+    private boolean isRetryableError(final Exception e) {
+        final String errorClass = e.getClass().getSimpleName().toLowerCase();
+        return errorClass.contains("timeout") 
+            || errorClass.contains("connection")
+            || errorClass.contains("network")
+            || errorClass.contains("broker");
+    }
+
+    private CircuitBreaker getOrCreateCircuitBreaker(final String eventType) {
+        final String cbName = "kafka-producer-" + eventType;
+        return circuitBreakerRegistry.circuitBreaker(cbName);
+    }
+
+    private String generateCorrelationId(final Event event) {
+        return UUID.randomUUID().toString();
+    }
+
+    private String serializeEvent(final Event event) {
+        try {
+            final org.apache.camel.component.jackson.JacksonDataFormat jacksonDataFormat = 
+                new org.apache.camel.component.jackson.JacksonDataFormat();
+            jacksonDataFormat.setPrettyPrint(false);
+            return producerTemplate.getCamelContext().getTypeConverter().convertTo(String.class, event);
+        } catch (final Exception e) {
+            logger.error("Error al serializar evento: {}", e.getMessage());
+            return "{\"error\":\"serialization_failed\"}";
+        }
+    }
+
+    public Mono<Boolean> sendEventWithRetry(final Event event) {
+        return Mono.defer(() -> {
+            if (event.getRetryCount() >= maxRetryAttempts) {
+                logger.warn("Evento {} excedió máximo de reintentos ({})", event.getEventId(), maxRetryAttempts);
+                return sendToDeadLetterQueueFinal(event);
+            }
+            return sendEvent(event)
+                .flatMap(success -> {
+                    if (!success) {
+                        return incrementRetryAndSchedule(event);
+                    }
+                    return Mono.just(true);
+                });
+        });
+    }
+
+    private Mono<Boolean> sendToDeadLetterQueueFinal(final Event event) {
+        return Mono.fromRunnable(() -> sendToDeadLetterQueue(event, "MAX_RETRIES_EXCEEDED"))
+            .then(Mono.just(false));
+    }
+
+    private Mono<Boolean> incrementRetryAndSchedule(final Event event) {
+        return eventRepository.incrementRetryCount(event)
+            .flatMap(updatedEvent -> {
+                logger.info("Reintento {} programado para evento {}", 
+                    updatedEvent.getRetryCount(), updatedEvent.getEventId());
+                return Mono.just(false);
+            });
+    }
+
+    public String getBootstrapServers() {
+        return bootstrapServers;
+    }
+
+    public String getMainTopic() {
+        return KAFKA_TOPIC;
+    }
+
+    public String getDlqTopic() {
+        return DLQ_TOPIC;
+    }
+}
+
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/events/DeadLetterQueueConsumer.java ===
+package com.fintech.integration.infrastructure.events;
+
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import com.fintech.integration.infrastructure.core.EventRepository;
+import com.fintech.integration.infrastructure.retry.EventRetryHandler;
+import org.apache.camel.CamelContext;
+import org.apache.camel.ConsumerTemplate;
+import org.apache.camel.Handler;
+import org.apache.camel.component.kafka.KafkaConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+@Component
+public class DeadLetterQueueConsumer {
+
+    private static final Logger logger = LoggerFactory.getLogger(DeadLetterQueueConsumer.class);
+    private static final String DLQ_TOPIC = "fintech.novedades.dlq";
+    private static final int DEFAULT_POLL_TIMEOUT = 10000;
+    private static final int MAX_REPROCESS_ATTEMPTS = 3;
+
+    private final ConsumerTemplate consumerTemplate;
+    private final CamelContext camelContext;
+    private final EventRepository eventRepository;
+    private final EventRetryHandler retryHandler;
+    private final KafkaEventProducer kafkaEventProducer;
+
+    @Value("${integration.dlq.poll-timeout-ms:10000}")
+    private int pollTimeoutMs;
+
+    @Value("${integration.dlq.batch-size:100}")
+    private int batchSize;
+
+    @Value("${integration.dlq.enabled:true}")
+    private boolean dlqEnabled;
+
+    private final AtomicBoolean isProcessing = new AtomicBoolean(false);
+
+    @Autowired
+    public DeadLetterQueueConsumer(
+            final ConsumerTemplate consumerTemplate,
+            final CamelContext camelContext,
+            final EventRepository eventRepository,
+            final EventRetryHandler retryHandler,
+            final KafkaEventProducer kafkaEventProducer) {
+        this.consumerTemplate = consumerTemplate;
+        this.camelContext = camelContext;
+        this.eventRepository = eventRepository;
+        this.retryHandler = retryHandler;
+        this.kafkaEventProducer = kafkaEventProducer;
+    }
+
+    @Handler
+    public void processDeadLetterMessages() {
+        if (!dlqEnabled) {
+            logger.info("Procesamiento de DLQ deshabilitado");
+            return;
+        }
+
+        if (!isProcessing.compareAndSet(false, true)) {
+            logger.warn("Ya hay un proceso de DLQ en ejecución");
+            return;
+        }
+
+        try {
+            logger.info("Iniciando procesamiento de mensajes de la DLQ");
+            final List<String> messages = pollMessagesFromDlq();
+            
+            if (messages.isEmpty()) {
+                logger.info("No hay mensajes en la DLQ para procesar");
+                return;
+            }
+
+            logger.info("Procesando {} mensajes de la DLQ", messages.size());
+            processBatch(messages);
+
+        } catch (final Exception e) {
+            logger.error("Error al procesar DLQ: {}", e.getMessage(), e);
+        } finally {
+            isProcessing.set(false);
+        }
+    }
+
+    private List<String> pollMessagesFromDlq() {
+        return consumerTemplate.receiveBody("kafka:" + DLQ_TOPIC + "?groupId=dlq-processor", 
+            pollTimeoutMs, List.class);
+    }
+
+    private void processBatch(final List<String> messages) {
+        Flux.fromIterable(messages)
+            .flatMap(this::processSingleMessage, 10)
+            .doOnComplete(() -> logger.info("Procesamiento de batch de DLQ completado"))
+            .doOnError(e -> logger.error("Error en procesamiento de batch: {}", e.getMessage(), e))
+            .block();
+    }
+
+    private Mono<Boolean> processSingleMessage(final String message) {
+        return Mono.fromCallable(() -> {
+            try {
+                final Map<String, Object> headers = extractHeaders(message);
+                final String reason = (String) headers.get("dlq-reason");
+                final String originalEventId = (String) headers.get("original-event-id");
+
+                logger.info("Procesando mensaje de DLQ - Evento: {}, Razón: {}", originalEventId, reason);
+
+                if (reason != null && reason.startsWith("MAX_RETRIES_EXCEEDED")) {
+                    logger.warn("Evento {} excedió reintentos máximos, archivando permanentemente", originalEventId);
+                    archiveDeadLetterMessage(message, reason);
+                    return true;
+                }
+
+                final Event event = deserializeEvent(message);
+                if (event == null) {
+                    logger.error("No se pudo deserializar evento de DLQ: {}", originalEventId);
+                    return false;
+                }
+
+                return attemptReprocess(event, reason).block();
+
+            } catch (final Exception e) {
+                logger.error("Error al procesar mensaje de DLQ: {}", e.getMessage(), e);
+                return false;
+            }
+        }).flatMap(result -> {
+            if (Boolean.TRUE.equals(result)) {
+                return Mono.just(true);
+            }
+            return Mono.just(false);
+        });
+    }
+
+    private Mono<Boolean> attemptReprocess(final Event event, final String reason) {
+        final int currentRetry = event.getRetryCount();
+
+        if (currentRetry >= MAX_REPROCESS_ATTEMPTS) {
+            logger.warn("Evento {} ya alcanzó el máximo de {} reintentos de reproceso", 
+                event.getEventId(), MAX_REPROCESS_ATTEMPTS);
+            return Mono.just(false);
+        }
+
+        return retryHandler.calculateNextRetryDelay(currentRetry)
+            .flatMap(delay -> {
+                logger.info("Reintentando evento {} en {} ms (intento {}/{})", 
+                    event.getEventId(), delay.toMillis(), currentRetry + 1, MAX_REPROCESS_ATTEMPTS);
+                
+                return kafkaEventProducer.sendEvent(event)
+                    .flatMap(success -> {
+                        if (success) {
+                            logger.info("Evento {} reprocesado exitosamente desde DLQ", event.getEventId());
+                            return Mono.just(true);
+                        } else {
+                            logger.warn("Reintento {} falló para evento {}, programando siguiente", 
+                                currentRetry + 1, event.getEventId());
+                            return retryHandler.scheduleRetry(event, currentRetry + 1);
+                        }
+                    });
+            });
+    }
+
+    private Map<String, Object> extractHeaders(final String message) {
+        final Map<String, Object> headers = new HashMap<>();
+        headers.put("dlq-reason", "UNKNOWN");
+        return headers;
+    }
+
+    private Event deserializeEvent(final String message) {
+        try {
+            return camelContext.getTypeConverter().convertTo(Event.class, message);
+        } catch (final Exception e) {
+            logger.error("Error al deserializar evento: {}", e.getMessage());
+            return null;
+        }
+    }
+
+    private void archiveDeadLetterMessage(final String message, final String reason) {
+        logger.info("Archivando mensaje muerto - Razón: {}, Mensaje: {}", reason, 
+            message.substring(0, Math.min(100, message.length())));
+    }
+
+    public Mono<Long> reprocessAllPendingMessages() {
+        return eventRepository.findByRetryCountLessThan(MAX_REPROCESS_ATTEMPTS)
+            .flatMapMany(Flux::fromIterable)
+            .flatMap(event -> attemptReprocess(event, "REPROCESS_ALL"), 5)
+            .count()
+            .doOnSuccess(count -> logger.info("Se reprocesaron {} eventos desde DLQ", count));
+    }
+
+    public Mono<List<Event>> getDeadLetterEvents() {
+        return eventRepository.findByRetryCountLessThan(0)
+            .onErrorReturn(List.of());
+    }
+
+    public boolean isEnabled() {
+        return dlqEnabled;
+    }
+
+    public int getBatchSize() {
+        return batchSize;
+    }
+
+    public int getPollTimeoutMs() {
+        return pollTimeoutMs;
+    }
+}
+
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/retry/RetryPolicy.java ===
+package com.fintech.integration.infrastructure.retry;
+
+import com.fintech.integration.domain.Event;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
@@ -2186,2884 +1441,828 @@ import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
-import java.io.IOException;
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
+import java.util.concurrent.atomic.AtomicInteger;
 
-@Configuration
-public class CircuitBreakerConfig {
+@Component
+public class RetryPolicy {
 
-    private static final Logger log = LoggerFactory.getLogger(CircuitBreakerConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(RetryPolicy.class);
+    private static final int DEFAULT_MAX_ATTEMPTS = 3;
+    private static final long DEFAULT_WAIT_DURATION_MS = 300000L;
+    private static final double DEFAULT_FAILURE_RATE_THRESHOLD = 50;
+    private static final int DEFAULT_SLIDING_WINDOW_SIZE = 10;
 
-    private static final String DEFAULT_CIRCUIT_BREAKER_NAME = "coreBankingCircuitBreaker";
-    private static final String DEFAULT_RETRY_NAME = "coreBankingRetry";
+    private final RetryRegistry retryRegistry;
+    private final CircuitBreakerRegistry circuitBreakerRegistry;
 
-    private static final int FAILURE_RATE_THRESHOLD = 50;
-    private static final int WAIT_DURATION_IN_OPEN_STATE = 30;
-    private static final int SLIDING_WINDOW_SIZE = 10;
-    private static final int PERMITTED_NUMBER_OF_CALLS_IN_HALF_OPEN_STATE = 3;
-    private static final int MAX_RETRY_ATTEMPTS = 3;
-    private static final long RETRY_WAIT_DURATION_MS = 1000;
-    private static final double RETRY_MULTIPLIER = 2.0;
+    @Value("${integration.retry.max-attempts:3}")
+    private int maxAttempts;
 
-    @Bean
-    public CircuitBreakerRegistry circuitBreakerRegistry() {
-        CircuitBreakerConfig custom = new CircuitBreakerConfig();
-        CircuitBreakerRegistry registry = CircuitBreakerRegistry.of(custom.defaultCircuitBreakerConfig());
-        registry.getEventPublisher()
-                .onStateTransition(event -> log.warn("CircuitBreaker {} transición: {} -> {}",
-                        event.getStateTransition().getFromState(),
-                        event.getStateTransition().getToState()))
-                .onFailureRateExceeded(event -> log.error("CircuitBreaker {} tasa de falla excedida: {}%",
-                        event.getCircuitBreakerName(),
-                        event.getFailureRate()))
-                .onCallNotPermitted(event -> log.warn("CircuitBreaker {} llamadas no permitidas",
-                        event.getCircuitBreakerName()));
+    @Value("${integration.retry.wait-duration-ms:300000}")
+    private long waitDurationMs;
 
-        log.info("CircuitBreakerRegistry inicializado con configuración por defecto");
-        return registry;
+    @Value("${integration.circuit-breaker.failure-rate-threshold:50}")
+    private double failureRateThreshold;
+
+    @Value("${integration.circuit-breaker.sliding-window-size:10}")
+    private int slidingWindowSize;
+
+    @Value("${integration.circuit-breaker.wait-duration-open-ms:60000}")
+    private long waitDurationOpenMs;
+
+    @Value("${integration.circuit-breaker.enabled:true}")
+    private boolean circuitBreakerEnabled;
+
+    private final Map<String, Retry> retryInstances = new HashMap<>();
+    private final Map<String, CircuitBreaker> circuitBreakerInstances = new HashMap<>();
+    private final AtomicInteger globalRetryCount = new AtomicInteger(0);
+
+    @Autowired
+    public RetryPolicy(
+            final RetryRegistry retryRegistry,
+            final CircuitBreakerRegistry circuitBreakerRegistry) {
+        this.retryRegistry = retryRegistry;
+        this.circuitBreakerRegistry = circuitBreakerRegistry;
+        initializeDefaults();
     }
 
-    @Bean
-    public CircuitBreaker circuitBreaker(CircuitBreakerRegistry circuitBreakerRegistry) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(DEFAULT_CIRCUIT_BREAKER_NAME);
-        log.info("CircuitBreaker '{}' registrado con umbral de falla del {}%",
-                DEFAULT_CIRCUIT_BREAKER_NAME, FAILURE_RATE_THRESHOLD);
-        return circuitBreaker;
+    private void initializeDefaults() {
+        final RetryConfig defaultConfig = RetryConfig.custom()
+            .maxAttempts(maxAttempts)
+            .waitDuration(Duration.ofMillis(waitDurationMs))
+            .retryExceptions(Exception.class)
+            .ignoreExceptions()
+            .build();
+
+        retryRegistry.retry("default-retry", defaultConfig);
+        logger.info("RetryPolicy inicializado con {} intentos y {} ms de espera", 
+            maxAttempts, waitDurationMs);
     }
 
-    @Bean
-    public RetryRegistry retryRegistry() {
-        RetryConfig custom = RetryConfig.custom()
-                .maxAttempts(MAX_RETRY_ATTEMPTS)
-                .waitDuration(Duration.ofMillis(RETRY_WAIT_DURATION_MS))
-                .retryExceptions(IOException.class, RuntimeException.class)
-                .ignoreExceptions(IllegalArgumentException.class, IllegalStateException.class)
-                .intervalFunction(interval -> interval * RETRY_MULTIPLIER)
-                .build();
-
-        RetryRegistry registry = RetryRegistry.of(custom);
-        registry.getEventPublisher()
-                .onRetry(event -> log.warn("Retry {} - intento {}/{} - causa: {}",
-                        event.getRetryName(),
-                        event.getAttemptNumber(),
-                        MAX_RETRY_ATTEMPTS,
-                        event.getLastThrowable() != null ? 
-                                event.getLastThrowable().getMessage() : "desconocida"))
-                .onSuccess(event -> log.info("Retry {} exitoso en intento {}",
-                        event.getRetryName(),
-                        event.getAttemptNumber()))
-                .onFailure(event -> log.error("Retry {} todas las tentatives fallidas",
-                        event.getRetryName()));
-
-        log.info("RetryRegistry inicializado con {} intentos máximos", MAX_RETRY_ATTEMPTS);
-        return registry;
+    public Retry getRetryForEvent(final String eventType) {
+        return retryInstances.computeIfAbsent(eventType, this::createRetryForEventType);
     }
 
-    @Bean
-    public Retry retry(RetryRegistry retryRegistry) {
-        Retry retry = retryRegistry.retry(DEFAULT_RETRY_NAME);
-        log.info("Retry '{}' registrado con configuración de reintentos", DEFAULT_RETRY_NAME);
-        return retry;
+    private Retry createRetryForEventType(final String eventType) {
+        final String retryName = "retry-" + eventType;
+        logger.debug("Creando retry {} para tipo de evento {}", retryName, eventType);
+
+        final RetryConfig config = RetryConfig.custom()
+            .maxAttempts(maxAttempts)
+            .waitDuration(Duration.ofMillis(waitDurationMs))
+            .retryExceptions(
+                java.io.IOException.class,
+                java.net.SocketTimeoutException.class,
+                org.apache.kafka.common.errors.TimeoutException.class
+            )
+            .build();
+
+        return retryRegistry.retry(retryName, config);
     }
 
-    public CircuitBreakerConfig customCircuitBreakerConfig() {
-        return new CircuitBreakerConfig();
+    public CircuitBreaker getCircuitBreakerForEvent(final String eventType) {
+        if (!circuitBreakerEnabled) {
+            logger.debug("Circuit breaker deshabilitado, retornando fallback para {}", eventType);
+            return getFallbackCircuitBreaker();
+        }
+        return circuitBreakerInstances.computeIfAbsent(eventType, this::createCircuitBreakerForEventType);
     }
 
-    private CircuitBreakerConfig() {
+    private CircuitBreaker createCircuitBreakerForEventType(final String eventType) {
+        final String cbName = "circuit-breaker-" + eventType;
+        logger.debug("Creando circuit breaker {} para tipo de evento {}", cbName, eventType);
+
+        final CircuitBreakerConfig config = CircuitBreakerConfig.custom()
+            .failureRateThreshold(failureRateThreshold)
+            .slidingWindowSize(slidingWindowSize)
+            .minimumNumberOfCalls(5)
+            .waitDurationInOpenState(Duration.ofMillis(waitDurationOpenMs))
+            .permittedNumberOfCallsInHalfOpenState(3)
+            .automaticTransitionFromOpenToHalfOpenEnabled(true)
+            .build();
+
+        return circuitBreakerRegistry.circuitBreaker(cbName, config);
     }
 
-    public io.github.resilience4j.circuitbreaker.CircuitBreakerConfig defaultCircuitBreakerConfig() {
-        return io.github.resilience4j.circuitbreaker.CircuitBreakerConfig.custom()
-                .failureRateThreshold(FAILURE_RATE_THRESHOLD)
-                .waitDurationInOpenState(Duration.ofSeconds(WAIT_DURATION_IN_OPEN_STATE))
-                .slidingWindowSize(SLIDING_WINDOW_SIZE)
-                .minimumNumberOfCalls(5)
-                .permittedNumberOfCallsInHalfOpenState(PERMITTED_NUMBER_OF_CALLS_IN_HALF_OPEN_STATE)
-                .automaticTransitionFromOpenToHalfOpenEnabled(true)
-                .recordExceptions(IOException.class, RuntimeException.class)
-                .ignoreExceptions(IllegalArgumentException.class, IllegalStateException.class)
-                .build();
+    private CircuitBreaker getFallbackCircuitBreaker() {
+        final CircuitBreakerConfig fallbackConfig = CircuitBreakerConfig.custom()
+            .failureRateThreshold(100)
+            .slidingWindowSize(1)
+            .build();
+        return circuitBreakerRegistry.circuitBreaker("fallback-cb", fallbackConfig);
     }
 
-    public CircuitBreaker createCircuitBreaker(String name, CircuitBreakerConfig config) {
-        return circuitBreakerRegistry().circuitBreaker(name, config);
+    public <T> Mono<T> executeWithRetry(
+            final String eventType,
+            final java.util.function.Supplier<Mono<T>> action) {
+
+        final Retry retry = getRetryForEvent(eventType);
+        final CircuitBreaker circuitBreaker = getCircuitBreakerForEvent(eventType);
+
+        return Mono.defer(() -> {
+            final int currentAttempt = globalRetryCount.incrementAndGet();
+            logger.debug("Ejecutando acción para {} - Intento {}", eventType, currentAttempt);
+
+            return action.get()
+                .doOnSuccess(result -> {
+                    logger.debug("Acción exitosa para {} en intento {}", eventType, currentAttempt);
+                    retry.reset();
+                })
+                .doOnError(error -> {
+                    logger.warn("Error en intento {} para {}: {}", currentAttempt, eventType, 
+                        error.getMessage());
+                    handleRetryError(eventType, error, currentAttempt);
+                })
+                .retryWhen(
+                    io.github.resilience4j.reactor.retry.RetryOperator.of(retry)
+                )
+                .transformDeferred(
+                    io.github.resilience4j.reactor.circuitbreaker.CircuitBreakerOperator.of(circuitBreaker)
+                )
+                .onErrorResume(error -> {
+                    logger.error("Error después de todos los reintentos para {}: {}", eventType, 
+                        error.getMessage());
+                    return Mono.error(new RetryExhaustedException(
+                        "Máximo de reintentos alcanzado para evento tipo: " + eventType, error));
+                });
+        }).subscribeOn(Schedulers.boundedElastic());
     }
 
-    public CircuitBreaker createCircuitBreaker(String name) {
-        return circuitBreakerRegistry().circuitBreaker(name);
+    private void handleRetryError(final String eventType, final Throwable error, final int attempt) {
+        logger.warn("Reintento {} falló para tipo {}: {}", attempt, eventType, error.getMessage());
+
+        if (attempt >= maxAttempts) {
+            logger.error("Se agotaron los reintentos para el evento tipo {}", eventType);
+        }
     }
 
-    public Retry createRetry(String name, RetryConfig config) {
-        return retryRegistry().retry(name, config);
+    public Mono<Duration> calculateNextRetryDelay(final int currentRetryCount) {
+        final long delayMs = waitDurationMs;
+        final double exponentialBackoffMultiplier = Math.pow(2, currentRetryCount);
+        final long finalDelay = (long) (delayMs * exponentialBackoffMultiplier);
+
+        logger.debug("Calculando delay para retry {}: {} ms (exponential backoff factor: {})", 
+            currentRetryCount, finalDelay, exponentialBackoffMultiplier);
+
+        return Mono.just(Duration.ofMillis(Math.min(finalDelay, waitDurationMs * 4)));
     }
 
-    public Retry createRetry(String name) {
-        return retryRegistry().retry(name);
+    public Mono<Boolean> shouldRetry(final Event event) {
+        final String eventType = event.getEventType();
+        final int currentRetries = event.getRetryCount();
+
+        if (currentRetries >= maxAttempts) {
+            logger.warn("Evento {} excedió el máximo de {} reintentos", 
+                event.getEventId(), maxAttempts);
+            return Mono.just(false);
+        }
+
+        final CircuitBreaker cb = getCircuitBreakerForEvent(eventType);
+        if (cb.getState() == CircuitBreaker.State.OPEN) {
+            logger.warn("Circuit breaker OPEN para {}, no se reintenta", eventType);
+            return Mono.just(false);
+        }
+
+        return Mono.just(true);
     }
 
-    public Map<String, CircuitBreaker> getAllCircuitBreakers() {
-        Map<String, CircuitBreaker> result = new HashMap<>();
-        circuitBreakerRegistry().getAllCircuitBreakers()
-                .forEach(cb -> result.put(cb.getName(), cb));
-        return result;
+    public void resetRetryState(final String eventType) {
+        final Retry retry = retryInstances.get(eventType);
+        if (retry != null) {
+            retry.reset();
+            logger.info("Estado de retry reseteado para {}", eventType);
+        }
+
+        final CircuitBreaker cb = circuitBreakerInstances.get(eventType);
+        if (cb != null) {
+            cb.reset();
+            logger.info("Circuit breaker reseteado para {}", eventType);
+        }
     }
 
     public Map<String, Retry> getAllRetries() {
-        Map<String, Retry> result = new HashMap<>();
-        retryRegistry().getAllRetries()
-                .forEach(r -> result.put(r.getName(), r));
-        return result;
+        return new HashMap<>(retryInstances);
     }
 
-    public void resetCircuitBreaker(String name) {
-        circuitBreakerRegistry().circuitBreaker(name).reset();
-        log.info("CircuitBreaker '{}' reseteado", name);
+    public Map<String, CircuitBreaker> getAllCircuitBreakers() {
+        return new HashMap<>(circuitBreakerInstances);
     }
 
-    public void resetAllCircuitBreakers() {
-        circuitBreakerRegistry().getAllCircuitBreakers().forEach(cb -> {
-            cb.reset();
-            log.debug("CircuitBreaker '{}' reseteado", cb.getName());
-        });
+    public int getMaxAttempts() {
+        return maxAttempts;
     }
 
-    public CircuitBreaker.State getCircuitBreakerState(String name) {
-        return circuitBreakerRegistry().circuitBreaker(name).getState();
+    public long getWaitDurationMs() {
+        return waitDurationMs;
     }
 
-    public CircuitBreaker.Metrics getCircuitBreakerMetrics(String name) {
-        return circuitBreakerRegistry().circuitBreaker(name).getMetrics();
+    public boolean isCircuitBreakerEnabled() {
+        return circuitBreakerEnabled;
     }
 
-    public Retry.Metrics getRetryMetrics(String name) {
-        return retryRegistry().retry(name).getMetrics();
-    }
-
-    public Function<Long, Long> createExponentialBackoffFunction(long initialIntervalMs, double multiplier) {
-        return attempt -> (long) (initialIntervalMs * Math.pow(multiplier, attempt));
-    }
-
-    public RetryConfig createCustomRetryConfig(int maxAttempts, Duration waitDuration, 
-                                                Class<? extends Throwable>... retryExceptions) {
-        return RetryConfig.custom()
-                .maxAttempts(maxAttempts)
-                .waitDuration(waitDuration)
-                .retryExceptions(retryExceptions)
-                .build();
-    }
-
-    public CircuitBreakerConfig createCustomCircuitBreakerConfig(int failureRateThreshold, 
-                                                                  Duration waitDurationInOpenState,
-                                                                  int slidingWindowSize) {
-        return new CircuitBreakerConfig();
-    }
-}
-
-
-// === ARCHIVO: src/test/java/com/banco/core/application/EventOrchestratorTest.java ===
-package com.banco.core.application;
-
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.core.CoreBankingClient;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import com.banco.core.infrastructure.kafka.KafkaEventProducer;
-import com.banco.core.infrastructure.resilience.CircuitBreakerConfig;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.Instant;
-import java.util.List;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
-
-@ExtendWith(MockitoExtension.class)
-@DisplayName("Tests para EventOrchestrator - Orquestación de eventos transaccionales")
-class EventOrchestratorTest {
-
-    @Mock
-    private KafkaEventProducer eventProducer;
-
-    @Mock
-    private IdempotencyRepository idempotencyRepository;
-
-    @Mock
-    private CoreBankingClient coreBankingClient;
-
-    @Mock
-    private CircuitBreakerRegistry circuitBreakerRegistry;
-
-    @Mock
-    private RetryRegistry retryRegistry;
-
-    @Mock
-    private CircuitBreaker circuitBreaker;
-
-    @Mock
-    private Retry retry;
-
-    private EventOrchestrator orchestrator;
-
-    @BeforeEach
-    void setUp() {
-        orchestrator = new EventOrchestrator(
-            eventProducer,
-            idempotencyRepository,
-            coreBankingClient,
-            circuitBreakerRegistry,
-            retryRegistry
-        );
-    }
-
-    private TransactionEvent createValidDebitEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-12345")
-            .amount(1000.00)
-            .currency("USD")
-            .transactionType("DEBIT")
-            .timestamp(Instant.now().toString())
-            .idempotencyKey("idem-" + System.currentTimeMillis())
-            .description("Pago de servicio")
-            .sourceSystem("CORE_BANKING")
-            .build();
-    }
-
-    private TransactionEvent createValidCreditEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-67890")
-            .amount(2500.00)
-            .currency("USD")
-            .transactionType("CREDIT")
-            .timestamp(Instant.now().toString())
-            .idempotencyKey("idem-" + System.currentTimeMillis())
-            .description("Depósito")
-            .sourceSystem("CORE_BANKING")
-            .build();
-    }
-
-    @Nested
-    @DisplayName("Escenario: Procesamiento de evento válido")
-    class ProcesamientoEventoValido {
-
-        @Test
-        @DisplayName("Debe procesar evento de débito exitosamente")
-        void debeProcesarEventoDebitoExitosamente() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            verify(eventProducer, times(1)).sendEvent(eq(event), anyString());
-            verify(idempotencyRepository, times(1)).save(argThat(key -> 
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.COMPLETED));
-        }
-
-        @Test
-        @DisplayName("Debe procesar evento de crédito exitosamente")
-        void debeProcesarEventoCreditoExitosamente() {
-            TransactionEvent event = createValidCreditEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            verify(eventProducer, times(1)).sendEvent(eq(event), anyString());
-        }
-
-        @Test
-        @DisplayName("Debe enriquecer evento con correlationId")
-        void debeEnriquecerEventoConCorrelationId() {
-            TransactionEvent event = createValidDebitEvent();
-            event.setCorrelationId(null);
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            assertNotNull(event.getCorrelationId(), 
-                "El correlationId debe ser generado automáticamente");
-            assertFalse(event.getCorrelationId().isEmpty(),
-                "El correlationId no debe estar vacío");
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Validación de eventos")
-    class ValidacionEventos {
-
-        @Test
-        @DisplayName("Debe rechazar evento sin eventId")
-        void debeRechazarEventoSinEventId() {
-            TransactionEvent event = TransactionEvent.builder()
-                .transactionId("TX-001")
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-123")
-                .amount(100.0)
-                .currency("USD")
-                .transactionType("DEBIT")
-                .timestamp(Instant.now().toString())
-                .build();
-
-            assertThrows(IllegalArgumentException.class, 
-                () -> orchestrator.processEvent(event));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar evento sin transactionId")
-        void debeRechazarEventoSinTransactionId() {
-            TransactionEvent event = TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-123")
-                .amount(100.0)
-                .currency("USD")
-                .transactionType("DEBIT")
-                .timestamp(Instant.now().toString())
-                .build();
-
-            assertThrows(IllegalArgumentException.class, 
-                () -> orchestrator.processEvent(event));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar evento con amount negativo")
-        void debeRechazarEventoConAmountNegativo() {
-            TransactionEvent event = TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .transactionId("TX-001")
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-123")
-                .amount(-100.0)
-                .currency("USD")
-                .transactionType("DEBIT")
-                .timestamp(Instant.now().toString())
-                .build();
-
-            assertThrows(IllegalArgumentException.class, 
-                () -> orchestrator.processEvent(event));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Idempotencia")
-    class EscenarioIdempotencia {
-
-        @Test
-        @DisplayName("Debe detectar evento duplicado por idempotencyKey")
-        void debeDetectarEventoDuplicado() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey existingKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.COMPLETED)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(existingKey));
-
-            orchestrator.processEvent(event);
-
-            verify(eventProducer, never()).sendEvent(any(), anyString());
-            verify(idempotencyRepository, never()).save(any());
-        }
-
-        @Test
-        @DisplayName("Debe crear nueva clave de idempotencia para evento nuevo")
-        void debeCrearNuevaClaveParaEventoNuevo() {
-            TransactionEvent event = createValidDebitEvent();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.empty());
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, times(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getValue();
-            assertEquals(event.getIdempotencyKey(), savedKey.getKey());
-            assertEquals(event.getBusinessKey(), savedKey.getBusinessKey());
-        }
-
-        @Test
-        @DisplayName("Debe marcar clave como completada tras procesamiento exitoso")
-        void debeMarcarClaveComoCompletada() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PROCESSING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey lastSaved = captor.getAllValues().get(captor.getAllValues().size() - 1);
-            assertEquals(IdempotencyKey.IdempotencyStatus.COMPLETED, lastSaved.getStatus());
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Manejo de fallos")
-    class ManejoFallos {
-
-        @Test
-        @DisplayName("Debe manejar fallo en CoreBankingClient y marcar error")
-        void debeManejarFalloEnCoreBanking() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            doThrow(new RuntimeException("Error en Core Banking"))
-                .when(coreBankingClient).processEvent(any(TransactionEvent.class));
-
-            orchestrator.processEvent(event);
-
-            verify(idempotencyRepository, atLeast(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.FAILED));
-        }
-
-        @Test
-        @DisplayName("Debe incrementar retryCount en fallos")
-        void debeIncrementarRetryCount() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(2)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(java.util.Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-            doThrow(new RuntimeException("Error")).when(coreBankingClient).processEvent(any());
-
-            orchestrator.processEvent(event);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getAllValues().get(captor.getAllValues().size() - 1);
-            assertTrue(savedKey.getRetryCount() > 2);
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Procesamiento por lotes")
-    class ProcesamientoLotes {
-
-        @Test
-        @DisplayName("Debe procesar lote de eventos")
-        void debeProcesarLoteDeEventos() {
-            TransactionEvent event1 = createValidDebitEvent();
-            TransactionEvent event2 = createValidCreditEvent();
-            List<TransactionEvent> events = List.of(event1, event2);
-
-            IdempotencyKey key1 = IdempotencyKey.builder()
-                .key(event1.getIdempotencyKey())
-                .businessKey(event1.getBusinessKey())
-                .eventId(event1.getEventId())
-                .transactionId(event1.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            IdempotencyKey key2 = IdempotencyKey.builder()
-                .key(event2.getIdempotencyKey())
-                .businessKey(event2.getBusinessKey())
-                .eventId(event2.getEventId())
-                .transactionId(event2.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(anyString()))
-                .thenReturn(java.util.Optional.empty());
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processBatch(events);
-
-            verify(eventProducer, times(2)).sendEvent(any(TransactionEvent.class), anyString());
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Enrutamiento por tipo de transacción")
-    class EnrutamientoTipoTransaccion {
-
-        @Test
-        @DisplayName("Debe rutear eventos DEBIT al topic correspondiente")
-        void debeRutearDebitATopicDebito() {
-            TransactionEvent event = createValidDebitEvent();
-
-            String topic = orchestrator.routeByTransactionType(event);
-
-            assertTrue(topic.toLowerCase().contains("debit"),
-                "Eventos DEBIT deben rutear a topic de débitos");
-        }
-
-        @Test
-        @DisplayName("Debe rutear eventos CREDIT al topic correspondiente")
-        void debeRutearCreditATopicCredito() {
-            TransactionEvent event = createValidCreditEvent();
-
-            String topic = orchestrator.routeByTransactionType(event);
-
-            assertTrue(topic.toLowerCase().contains("credit"),
-                "Eventos CREDIT deben rutear a topic de créditos");
-        }
-    }
-}
-
-// === ARCHIVO: src/test/java/com/banco/core/infrastructure/kafka/KafkaEventProducerTest.java ===
-package com.banco.core.infrastructure.kafka;
-
-import com.banco.core.domain.TransactionEvent;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
-import org.springframework.util.concurrent.CompletableFuture;
-
-import java.time.Instant;
-import java.util.UUID;
-import java.util.concurrent.CompletableFuture;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
-
-@ExtendWith(MockitoExtension.class)
-@DisplayName("Tests para KafkaEventProducer - Productor de eventos a Kafka")
-class KafkaEventProducerTest {
-
-    @Mock
-    private KafkaTemplate<String, String> kafkaTemplate;
-
-    private KafkaEventProducer producer;
-
-    private static final String TOPIC_DEBIT = "topic-debit-events";
-    private static final String TOPIC_CREDIT = "topic-credit-events";
-
-    @BeforeEach
-    void setUp() {
-        producer = new KafkaEventProducer(kafkaTemplate, TOPIC_DEBIT, TOPIC_CREDIT);
-    }
-
-    private TransactionEvent createDebitEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-DEBIT-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-001")
-            .amount(500.00)
-            .currency("USD")
-            .transactionType("DEBIT")
-            .timestamp(Instant.now().toString())
-            .correlationId(UUID.randomUUID().toString())
-            .idempotencyKey("idem-debit-" + System.currentTimeMillis())
-            .description("Pago de servicio")
-            .sourceSystem("CORE_BANKING")
-            .build();
-    }
-
-    private TransactionEvent createCreditEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-CREDIT-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-002")
-            .amount(1500.00)
-            .currency("USD")
-            .transactionType("CREDIT")
-            .timestamp(Instant.now().toString())
-            .correlationId(UUID.randomUUID().toString())
-            .idempotencyKey("idem-credit-" + System.currentTimeMillis())
-            .description("Depósito")
-            .sourceSystem("CORE_BANKING")
-            .build();
-    }
-
-    @Nested
-    @DisplayName("Escenario: Envío exitoso de eventos")
-    class EnvioExitoso {
-
-        @Test
-        @DisplayName("Debe enviar evento DEBIT al topic correcto")
-        void debeEnviarEventoDebitATopicCorrecto() {
-            TransactionEvent event = createDebitEvent();
-            String topic = TOPIC_DEBIT;
-
-            org.springframework.util.concurrent.ListenableFuture<SendResult<String, String>> future 
-                = mock(org.springframework.util.concurrent.ListenableFuture.class);
-            when(kafkaTemplate.send(eq(topic), eq(event.getEventId()), anyString()))
-                .thenReturn(future);
-
-            producer.sendEvent(event, topic);
-
-            verify(kafkaTemplate, times(1)).send(
-                eq(topic),
-                eq(event.getEventId()),
-                anyString()
-            );
-        }
-
-        @Test
-        @DisplayName("Debe enviar evento CREDIT al topic correcto")
-        void debeEnviarEventoCreditATopicCorrecto() {
-            TransactionEvent event = createCreditEvent();
-            String topic = TOPIC_CREDIT;
-
-            org.springframework.util.concurrent.ListenableFuture<SendResult<String, String>> future 
-                = mock(org.springframework.util.concurrent.ListenableFuture.class);
-            when(kafkaTemplate.send(eq(topic), eq(event.getEventId()), anyString()))
-                .thenReturn(future);
-
-            producer.sendEvent(event, topic);
-
-            verify(kafkaTemplate, times(1)).send(
-                eq(topic),
-                eq(event.getEventId()),
-                anyString()
-            );
-        }
-
-        @Test
-        @DisplayName("Debe serializar evento a JSON correctamente")
-        void debeSerializarEventoAJson() {
-            TransactionEvent event = createDebitEvent();
-            ArgumentCaptor<String> jsonCaptor = ArgumentCaptor.forClass(String.class);
-
-            org.springframework.util.concurrent.ListenableFuture<SendResult<String, String>> future 
-                = mock(org.springframework.util.concurrent.ListenableFuture.class);
-            when(kafkaTemplate.send(anyString(), anyString(), jsonCaptor.capture()))
-                .thenReturn(future);
-
-            producer.sendEvent(event, TOPIC_DEBIT);
-
-            String jsonCaptured = jsonCaptor.getValue();
-            assertNotNull(jsonCaptured, "El JSON no debe ser nulo");
-            assertTrue(jsonCaptured.contains("\"eventId\""), 
-                "Debe contener campo eventId");
-            assertTrue(jsonCaptured.contains("\"transactionId\""), 
-                "Debe contener campo transactionId");
-            assertTrue(jsonCaptured.contains("\"amount\""), 
-                "Debe contener campo amount");
-        }
-
-        @Test
-        @DisplayName("Debe incluir correlationId en headers")
-        void debeIncluirCorrelationIdEnHeaders() {
-            TransactionEvent event = createDebitEvent();
-            ArgumentCaptor<org.springframework.kafka.support.SendHeaders> headersCaptor 
-                = ArgumentCaptor.forClass(org.springframework.kafka.support.SendHeaders.class);
-
-            org.springframework.util.concurrent.ListenableFuture<SendResult<String, String>> future 
-                = mock(org.springframework.util.concurrent.ListenableFuture.class);
-            when(kafkaTemplate.send(anyString(), anyString(), anyString(), headersCaptor.capture()))
-                .thenReturn(future);
-
-            producer.sendEvent(event, TOPIC_DEBIT);
-
-            org.springframework.kafka.support.SendHeaders headers = headersCaptor.getValue();
-            assertNotNull(headers.get("correlationId"), 
-                "Debe incluir correlationId en headers");
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Manejo de errores en envío")
-    class ManejoErrores {
-
-        @Test
-        @DisplayName("Debe manejar excepción al enviar evento")
-        void debeManejarExcepcionAlEnviar() {
-            TransactionEvent event = createDebitEvent();
-
-            when(kafkaTemplate.send(anyString(), anyString(), anyString()))
-                .thenThrow(new org.springframework.kafka.core.KafkaException("Kafka no disponible"));
-
-            assertThrows(org.springframework.kafka.core.KafkaException.class, 
-                () -> producer.sendEvent(event, TOPIC_DEBIT));
-        }
-
-        @Test
-        @DisplayName("Debe registrar error cuando el envío falla")
-        void debeRegistrarErrorCuandoEnvioFalla() {
-            TransactionEvent event = createDebitEvent();
-
-            when(kafkaTemplate.send(anyString(), anyString(), anyString()))
-                .thenThrow(new RuntimeException("Error de conexión"));
-
-            try {
-                producer.sendEvent(event, TOPIC_DEBIT);
-            } catch (RuntimeException e) {
-                assertTrue(e.getMessage().contains("Error"),
-                    "Debe propagar la excepción");
-            }
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Validación de parámetros")
-    class ValidacionParametros {
-
-        @Test
-        @DisplayName("Debe rechazar evento nulo")
-        void debeRechazarEventoNulo() {
-            assertThrows(IllegalArgumentException.class, 
-                () -> producer.sendEvent(null, TOPIC_DEBIT));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar topic nulo")
-        void debeRechazarTopicNulo() {
-            TransactionEvent event = createDebitEvent();
-
-            assertThrows(IllegalArgumentException.class, 
-                () -> producer.sendEvent(event, null));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar topic vacío")
-        void debeRechazarTopicVacio() {
-            TransactionEvent event = createDebitEvent();
-
-            assertThrows(IllegalArgumentException.class, 
-                () -> producer.sendEvent(event, ""));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Determinación de topic")
-    class DeterminacionTopic {
-
-        @Test
-        @DisplayName("Debe retornar topic DEBIT para transacciones de débito")
-        void debeRetornarTopicDebitParaDebit() {
-            TransactionEvent event = createDebitEvent();
-
-            String topic = producer.determineTopic(event);
-
-            assertEquals(TOPIC_DEBIT, topic);
-        }
-
-        @Test
-        @DisplayName("Debe retornar topic CREDIT para transacciones de crédito")
-        void debeRetornarTopicCreditParaCredit() {
-            TransactionEvent event = createCreditEvent();
-
-            String topic = producer.determineTopic(event);
-
-            assertEquals(TOPIC_CREDIT, topic);
-        }
-
-        @Test
-        @DisplayName("Debe usar topic por defecto para tipo desconocido")
-        void debeUsarTopicDefaultParaTipoDesconocido() {
-            TransactionEvent event = TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .transactionId("TX-UNKNOWN")
-                .eventType("UNKNOWN")
-                .accountId("ACC-999")
-                .amount(100.0)
-                .currency("USD")
-                .transactionType("UNKNOWN_TYPE")
-                .timestamp(Instant.now().toString())
-                .correlationId(UUID.randomUUID().toString())
-                .build();
-
-            String topic = producer.determineTopic(event);
-
-            assertNotNull(topic, "Debe retornar un topic válido");
-        }
-    }
-}
-
-// === ARCHIVO: src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java ===
-package com.banco.core.infrastructure.kafka;
-
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Mock;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.time.Instant;
-import java.util.Optional;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
-
-@ExtendWith(MockitoExtension.class)
-@DisplayName("Tests para KafkaEventConsumer - Consumidor de eventos desde Kafka")
-class KafkaEventConsumerTest {
-
-    @Mock
-    private IdempotencyRepository idempotencyRepository;
-
-    @Mock
-    private CircuitBreakerRegistry circuitBreakerRegistry;
-
-    @Mock
-    private RetryRegistry retryRegistry;
-
-    @Mock
-    private CircuitBreaker circuitBreaker;
-
-    @Mock
-    private Retry retry;
-
-    private KafkaEventConsumer consumer;
-
-    @BeforeEach
-    void setUp() {
-        consumer = new KafkaEventConsumer(
-            idempotencyRepository,
-            circuitBreakerRegistry,
-            retryRegistry
-        );
-    }
-
-    private TransactionEvent createValidEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-123")
-            .amount(1000.00)
-            .currency("USD")
-            .transactionType("DEBIT")
-            .timestamp(Instant.now().toString())
-            .correlationId(UUID.randomUUID().toString())
-            .idempotencyKey("idem-" + System.currentTimeMillis())
-            .description("Test transaction")
-            .sourceSystem("CORE_BANKING")
-            .build();
-    }
-
-    @Nested
-    @DisplayName("Escenario: Consumo exitoso de eventos")
-    class ConsumoExitoso {
-
-        @Test
-        @DisplayName("Debe consumir evento válido exitosamente")
-        void debeConsumirEventoValidoExitosamente() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, atLeast(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.COMPLETED));
-        }
-
-        @Test
-        @DisplayName("Debe procesar evento con metadata")
-        void debeProcesarEventoConMetadata() {
-            TransactionEvent event = createValidEvent();
-            event.addMetadata("branchId", "BR-001");
-            event.addMetadata("userId", "USR-123");
-
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() 
-                + "\",\"metadata\":{\"branchId\":\"BR-001\",\"userId\":\"USR-123\"}}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, atLeast(1)).save(any(IdempotencyKey.class));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Idempotencia en consumo")
-    class IdempotenciaConsumo {
-
-        @Test
-        @DisplayName("Debe rechazar evento duplicado")
-        void debeRechazarEventoDuplicado() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey existingKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.COMPLETED)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(existingKey));
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, never()).save(any(IdempotencyKey.class));
-        }
-
-        @Test
-        @DisplayName("Debe crear clave de idempotencia si no existe")
-        void debeCrearClaveSiNoExiste() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.empty());
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            consumer.consume(json);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getAllValues().get(0);
-            assertEquals(event.getIdempotencyKey(), savedKey.getKey());
-            assertEquals(event.getBusinessKey(), savedKey.getBusinessKey());
-        }
-
-        @Test
-        @DisplayName("Debe marcar como duplicado si estado es DUPLICATE")
-        void debeMarcarComoDuplicado() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey duplicateKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.DUPLICATE)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(duplicateKey));
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, never()).save(any(IdempotencyKey.class));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Dead Letter Queue (DLQ)")
-    class ManejoDLQ {
-
-        @Test
-        @DisplayName("Debe marcar evento como fallido en DLQ")
-        void debeMarcarEventoFallidoEnDLQ() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.OPEN);
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, atLeast(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.FAILED));
-        }
-
-        @Test
-        @DisplayName("Debe almacenar mensaje de error en DLQ")
-        void debeAlmacenarMensajeDeError() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.OPEN);
-
-            consumer.consume(json);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getAllValues().get(captor.getAllValues().size() - 1);
-            assertNotNull(savedKey.getLastError(), 
-                "Debe almacenar el mensaje de error");
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Validación de mensajes")
-    class ValidacionMensajes {
-
-        @Test
-        @DisplayName("Debe rechazar JSON inválido")
-        void debeRechazarJsonInvalido() {
-            String invalidJson = "{invalid json";
-
-            assertThrows(Exception.class, 
-                () -> consumer.consume(invalidJson));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar mensaje vacío")
-        void debeRechazarMensajeVacio() {
-            assertThrows(IllegalArgumentException.class, 
-                () -> consumer.consume(""));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar mensaje nulo")
-        void debeRechazarMensajeNulo() {
-            assertThrows(IllegalArgumentException.class, 
-                () -> consumer.consume(null));
-        }
-
-        @Test
-        @DisplayName("Debe rechazar evento sin eventId")
-        void debeRechazarEventoSinEventId() {
-            String json = "{\"transactionId\":\"TX-001\",\"amount\":100}";
-
-            assertThrows(Exception.class, 
-                () -> consumer.consume(json));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Circuit Breaker en consumo")
-    class CircuitBreakerConsumo {
-
-        @Test
-        @DisplayName("Debe abrir circuit breaker cuando está en estado OPEN")
-        void debeAbrirCircuitBreakerCuandoEstaOpen() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.OPEN);
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, atLeast(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.FAILED));
-        }
-
-        @Test
-        @DisplayName("Debe permitir consumo cuando circuit breaker está CLOSED")
-        void debePermitirConsumoCuandoCircuitBreakerClosed() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\"" 
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType() 
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":" 
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency() 
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\"" 
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId() 
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\"" 
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            consumer.consume(json);
-
-            verify(idempotencyRepository, atLeast(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.COMPLETED));
-        }
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/domain/TransactionEvent.java ===
-package com.banco.core.domain;
-
-import lombok.Builder;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
-
-import java.util.HashMap;
-import java.util.Map;
-
-@Data
-@Builder
-@Slf4j
-public class TransactionEvent {
-    private String eventId;
-    private String transactionId;
-    private String eventType;
-    private String accountId;
-    private Double amount;
-    private String currency;
-    private String transactionType;
-    private String timestamp;
-    private String correlationId;
-    private String idempotencyKey;
-    private String description;
-    private String sourceSystem;
-    @Builder.Default
-    private Map<String, Object> metadata = new HashMap<>();
-
-    public boolean isDebit() {
-        return "DEBIT".equalsIgnoreCase(transactionType);
-    }
-
-    public boolean isCredit() {
-        return "CREDIT".equalsIgnoreCase(transactionType);
-    }
-
-    public String getBusinessKey() {
-        return accountId + "|" + transactionId;
-    }
-
-    public void addMetadata(String key, Object value) {
-        if (this.metadata == null) {
-            this.metadata = new HashMap<>();
-        }
-        this.metadata.put(key, value);
-    }
-
-    public Object getMetadata(String key) {
-        return this.metadata != null ? this.metadata.get(key) : null;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TransactionEvent that = (TransactionEvent) o;
-        return eventId != null && eventId.equals(that.eventId);
-    }
-
-    @Override
-    public int hashCode() {
-        return eventId != null ? eventId.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "TransactionEvent{" +
-                "eventId='" + eventId + '\'' +
-                ", transactionId='" + transactionId + '\'' +
-                ", eventType='" + eventType + '\'' +
-                ", accountId='" + accountId + '\'' +
-                ", amount=" + amount +
-                ", currency='" + currency + '\'' +
-                ", transactionType='" + transactionType + '\'' +
-                ", timestamp='" + timestamp + '\'' +
-                ", correlationId='" + correlationId + '\'' +
-                ", idempotencyKey='" + idempotencyKey + '\'' +
-                ", description='" + description + '\'' +
-                ", sourceSystem='" + sourceSystem + '\'' +
-                '}';
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/domain/IdempotencyKey.java ===
-package com.banco.core.domain;
-
-import lombok.Builder;
-import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
-
-import java.time.Instant;
-
-@Data
-@Builder
-@Slf4j
-public class IdempotencyKey {
-    private String key;
-    private String businessKey;
-    private String eventId;
-    private String transactionId;
-    @Builder.Default
-    private Instant createdAt = Instant.now();
-    private Instant expiresAt;
-    private IdempotencyStatus status;
-    @Builder.Default
-    private int retryCount = 0;
-    private String lastError;
-
-    public enum IdempotencyStatus {
-        PENDING,
-        PROCESSING,
-        COMPLETED,
-        FAILED,
-        DUPLICATE
-    }
-
-    public boolean isExpired() {
-        return expiresAt != null && Instant.now().isAfter(expiresAt);
-    }
-
-    public boolean isCompleted() {
-        return status == IdempotencyStatus.COMPLETED;
-    }
-
-    public boolean isProcessing() {
-        return status == IdempotencyStatus.PROCESSING;
-    }
-
-    public boolean isDuplicate() {
-        return status == IdempotencyStatus.DUPLICATE;
-    }
-
-    public boolean canRetry() {
-        return retryCount < 3 && (status == IdempotencyStatus.FAILED || status == IdempotencyStatus.PENDING);
-    }
-
-    public void markAsProcessing() {
-        this.status = IdempotencyStatus.PROCESSING;
-    }
-
-    public void markAsCompleted() {
-        this.status = IdempotencyStatus.COMPLETED;
-    }
-
-    public void markAsFailed(String error) {
-        this.status = IdempotencyStatus.FAILED;
-        this.lastError = error;
-        this.retryCount++;
-    }
-
-    public void markAsDuplicate() {
-        this.status = IdempotencyStatus.DUPLICATE;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        IdempotencyKey that = (IdempotencyKey) o;
-        return key != null && key.equals(that.key);
-    }
-
-    @Override
-    public int hashCode() {
-        return key != null ? key.hashCode() : 0;
-    }
-
-    @Override
-    public String toString() {
-        return "IdempotencyKey{" +
-                "key='" + key + '\'' +
-                ", businessKey='" + businessKey + '\'' +
-                ", eventId='" + eventId + '\'' +
-                ", transactionId='" + transactionId + '\'' +
-                ", status=" + status +
-                ", retryCount=" + retryCount +
-                ", lastError='" + lastError + '\'' +
-                '}';
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/core/CoreBankingClient.java ===
-package com.banco.core.infrastructure.core;
-
-import com.banco.core.domain.TransactionEvent;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Supplier;
-
-@Component
-@Slf4j
-public class CoreBankingClient {
-
-    private static final String CIRCUIT_BREAKER_NAME = "coreBanking";
-    private static final String RETRY_NAME = "coreBanking";
-
-    private final RestTemplate restTemplate;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-    private final RetryRegistry retryRegistry;
-
-    @Value("${core.banking.base-url:http://localhost:8080}")
-    private String baseUrl;
-
-    @Value("${core.banking.timeout-ms:5000}")
-    private int timeoutMs;
-
-    @Value("${core.banking.endpoints.transactions:/api/transactions}")
-    private String transactionsEndpoint;
-
-    @Value("${core.banking.endpoints.accounts:/api/accounts}")
-    private String accountsEndpoint;
-
-    @Value("${core.banking.endpoints.balance:/api/accounts/{accountId}/balance}")
-    private String balanceEndpoint;
-
-    public CoreBankingClient(RestTemplate restTemplate,
-                             CircuitBreakerRegistry circuitBreakerRegistry,
-                             RetryRegistry retryRegistry) {
-        this.restTemplate = restTemplate;
-        this.circuitBreakerRegistry = circuitBreakerRegistry;
-        this.retryRegistry = retryRegistry;
-    }
-
-    public TransactionEvent fetchTransaction(String transactionId) {
-        String url = buildUrl(transactionsEndpoint) + "/" + transactionId;
-        return executeFetchTransaction(url, transactionId);
-    }
-
-    private TransactionEvent executeFetchTransaction(String url, String transactionId) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        Retry retry = retryRegistry.retry(RETRY_NAME);
-
-        Supplier<TransactionEvent> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                Retry.decorateSupplier(
-                        retry,
-                        () -> {
-                            log.debug("Fetching transaction from Core Banking: {}", transactionId);
-                            return restTemplate.getForObject(url, TransactionEvent.class);
-                        }
-                )
-        );
-
-        return decoratedSupplier.get();
-    }
-
-    public List<TransactionEvent> fetchRecentTransactions(String accountId, int limit) {
-        String url = buildUrl(accountsEndpoint) + "/" + accountId + "/transactions?limit=" + limit;
-        return executeFetchRecentTransactions(url);
-    }
-
-    private List<TransactionEvent> executeFetchRecentTransactions(String url) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-
-        Supplier<List<TransactionEvent>> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                () -> {
-                    log.debug("Fetching recent transactions from: {}", url);
-                    TransactionEvent[] response = restTemplate.getForObject(url, TransactionEvent[].class);
-                    return response != null ? List.of(response) : new ArrayList<>();
-                }
-        );
-
-        return decoratedSupplier.get();
-    }
-
-    public void validateAccount(String accountId) {
-        String url = buildUrl(accountsEndpoint) + "/" + accountId + "/validate";
-        executeValidateAccount(url);
-    }
-
-    private Boolean executeValidateAccount(String url) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-
-        Supplier<Boolean> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                () -> {
-                    log.debug("Validating account: {}", extractAccountIdFromUrl(url));
-                    return restTemplate.getForObject(url, Boolean.class);
-                }
-        );
-
-        return decoratedSupplier.get();
-    }
-
-    public Double getAccountBalance(String accountId) {
-        String url = buildUrl(balanceEndpoint).replace("{accountId}", accountId);
-        return executeGetAccountBalance(url);
-    }
-
-    private Double executeGetAccountBalance(String url) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-
-        Supplier<Double> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                () -> {
-                    log.debug("Getting account balance from: {}", url);
-                    return restTemplate.getForObject(url, Double.class);
-                }
-        );
-
-        return decoratedSupplier.get();
-    }
-
-    private String buildUrl(String endpoint) {
-        return baseUrl + endpoint;
-    }
-
-    private String extractAccountIdFromUrl(String url) {
-        String[] parts = url.split("/");
-        for (int i = 0; i < parts.length; i++) {
-            if ("accounts".equals(parts[i]) && i + 1 < parts.length) {
-                return parts[i + 1];
-            }
-        }
-        return "unknown";
-    }
-
-    public boolean isCircuitBreakerOpen() {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        return circuitBreaker.getState() == CircuitBreaker.State.OPEN;
-    }
-
-    public CircuitBreaker.Metrics getCircuitBreakerMetrics() {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        return circuitBreaker.getMetrics();
-    }
-
-    public String sendTransactionConfirmation(TransactionEvent event) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        Retry retry = retryRegistry.retry(RETRY_NAME);
-
-        Supplier<String> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                Retry.decorateSupplier(
-                        retry,
-                        () -> {
-                            log.info("Sending transaction confirmation to Core Banking. TransactionId: {}",
-                                    event.getTransactionId());
-                            String url = buildUrl(transactionsEndpoint) + "/" + event.getTransactionId() + "/confirm";
-                            restTemplate.postForObject(url, event, String.class);
-                            return "CONFIRMED";
-                        }
-                )
-        );
-
-        return decoratedSupplier.get();
-    }
-
-    public static class CoreBankingException extends RuntimeException {
-        public CoreBankingException(String message) {
-            super(message);
-        }
-
-        public CoreBankingException(String message, Throwable cause) {
+    public static class RetryExhaustedException extends RuntimeException {
+        public RetryExhaustedException(final String message, final Throwable cause) {
             super(message, cause);
         }
     }
 }
 
-// === ARCHIVO: src/main/java/com/banco/core/application/EventOrchestrator.java ===
-package com.banco.core.application;
 
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.core.CoreBankingClient;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import com.banco.core.infrastructure.kafka.KafkaEventProducer;
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/retry/EventRetryHandler.java ===
+package com.fintech.integration.infrastructure.retry;
+
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.infrastructure.core.EventRepository;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
 import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryConfig;
 import io.github.resilience4j.retry.RetryRegistry;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+import reactor.util.retry.RetryBackoffSpec;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.UUID;
 import java.util.function.Supplier;
 
-@Service
-@RequiredArgsConstructor
-@Slf4j
-public class EventOrchestrator {
+@Component
+public class EventRetryHandler {
 
-    private final KafkaEventProducer eventProducer;
-    private final IdempotencyRepository idempotencyRepository;
-    private final CoreBankingClient coreBankingClient;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
+    private static final Logger log = LoggerFactory.getLogger(EventRetryHandler.class);
+    private static final int MAX_RETRIES = 3;
+    private static final Duration BACKOFF_DURATION = Duration.ofMinutes(5);
+    private static final int FAILURE_THRESHOLD = 3;
+    private static final int WAIT_DURATION_IN_OPEN_STATE = 30;
+
+    private final EventRepository eventRepository;
     private final RetryRegistry retryRegistry;
+    private final CircuitBreakerRegistry circuitBreakerRegistry;
 
-    private static final String CIRCUIT_BREAKER_NAME = "coreBanking";
-    private static final String RETRY_NAME = "coreBanking";
-
-    public void processEvent(TransactionEvent event) {
-        String correlationId = event.getCorrelationId();
-        if (correlationId == null || correlationId.isBlank()) {
-            correlationId = UUID.randomUUID().toString();
-            event.setCorrelationId(correlationId);
-        }
-
-        log.info("Iniciando procesamiento de evento. CorrelationId: {}, TransactionId: {}",
-                correlationId, event.getTransactionId());
-
-        try {
-            validateEvent(event);
-
-            IdempotencyKey idempotencyKey = checkIdempotency(event);
-
-            if (idempotencyKey.isDuplicate()) {
-                log.warn("Evento duplicado detectado. CorrelationId: {}, IdempotencyKey: {}",
-                        correlationId, event.getIdempotencyKey());
-                return;
-            }
-
-            enrichEvent(event, correlationId);
-
-            processWithResilience(event);
-
-            publishEvent(event);
-
-            markIdempotencyAsCompleted(event.getIdempotencyKey());
-
-            log.info("Evento procesado exitosamente. CorrelationId: {}, TransactionId: {}",
-                    correlationId, event.getTransactionId());
-
-        } catch (Exception e) {
-            log.error("Error al procesar evento. CorrelationId: {}, Error: {}",
-                    correlationId, e.getMessage(), e);
-            handleFailure(event, e);
-            throw e;
-        }
+    public EventRetryHandler(final EventRepository eventRepository) {
+        this.eventRepository = eventRepository;
+        this.retryRegistry = buildRetryRegistry();
+        this.circuitBreakerRegistry = buildCircuitBreakerRegistry();
     }
 
-    private void validateEvent(TransactionEvent event) {
-        if (event == null) {
-            throw new IllegalArgumentException("El evento no puede ser null");
-        }
-        if (event.getTransactionId() == null || event.getTransactionId().isBlank()) {
-            throw new IllegalArgumentException("El transactionId es obligatorio");
-        }
-        if (event.getIdempotencyKey() == null || event.getIdempotencyKey().isBlank()) {
-            throw new IllegalArgumentException("El idempotencyKey es obligatorio");
-        }
-        log.debug("Evento validado correctamente: {}", event.getTransactionId());
-    }
-
-    private IdempotencyKey checkIdempotency(TransactionEvent event) {
-        String idempotencyKey = event.getIdempotencyKey();
-        String businessKey = event.getBusinessKey();
-
-        log.debug("Verificando idempotencia para key: {}, businessKey: {}",
-                idempotencyKey, businessKey);
-
-        IdempotencyKey existingKey = idempotencyRepository.findByKey(idempotencyKey).orElse(null);
-
-        if (existingKey != null) {
-            if (existingKey.isCompleted()) {
-                existingKey.markAsDuplicate();
-                return existingKey;
-            }
-            if (existingKey.isProcessing()) {
-                log.warn("Evento ya está siendo procesado. CorrelationId: {}",
-                        event.getCorrelationId());
-                return existingKey;
-            }
-            if (existingKey.canRetry()) {
-                log.info("Reintentando evento. RetryCount: {}", existingKey.getRetryCount());
-            }
-        }
-
-        IdempotencyKey newKey = IdempotencyKey.builder()
-                .key(idempotencyKey)
-                .businessKey(businessKey)
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .expiresAt(Instant.now().plus(Duration.ofHours(24)))
-                .status(IdempotencyKey.IdempotencyStatus.PROCESSING)
+    private RetryRegistry buildRetryRegistry() {
+        RetryConfig config = RetryConfig.custom()
+                .maxAttempts(MAX_RETRIES)
+                .waitDuration(BACKOFF_DURATION)
+                .retryExceptions(Exception.class)
                 .build();
-
-        idempotencyRepository.save(newKey);
-        return newKey;
+        return RetryRegistry.of(config);
     }
 
-    private void enrichEvent(TransactionEvent event, String correlationId) {
-        event.addMetadata("correlationId", correlationId);
-        event.addMetadata("processedAt", Instant.now().toString());
-        event.addMetadata("processor", "EventOrchestrator");
-        event.addMetadata("version", "1.0.0");
-
-        log.debug("Evento enriquecido. CorrelationId: {}", correlationId);
+    private CircuitBreakerRegistry buildCircuitBreakerRegistry() {
+        CircuitBreakerConfig config = CircuitBreakerConfig.custom()
+                .failureRateThreshold(FAILURE_THRESHOLD)
+                .waitDurationInOpenState(Duration.ofSeconds(WAIT_DURATION_IN_OPEN_STATE))
+                .slidingWindowSize(10)
+                .minimumNumberOfCalls(5)
+                .build();
+        return CircuitBreakerRegistry.of(config);
     }
 
-    private void processWithResilience(TransactionEvent event) {
-        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        Retry retry = retryRegistry.retry(RETRY_NAME);
+    public Mono<Event> handleWithRetry(final Supplier<Mono<Event>> eventPublisher,
+                                       final Event event) {
+        String eventId = event.getEventId();
+        log.info("Iniciando manejo de reintentos para evento: {}", eventId);
 
-        Supplier<String> decoratedSupplier = CircuitBreaker.decorateSupplier(
-                circuitBreaker,
-                Retry.decorateSupplier(
-                        retry,
-                        () -> {
-                            log.debug("Ejecutando llamada al Core Bancario. TransactionId: {}",
-                                    event.getTransactionId());
-                            return coreBankingClient.sendTransactionConfirmation(event);
-                        }
-                )
-        );
+        Retry retry = retryRegistry.retry("eventPublish-" + eventId);
+        CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker("eventPublish-" + eventId);
 
-        try {
-            String result = decoratedSupplier.get();
-            log.info("Confirmación enviada al Core Bancario. TransactionId: {}, Result: {}",
-                    event.getTransactionId(), result);
-        } catch (Exception e) {
-            log.error("Error en procesamiento resiliente. TransactionId: {}, Error: {}",
-                    event.getTransactionId(), e.getMessage());
-            throw e;
-        }
+        return Mono.defer(() -> executeWithCircuitBreaker(eventPublisher, circuitBreaker))
+                .retryWhen(buildRetryBackoffSpec(retry, eventId))
+                .doOnSuccess(e -> log.info("Evento publicado exitosamente: {}", eventId))
+                .doOnError(error -> {
+                    log.error("Error después de reintentos para evento: {}. Enviando a DLQ.", eventId, error);
+                    handleFailureToDlq(event, error);
+                });
     }
 
-    private void publishEvent(TransactionEvent event) {
-        log.debug("Publicando evento al bus de eventos. TransactionId: {}", event.getTransactionId());
-        eventProducer.sendEvent(event);
-        log.info("Evento publicado exitosamente. TransactionId: {}", event.getTransactionId());
+    private Mono<Event> executeWithCircuitBreaker(final Supplier<Mono<Event>> action,
+                                                   final CircuitBreaker circuitBreaker) {
+        return Mono.fromCallable(() -> {
+                    circuitBreaker.executeRunnable(() -> {});
+                    return action.get();
+                })
+                .transform(mono -> CircuitBreaker.operator(circuitBreaker).apply(mono))
+                .onErrorResume(e -> {
+                    log.warn("Circuit breaker abierto para evento, reintentando después de espera.", e);
+                    return Mono.error(e);
+                });
     }
 
-    private void markIdempotencyAsCompleted(String idempotencyKey) {
-        IdempotencyKey key = idempotencyRepository.findByKey(idempotencyKey).orElse(null);
-        if (key != null) {
-            key.markAsCompleted();
-            idempotencyRepository.save(key);
-            log.debug("Clave de idempotencia marcada como completada: {}", idempotencyKey);
-        }
+    private RetryBackoffSpec buildRetryBackoffSpec(final Retry retry, final String eventId) {
+        return Retry.backoff(MAX_RETRIES, BACKOFF_DURATION)
+                .filter(throwable -> {
+                    log.warn("Reintento detectado para evento: {}", eventId, throwable);
+                    return true;
+                })
+                .doBeforeRetry(retrySignal -> {
+                    log.info("Retry #{} para evento: {}", retrySignal.iteration(), eventId);
+                    incrementRetryCount(eventId);
+                });
     }
 
-    private void handleFailure(TransactionEvent event, Exception e) {
-        IdempotencyKey key = idempotencyRepository.findByKey(event.getIdempotencyKey()).orElse(null);
-        if (key != null) {
-            key.markAsFailed(e.getMessage());
-            idempotencyRepository.save(key);
-        }
-
-        log.error("Manejo de falla completado. TransactionId: {}, IdempotencyKey: {}",
-                event.getTransactionId(), event.getIdempotencyKey());
+    private void incrementRetryCount(final String eventId) {
+        eventRepository.findAll()
+                .flatMap(events -> {
+                    return events.stream()
+                            .filter(e -> e.getEventId().equals(eventId))
+                            .findFirst()
+                            .map(event -> eventRepository.incrementRetryCount(event))
+                            .orElse(Mono.empty());
+                })
+                .subscribe(
+                        updated -> log.debug("Retry count incrementado para evento: {}", eventId),
+                        error -> log.error("Error al incrementar retry count para evento: {}", eventId, error)
+                );
     }
 
-    public void processBatch(java.util.List<TransactionEvent> events) {
-        log.info("Procesando lote de {} eventos", events.size());
-
-        events.forEach(this::processEvent);
-
-        log.info("Lote de {} eventos procesado completamente", events.size());
+    private Mono<Void> handleFailureToDlq(final Event event, final Throwable error) {
+        log.error("Evento {} enviado a DLQ después de {} reintentos. Razón: {}",
+                event.getEventId(), MAX_RETRIES, error.getMessage());
+        return eventRepository.save(event)
+                .then();
     }
 
-    public String routeByTransactionType(TransactionEvent event) {
-        if (event.isDebit()) {
-            return "debitFlow";
-        } else if (event.isCredit()) {
-            return "creditFlow";
-        } else {
-            log.warn("Tipo de transacción desconocido: {}", event.getTransactionType());
-            return "unknownFlow";
-        }
+    public Mono<Boolean> shouldRetry(final Event event) {
+        return eventRepository.findByIdempotencyKey(event.getIdempotencyKeyValue() != null ?
+                        new com.fintech.integration.domain.IdempotencyKey(
+                                event.getIdempotencyKeyValue(), "DEFAULT") : null)
+                .map(opt -> opt.map(e -> e.getRetryCount() < MAX_RETRIES).orElse(true))
+                .defaultIfEmpty(true);
+    }
+
+    public CircuitBreaker getCircuitBreaker(final String name) {
+        return circuitBreakerRegistry.circuitBreaker(name);
+    }
+
+    public Retry getRetry(final String name) {
+        return retryRegistry.retry(name);
     }
 }
 
-// === ARCHIVO: src/test/java/com/banco/core/application/EventOrchestratorTest.java ===
-package com.banco.core.application;
+// === ARCHIVO: src/test/java/com/fintech/integration/application/EventOrchestratorTest.java ===
+package com.fintech.integration.application;
 
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.core.CoreBankingClient;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import com.banco.core.infrastructure.kafka.KafkaEventProducer;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import com.fintech.integration.infrastructure.core.EventRepository;
+import com.fintech.integration.infrastructure.events.EventProducer;
+import com.fintech.integration.infrastructure.retry.EventRetryHandler;
+import com.fintech.integration.infrastructure.retry.RetryPolicy;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Tests para EventOrchestrator - Orquestación de eventos transaccionales")
 class EventOrchestratorTest {
 
     @Mock
-    private KafkaEventProducer eventProducer;
+    private EventRepository eventRepository;
 
     @Mock
-    private IdempotencyRepository idempotencyRepository;
+    private EventProducer eventProducer;
 
     @Mock
-    private CoreBankingClient coreBankingClient;
+    private EventRetryHandler retryHandler;
 
     @Mock
-    private CircuitBreakerRegistry circuitBreakerRegistry;
-
-    @Mock
-    private RetryRegistry retryRegistry;
-
-    @Mock
-    private CircuitBreaker circuitBreaker;
-
-    @Mock
-    private Retry retry;
+    private RetryPolicy retryPolicy;
 
     private EventOrchestrator orchestrator;
 
     @BeforeEach
     void setUp() {
-        orchestrator = new EventOrchestrator(
-            eventProducer,
-            idempotencyRepository,
-            coreBankingClient,
-            circuitBreakerRegistry,
-            retryRegistry
-        );
-    }
-
-    private TransactionEvent createValidDebitEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-12345")
-            .amount(1000.00)
-            .currency("USD")
-            .transactionType("DEBIT")
-            .timestamp(Instant.now().toString())
-            .idempotencyKey("idem-" + System.currentTimeMillis())
-            .description("Pago de servicio")
-            .sourceSystem("CORE_BANKING")
-            .build();
-    }
-
-    private TransactionEvent createValidCreditEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-67890")
-            .amount(2500.00)
-            .currency("USD")
-            .transactionType("CREDIT")
-            .timestamp(Instant.now().toString())
-            .idempotencyKey("idem-" + System.currentTimeMillis())
-            .description("Depósito")
-            .sourceSystem("CORE_BANKING")
-            .build();
+        orchestrator = new EventOrchestrator(eventRepository, eventProducer, retryHandler, retryPolicy);
     }
 
     @Nested
-    @DisplayName("Escenario: Procesamiento de evento válido")
-    class ProcesamientoEventoValido {
+    @DisplayName("Escenarios de Idempotencia")
+    class IdempotencyScenarios {
 
         @Test
-        @DisplayName("Debe procesar evento de débito exitosamente")
-        void debeProcesarEventoDebitoExitosamente() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+        @DisplayName("Debería rechazar evento duplicado cuando ya existe con misma clave de idempotencia")
+        void shouldRejectDuplicateEvent() {
+            String operationNumber = "OP-2024-001";
+            String channel = "API";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event existingEvent = Event.create(operationNumber, channel);
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(true));
+            when(eventRepository.findByIdempotencyKey(key)).thenReturn(Mono.just(Optional.of(existingEvent)));
 
-            orchestrator.processEvent(event);
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectErrorMatches(throwable -> throwable.getMessage().contains("duplicado"))
+                    .verify();
 
-            verify(eventProducer, times(1)).sendEvent(eq(event));
-            verify(idempotencyRepository, times(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.COMPLETED));
+            verify(eventRepository, never()).save(any(Event.class));
+            verify(eventProducer, never()).publish(any(Event.class));
         }
 
         @Test
-        @DisplayName("Debe procesar evento de crédito exitosamente")
-        void debeProcesarEventoCreditoExitosamente() {
-            TransactionEvent event = createValidCreditEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+        @DisplayName("Debería aceptar evento nuevo cuando no existe clave de idempotencia")
+        void shouldAcceptNewEvent() {
+            String operationNumber = "OP-2024-002";
+            String channel = "BATCH";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event newEvent = Event.create(operationNumber, channel);
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(newEvent));
+            when(eventProducer.publish(any(Event.class))).thenReturn(Mono.just(newEvent));
+            when(retryHandler.handleWithRetry(any(), any(Event.class))).thenReturn(Mono.just(newEvent));
 
-            orchestrator.processEvent(event);
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectNext(newEvent)
+                    .verifyComplete();
 
-            verify(eventProducer, times(1)).sendEvent(eq(event));
+            verify(eventRepository, times(1)).save(any(Event.class));
+            verify(eventProducer, times(1)).publish(any(Event.class));
         }
 
         @Test
-        @DisplayName("Debe enriquecer evento con correlationId")
-        void debeEnriquecerEventoConCorrelationId() {
-            TransactionEvent event = createValidDebitEvent();
-            event.setCorrelationId(null);
+        @DisplayName("Debería detectar duplicado exacto con mismo operationNumber y channel")
+        void shouldDetectExactDuplicate() {
+            String operationNumber = "OP-2024-003";
+            String channel = "WEB";
+            Event event1 = Event.create(operationNumber, channel);
+            Event event2 = Event.create(operationNumber, channel);
 
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+            boolean isDuplicate = event1.isDuplicateOf(event2);
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            assertNotNull(event.getCorrelationId(),
-                "El correlationId debe ser generado automáticamente");
-            assertFalse(event.getCorrelationId().isEmpty(),
-                "El correlationId no debe estar vacío");
+            org.junit.jupiter.api.Assertions.assertTrue(isDuplicate,
+                    "Eventos con mismo operationNumber y channel deben ser duplicados");
         }
     }
 
     @Nested
-    @DisplayName("Escenario: Validación de eventos")
-    class ValidacionEventos {
+    @DisplayName("Escenarios de Manejo de Fallos")
+    class FailureHandlingScenarios {
 
         @Test
-        @DisplayName("Debe rechazar evento sin eventId")
-        void debeRechazarEventoSinEventId() {
-            TransactionEvent event = TransactionEvent.builder()
-                .transactionId("TX-001")
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-123")
-                .amount(100.0)
-                .currency("USD")
-                .transactionType("DEBIT")
-                .timestamp(Instant.now().toString())
-                .build();
+        @DisplayName("Debería reintentar cuando el producer falla transientemente")
+        void shouldRetryOnTransientFailure() {
+            String operationNumber = "OP-2024-004";
+            String channel = "API";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event event = Event.create(operationNumber, channel);
 
-            assertThrows(IllegalArgumentException.class,
-                () -> orchestrator.processEvent(event));
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(event));
+            when(eventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Conexión temporariamente no disponible")))
+                    .thenReturn(Mono.just(event));
+            when(retryHandler.handleWithRetry(any(), any(Event.class))).thenReturn(Mono.just(event));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectNext(event)
+                    .verifyComplete();
+
+            verify(retryHandler, times(1)).handleWithRetry(any(), any(Event.class));
         }
 
         @Test
-        @DisplayName("Debe rechazar evento sin transactionId")
-        void debeRechazarEventoSinTransactionId() {
-            TransactionEvent event = TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-123")
-                .amount(100.0)
-                .currency("USD")
-                .transactionType("DEBIT")
-                .timestamp(Instant.now().toString())
-                .build();
+        @DisplayName("Debería enviar a DLQ después de reintentos fallidos")
+        void shouldSendToDlqAfterFailedRetries() {
+            String operationNumber = "OP-2024-005";
+            String channel = "API";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event event = Event.create(operationNumber, channel);
 
-            assertThrows(IllegalArgumentException.class,
-                () -> orchestrator.processEvent(event));
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(event));
+            when(eventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Fallo permanente")));
+            when(retryHandler.handleWithRetry(any(), any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Máximo de reintentos alcanzado")));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectErrorMatches(throwable -> throwable.getMessage().contains("reintentos"))
+                    .verify();
+
+            verify(eventRepository, times(2)).save(any(Event.class));
         }
 
         @Test
-        @DisplayName("Debe rechazar evento con amount negativo")
-        void debeRechazarEventoConAmountNegativo() {
-            TransactionEvent event = TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .transactionId("TX-001")
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-123")
-                .amount(-100.0)
-                .currency("USD")
-                .transactionType("DEBIT")
-                .timestamp(Instant.now().toString())
-                .build();
+        @DisplayName("Debería usar circuit breaker después de fallos consecutivos")
+        void shouldUseCircuitBreakerAfterConsecutiveFailures() {
+            when(retryPolicy.shouldOpenCircuitBreaker(anyString())).thenReturn(true);
+            when(retryPolicy.getCircuitBreakerState(anyString()))
+                    .thenReturn(io.github.resilience4j.circuitbreaker.CircuitBreaker.State.OPEN);
 
-            assertThrows(IllegalArgumentException.class,
-                () -> orchestrator.processEvent(event));
-        }
-    }
+            boolean shouldOpen = retryPolicy.shouldOpenCircuitBreaker("test-service");
 
-    @Nested
-    @DisplayName("Escenario: Idempotencia")
-    class EscenarioIdempotencia {
-
-        @Test
-        @DisplayName("Debe detectar evento duplicado por idempotencyKey")
-        void debeDetectarEventoDuplicado() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey existingKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.COMPLETED)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(existingKey));
-
-            orchestrator.processEvent(event);
-
-            verify(eventProducer, never()).sendEvent(any());
-            verify(idempotencyRepository, never()).save(any());
-        }
-
-        @Test
-        @DisplayName("Debe crear nueva clave de idempotencia para evento nuevo")
-        void debeCrearNuevaClaveParaEventoNuevo() {
-            TransactionEvent event = createValidDebitEvent();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.empty());
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, times(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getValue();
-            assertEquals(event.getIdempotencyKey(), savedKey.getKey());
-            assertEquals(event.getBusinessKey(), savedKey.getBusinessKey());
-        }
-
-        @Test
-        @DisplayName("Debe marcar clave como completada tras procesamiento exitoso")
-        void debeMarcarClaveComoCompletada() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PROCESSING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processEvent(event);
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey lastSaved = captor.getAllValues().get(captor.getAllValues().size() - 1);
-            assertEquals(IdempotencyKey.IdempotencyStatus.COMPLETED, lastSaved.getStatus());
+            org.junit.jupiter.api.Assertions.assertTrue(shouldOpen,
+                    "Circuit breaker debería abrirse após fallos consecutivos");
         }
     }
 
     @Nested
-    @DisplayName("Escenario: Manejo de fallos")
-    class ManejoFallos {
+    @DisplayName("Escenarios de Integración")
+    class IntegrationScenarios {
 
         @Test
-        @DisplayName("Debe manejar fallo en CoreBankingClient y marcar error")
-        void debeManejarFalloEnCoreBanking() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+        @DisplayName("Debería procesar evento correctamente end-to-end")
+        void shouldProcessEventEndToEnd() {
+            String operationNumber = "OP-2024-006";
+            String channel = "MOBILE";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event event = Event.create(operationNumber, channel);
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(event));
+            when(eventProducer.publish(any(Event.class))).thenReturn(Mono.just(event));
+            when(retryHandler.handleWithRetry(any(), any(Event.class))).thenReturn(Mono.just(event));
+            when(retryPolicy.shouldRetry(any())).thenReturn(Mono.just(true));
 
-            doThrow(new RuntimeException("Error en Core Banking"))
-                .when(coreBankingClient).sendTransactionConfirmation(any(TransactionEvent.class));
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectNextMatches(e -> e.getEventId() != null)
+                    .verifyComplete();
 
-            assertThrows(RuntimeException.class, () -> orchestrator.processEvent(event));
-
-            verify(idempotencyRepository, atLeast(1)).save(argThat(key ->
-                key.getStatus() == IdempotencyKey.IdempotencyStatus.FAILED));
+            verify(eventRepository).save(any(Event.class));
+            verify(eventProducer).publish(any(Event.class));
+            verify(retryHandler).handleWithRetry(any(), any(Event.class));
         }
 
         @Test
-        @DisplayName("Debe incrementar retryCount en fallos")
-        void debeIncrementarRetryCount() {
-            TransactionEvent event = createValidDebitEvent();
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(2)
-                .build();
+        @DisplayName("Debería recuperar eventos pendientes de reproceso")
+        void shouldRecoverPendingEvents() {
+            List<Event> pendingEvents = List.of(
+                    Event.create("OP-001", "API"),
+                    Event.create("OP-002", "BATCH")
+            );
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-            doThrow(new RuntimeException("Error")).when(coreBankingClient).sendTransactionConfirmation(any());
+            when(eventRepository.findByRetryCountLessThan(3)).thenReturn(Mono.just(pendingEvents));
+            when(eventProducer.publish(any(Event.class))).thenReturn(Mono.just(Event.create("OP-001", "API")));
+            when(retryHandler.handleWithRetry(any(), any(Event.class)))
+                    .thenReturn(Mono.just(Event.create("OP-001", "API")));
 
-            assertThrows(RuntimeException.class, () -> orchestrator.processEvent(event));
+            StepVerifier.create(orchestrator.recoverPendingEvents())
+                    .expectNextCount(2)
+                    .verifyComplete();
 
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getAllValues().get(captor.getAllValues().size() - 1);
-            assertTrue(savedKey.getRetryCount() > 2);
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Procesamiento por lotes")
-    class ProcesamientoLotes {
-
-        @Test
-        @DisplayName("Debe procesar lote de eventos")
-        void debeProcesarLoteDeEventos() {
-            TransactionEvent event1 = createValidDebitEvent();
-            TransactionEvent event2 = createValidCreditEvent();
-            List<TransactionEvent> events = List.of(event1, event2);
-
-            IdempotencyKey key1 = IdempotencyKey.builder()
-                .key(event1.getIdempotencyKey())
-                .businessKey(event1.getBusinessKey())
-                .eventId(event1.getEventId())
-                .transactionId(event1.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            IdempotencyKey key2 = IdempotencyKey.builder()
-                .key(event2.getIdempotencyKey())
-                .businessKey(event2.getBusinessKey())
-                .eventId(event2.getEventId())
-                .transactionId(event2.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(anyString()))
-                .thenReturn(Optional.empty());
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            orchestrator.processBatch(events);
-
-            verify(eventProducer, times(2)).sendEvent(any(TransactionEvent.class));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Enrutamiento por tipo de transacción")
-    class EnrutamientoTipoTransaccion {
-
-        @Test
-        @DisplayName("Debe rutear eventos DEBIT al topic correspondiente")
-        void debeRutearDebitATopicDebito() {
-            TransactionEvent event = createValidDebitEvent();
-
-            String topic = orchestrator.routeByTransactionType(event);
-
-            assertTrue(topic.toLowerCase().contains("debit"),
-                "Eventos DEBIT deben rutear a topic de débitos");
-        }
-
-        @Test
-        @DisplayName("Debe rutear eventos CREDIT al topic correspondiente")
-        void debeRutearCreditATopicCredito() {
-            TransactionEvent event = createValidCreditEvent();
-
-            String topic = orchestrator.routeByTransactionType(event);
-
-            assertTrue(topic.toLowerCase().contains("credit"),
-                "Eventos CREDIT deben rutear a topic de créditos");
+            verify(eventRepository, times(2)).findByRetryCountLessThan(3);
         }
     }
 }
 
-// === ARCHIVO: src/test/java/com/banco/core/infrastructure/kafka/KafkaEventConsumerTest.java ===
-package com.banco.core.infrastructure.kafka;
+// === ARCHIVO: src/test/java/com/fintech/integration/infrastructure/events/KafkaEventProducerTest.java ===
+package com.fintech.integration.infrastructure.events;
 
-import com.banco.core.domain.IdempotencyKey;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import io.github.resilience4j.retry.Retry;
-import io.github.resilience4j.retry.RetryRegistry;
+import com.fintech.integration.domain.Event;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.serialization.StringSerializer;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
+import reactor.kafka.sender.SenderConfig;
+import reactor.kafka.sender.SenderRecord;
+import reactor.kafka.sender.SenderResult;
+import reactor.test.StepVerifier;
 
-import java.time.Instant;
-import java.util.Optional;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.CompletableFuture;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.ArgumentMatchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Tests para KafkaEventConsumer - Consumidor de eventos desde Kafka")
-class KafkaEventConsumerTest {
+class KafkaEventProducerTest {
+
+    private static final String TOPIC = "fintech-events";
+    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
 
     @Mock
-    private IdempotencyRepository idempotencyRepository;
-
-    @Mock
-    private CircuitBreakerRegistry circuitBreakerRegistry;
-
-    @Mock
-    private RetryRegistry retryRegistry;
-
-    @Mock
-    private CircuitBreaker circuitBreaker;
-
-    @Mock
-    private Retry retry;
-
-    private KafkaEventConsumer consumer;
+    private KafkaEventProducer kafkaEventProducer;
 
     @BeforeEach
     void setUp() {
-        consumer = new KafkaEventConsumer(
-            idempotencyRepository,
-            circuitBreakerRegistry,
-            retryRegistry
-        );
-    }
+        Map<String, Object> props = new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.ACKS_CONFIG, "all");
+        props.put(ProducerConfig.RETRIES_CONFIG, 3);
+        props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, 1000);
 
-    private TransactionEvent createValidEvent() {
-        return TransactionEvent.builder()
-            .eventId(UUID.randomUUID().toString())
-            .transactionId("TX-" + System.currentTimeMillis())
-            .eventType("TRANSACTION_CREATED")
-            .accountId("ACC-123")
-            .amount(1000.00)
-            .currency("USD")
-            .transactionType("DEBIT")
-            .timestamp(Instant.now().toString())
-            .correlationId(UUID.randomUUID().toString())
-            .idempotencyKey("idem-" + System.currentTimeMillis())
-            .description("Test transaction")
-            .sourceSystem("CORE_BANKING")
-            .build();
+        kafkaEventProducer = new KafkaEventProducer(props, TOPIC);
     }
 
     @Nested
-    @DisplayName("Escenario: Consumo exitoso de eventos")
-    class ConsumoExitoso {
+    @DisplayName("Escenarios de Publicación de Eventos")
+    class EventPublishingScenarios {
 
         @Test
-        @DisplayName("Debe consumir evento válido exitosamente")
-        void debeConsumirEventoValidoExitosamente() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
+        @DisplayName("Debería publicar evento exitosamente en Kafka")
+        void shouldPublishEventSuccessfully() {
+            Event event = Event.create("OP-2024-001", "API");
 
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+            when(kafkaEventProducer.publish(any(Event.class))).thenAnswer(invocation -> {
+                Event e = invocation.getArgument(0);
+                return Mono.just(e);
+            });
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            assertDoesNotThrow(() -> consumer.consume(json));
+            StepVerifier.create(kafkaEventProducer.publish(event))
+                    .expectNextMatches(e -> e.getEventId() != null)
+                    .verifyComplete();
         }
 
         @Test
-        @DisplayName("Debe procesar evento con metadata")
-        void debeProcesarEventoConMetadata() {
-            TransactionEvent event = createValidEvent();
-            event.addMetadata("branchId", "BR-001");
-            event.addMetadata("userId", "USR-123");
+        @DisplayName("Debería generar correlationId único para cada evento")
+        void shouldGenerateUniqueCorrelationId() {
+            Event event1 = Event.create("OP-2024-002", "API");
+            Event event2 = Event.create("OP-2024-003", "BATCH");
 
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem()
-                + "\",\"metadata\":{\"branchId\":\"BR-001\",\"userId\":\"USR-123\"}}";
+            String correlationId1 = "corr-" + event1.getEventId();
+            String correlationId2 = "corr-" + event2.getEventId();
 
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+            org.junit.jupiter.api.Assertions.assertNotEquals(correlationId1, correlationId2,
+                    "Cada evento debe tener un correlationId único");
+        }
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
+        @Test
+        @DisplayName("Debería serializar evento correctamente")
+        void shouldSerializeEventCorrectly() {
+            Event event = Event.create("OP-2024-004", "MOBILE");
 
-            assertDoesNotThrow(() -> consumer.consume(json));
+            String serialized = event.getIdempotencyKeyValue();
+
+            org.junit.jupiter.api.Assertions.assertNotNull(serialized,
+                    "El evento serializado no debe ser nulo");
+            org.junit.jupiter.api.Assertions.assertTrue(serialized.contains("OP-2024-004"),
+                    "El evento serializado debe contener el operationNumber");
         }
     }
 
     @Nested
-    @DisplayName("Escenario: Idempotencia en consumo")
-    class IdempotenciaConsumo {
+    @DisplayName("Escenarios de Manejo de Errores")
+    class ErrorHandlingScenarios {
 
         @Test
-        @DisplayName("Debe rechazar evento duplicado")
-        void debeRechazarEventoDuplicado() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
+        @DisplayName("Debería manejar error de conexión a Kafka")
+        void shouldHandleKafkaConnectionError() {
+            Event event = Event.create("OP-2024-005", "API");
 
-            IdempotencyKey existingKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.COMPLETED)
-                .retryCount(0)
-                .build();
+            when(kafkaEventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Kafka broker no disponible")));
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(existingKey));
-
-            assertDoesNotThrow(() -> consumer.consume(json));
-            verify(idempotencyRepository, never()).save(any(IdempotencyKey.class));
+            StepVerifier.create(kafkaEventProducer.publish(event))
+                    .expectErrorMatches(throwable ->
+                            throwable.getMessage().contains("Kafka broker no disponible"))
+                    .verify();
         }
 
         @Test
-        @DisplayName("Debe crear clave de idempotencia si no existe")
-        void debeCrearClaveSiNoExiste() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
+        @DisplayName("Debería manejar error de serialización")
+        void shouldHandleSerializationError() {
+            when(kafkaEventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Error al serializar evento")));
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.empty());
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            assertDoesNotThrow(() -> consumer.consume(json));
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getAllValues().get(0);
-            assertEquals(event.getIdempotencyKey(), savedKey.getKey());
-            assertEquals(event.getBusinessKey(), savedKey.getBusinessKey());
+            StepVerifier.create(kafkaEventProducer.publish(Event.create("OP-ERR", "TEST")))
+                    .expectErrorMatches(throwable ->
+                            throwable.getMessage().contains("serializar"))
+                    .verify();
         }
 
         @Test
-        @DisplayName("Debe marcar como duplicado si estado es DUPLICATE")
-        void debeMarcarComoDuplicado() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
+        @DisplayName("Debería hacer retry en caso de error transitorio")
+        void shouldRetryOnTransientError() {
+            Event event = Event.create("OP-2024-006", "API");
+            int[] attempt = {0};
 
-            IdempotencyKey duplicateKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.DUPLICATE)
-                .retryCount(0)
-                .build();
+            when(kafkaEventProducer.publish(any(Event.class)))
+                    .thenAnswer(invocation -> {
+                        attempt[0]++;
+                        if (attempt[0] < 3) {
+                            return Mono.error(new RuntimeException("Error transitorio"));
+                        }
+                        return Mono.just(event);
+                    });
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(duplicateKey));
-
-            assertDoesNotThrow(() -> consumer.consume(json));
-            verify(idempotencyRepository, never()).save(any(IdempotencyKey.class));
+            StepVerifier.create(kafkaEventProducer.publish(event))
+                    .expectNext(event)
+                    .verifyComplete();
         }
     }
 
     @Nested
-    @DisplayName("Escenario: Dead Letter Queue (DLQ)")
-    class ManejoDLQ {
+    @DisplayName("Escenarios de Configuración")
+    class ConfigurationScenarios {
 
         @Test
-        @DisplayName("Debe marcar evento como fallido en DLQ")
-        void debeMarcarEventoFallidoEnDLQ() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
+        @DisplayName("Debería usar la configuración de Kafka proporcionada")
+        void shouldUseProvidedKafkaConfiguration() {
+            Map<String, Object> props = new HashMap<>();
+            props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "test-server:9092");
+            props.put(ProducerConfig.ACKS_CONFIG, "1");
+            props.put(ProducerConfig.RETRIES_CONFIG, 5);
 
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+            KafkaEventProducer testProducer = new KafkaEventProducer(props, TOPIC);
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.OPEN);
-
-            assertDoesNotThrow(() -> consumer.consume(json));
+            org.junit.jupiter.api.Assertions.assertNotNull(testProducer,
+                    "Productor debe ser creado con la configuración proporcionada");
         }
 
         @Test
-        @DisplayName("Debe almacenar mensaje de error en DLQ")
-        void debeAlmacenarMensajeDeError() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
+        @DisplayName("Debería configurar topic correctamente")
+        void shouldConfigureTopicCorrectly() {
+            String customTopic = "custom-events-topic";
 
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
+            Map<String, Object> props = new HashMap<>();
+            props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
 
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.OPEN);
+            KafkaEventProducer testProducer = new KafkaEventProducer(props, customTopic);
 
-            assertDoesNotThrow(() -> consumer.consume(json));
-
-            ArgumentCaptor<IdempotencyKey> captor = ArgumentCaptor.forClass(IdempotencyKey.class);
-            verify(idempotencyRepository, atLeast(1)).save(captor.capture());
-
-            IdempotencyKey savedKey = captor.getAllValues().get(captor.getAllValues().size() - 1);
-            assertNotNull(savedKey.getLastError(),
-                "Debe almacenar el mensaje de error");
+            org.junit.jupiter.api.Assertions.assertNotNull(testProducer,
+                    "Productor debe configurarse con el topic proporcionado");
         }
     }
 
     @Nested
-    @DisplayName("Escenario: Validación de mensajes")
-    class ValidacionMensajes {
+    @DisplayName("Escenarios de Rendimiento")
+    class PerformanceScenarios {
 
         @Test
-        @DisplayName("Debe rechazar JSON inválido")
-        void debeRechazarJsonInvalido() {
-            String invalidJson = "{invalid json";
+        @DisplayName("Debería cumplir con latencia máxima de 500ms")
+        void shouldMeetMaxLatencyRequirement() {
+            Event event = Event.create("OP-2024-007", "API");
 
-            assertThrows(Exception.class,
-                () -> consumer.consume(invalidJson));
+            when(kafkaEventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.just(event).delayElement(Duration.ofMillis(100)));
+
+            long startTime = System.currentTimeMillis();
+
+            StepVerifier.create(kafkaEventProducer.publish(event))
+                    .expectNext(event)
+                    .verifyComplete();
+
+            long elapsed = System.currentTimeMillis() - startTime;
+            org.junit.jupiter.api.Assertions.assertTrue(elapsed < 500,
+                    "La latencia debe ser menor a 500ms, pero fue: " + elapsed + "ms");
         }
 
         @Test
-        @DisplayName("Debe rechazar mensaje vacío")
-        void debeRechazarMensajeVacio() {
-            assertThrows(IllegalArgumentException.class,
-                () -> consumer.consume(""));
-        }
+        @DisplayName("Debería manejar múltiples eventos concurrentes")
+        void shouldHandleConcurrentEvents() {
+            int eventCount = 100;
 
-        @Test
-        @DisplayName("Debe rechazar mensaje nulo")
-        void debeRechazarMensajeNulo() {
-            assertThrows(IllegalArgumentException.class,
-                () -> consumer.consume(null));
-        }
+            when(kafkaEventProducer.publish(any(Event.class)))
+                    .thenAnswer(invocation -> Mono.just(invocation.getArgument(0)));
 
-        @Test
-        @DisplayName("Debe rechazar evento sin eventId")
-        void debeRechazarEventoSinEventId() {
-            String json = "{\"transactionId\":\"TX-001\",\"amount\":100}";
+            var publishers = new java.util.ArrayList<Mono<Event>>();
+            for (int i = 0; i < eventCount; i++) {
+                publishers.add(kafkaEventProducer.publish(Event.create("OP-" + i, "API")));
+            }
 
-            assertThrows(Exception.class,
-                () -> consumer.consume(json));
-        }
-    }
-
-    @Nested
-    @DisplayName("Escenario: Circuit Breaker en consumo")
-    class CircuitBreakerConsumo {
-
-        @Test
-        @DisplayName("Debe abrir circuit breaker cuando está en estado OPEN")
-        void debeAbrirCircuitBreakerCuandoEstaOpen() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.OPEN);
-
-            assertDoesNotThrow(() -> consumer.consume(json));
-        }
-
-        @Test
-        @DisplayName("Debe permitir consumo cuando circuit breaker está CLOSED")
-        void debePermitirConsumoCuandoCircuitBreakerClosed() {
-            TransactionEvent event = createValidEvent();
-            String json = "{\"eventId\":\"" + event.getEventId() + "\",\"transactionId\":\""
-                + event.getTransactionId() + "\",\"eventType\":\"" + event.getEventType()
-                + "\",\"accountId\":\"" + event.getAccountId() + "\",\"amount\":"
-                + event.getAmount() + ",\"currency\":\"" + event.getCurrency()
-                + "\",\"transactionType\":\"" + event.getTransactionType() + "\",\"timestamp\":\""
-                + event.getTimestamp() + "\",\"correlationId\":\"" + event.getCorrelationId()
-                + "\",\"idempotencyKey\":\"" + event.getIdempotencyKey() + "\",\"description\":\""
-                + event.getDescription() + "\",\"sourceSystem\":\"" + event.getSourceSystem() + "\"}";
-
-            IdempotencyKey idempotencyKey = IdempotencyKey.builder()
-                .key(event.getIdempotencyKey())
-                .businessKey(event.getBusinessKey())
-                .eventId(event.getEventId())
-                .transactionId(event.getTransactionId())
-                .createdAt(Instant.now())
-                .expiresAt(Instant.now().plusSeconds(3600))
-                .status(IdempotencyKey.IdempotencyStatus.PENDING)
-                .retryCount(0)
-                .build();
-
-            when(idempotencyRepository.findByKey(event.getIdempotencyKey()))
-                .thenReturn(Optional.of(idempotencyKey));
-            when(idempotencyRepository.save(any(IdempotencyKey.class)))
-                .thenAnswer(inv -> inv.getArgument(0));
-            when(circuitBreakerRegistry.circuitBreaker(anyString())).thenReturn(circuitBreaker);
-            when(retryRegistry.retry(anyString())).thenReturn(retry);
-            when(circuitBreaker.getState()).thenReturn(CircuitBreaker.State.CLOSED);
-
-            assertDoesNotThrow(() -> consumer.consume(json));
+            Mono.when(publishers)
+                    .as(StepVerifier::create)
+                    .expectComplete()
+                    .verify();
         }
     }
 }
-
 
 // === ARCHIVO: pom.xml ===
 <?xml version="1.0" encoding="UTF-8"?>
@@ -5079,91 +2278,61 @@ class KafkaEventConsumerTest {
         <relativePath/>
     </parent>
 
-    <groupId>com.banco</groupId>
-    <artifactId>core-integration</artifactId>
+    <groupId>com.fintech</groupId>
+    <artifactId>integration</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Core Integration</name>
-    <description>Integración del sistema Core Bancario con Kafka</description>
 
     <properties>
         <java.version>21</java.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <camel.version>4.4.0</camel.version>
+        <camel.version>4.8.0</camel.version>
         <resilience4j.version>2.2.0</resilience4j.version>
     </properties>
 
     <dependencies>
-        <!-- Spring Boot Starters -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
-        <!-- Camel -->
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-kafka</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
-        <!-- Kafka -->
-        <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-        </dependency>
-
-        <!-- Resilience4j -->
         <dependency>
             <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot3</artifactId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
             <version>${resilience4j.version}</version>
         </dependency>
-
-        <!-- Lombok -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
+            <version>${resilience4j.version}</version>
         </dependency>
-
-        <!-- SLF4J -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-        </dependency>
-
-        <!-- Test Dependencies -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>5.11.0</version>
-            <scope>test</scope>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test-spring-junit5</artifactId>
+            <version>${camel.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -5173,497 +2342,1180 @@ class KafkaEventConsumerTest {
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
             </plugin>
         </plugins>
     </build>
 </project>
 
-// === ARCHIVO: src/main/java/com/banco/core/domain/TransactionEvent.java ===
-package com.banco.core.domain;
+// === ARCHIVO: src/main/java/com/fintech/integration/domain/Event.java ===
+package com.fintech.integration.domain;
 
-import java.util.HashMap;
+import java.time.Instant;
 import java.util.Map;
-import java.util.Objects;
 
-public class TransactionEvent {
-    private String eventId;
-    private String transactionId;
-    private String eventType;
-    private String accountId;
-    private Double amount;
-    private String currency;
-    private String transactionType;
-    private String timestamp;
-    private String correlationId;
-    private String idempotencyKey;
-    private String description;
-    private String sourceSystem;
-    private Map<String, Object> metadata;
+public record Event(
+    String id,
+    String operationNumber,
+    String channel,
+    String eventType,
+    Map<String, Object> payload,
+    Instant timestamp,
+    String idempotencyKey,
+    int retryCount,
+    Map<String, Object> metadata
+) {
 
-    public TransactionEvent() {
-        this.metadata = new HashMap<>();
+    public static Event create(final String operationNumber, final String channel) {
+        final String eventId = "EVT-" + System.nanoTime();
+        final IdempotencyKey idempotencyKeyObj = new IdempotencyKey(operationNumber, channel);
+        return new Event(
+            eventId,
+            operationNumber,
+            channel,
+            "DEFAULT",
+            Map.of(),
+            Instant.now(),
+            idempotencyKeyObj.getCompositeKey(),
+            0,
+            Map.of()
+        );
     }
 
-    public boolean isDebit() {
-        return "DEBIT".equalsIgnoreCase(this.transactionType);
-    }
-
-    public boolean isCredit() {
-        return "CREDIT".equalsIgnoreCase(this.transactionType);
-    }
-
-    public String getBusinessKey() {
-        return idempotencyKey != null ? idempotencyKey : (transactionId != null ? transactionId : eventId);
-    }
-
-    public void addMetadata(String key, Object value) {
-        if (this.metadata == null) {
-            this.metadata = new HashMap<>();
-        }
-        this.metadata.put(key, value);
-    }
-
-    public Object getMetadata(String key) {
-        return this.metadata != null ? this.metadata.get(key) : null;
-    }
-
-    // Getters
-    public String getEventId() {
-        return eventId;
-    }
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public String getEventType() {
-        return eventType;
-    }
-
-    public String getAccountId() {
-        return accountId;
-    }
-
-    public Double getAmount() {
-        return amount;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public String getTransactionType() {
-        return transactionType;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public String getCorrelationId() {
-        return correlationId;
-    }
-
-    public String getIdempotencyKey() {
+    public String getIdempotencyKeyValue() {
         return idempotencyKey;
     }
 
-    public String getDescription() {
-        return description;
+    public boolean isDuplicateOf(final Event other) {
+        if (other == null) return false;
+        return this.idempotencyKey != null 
+            && this.idempotencyKey.equals(other.idempotencyKey);
     }
 
-    public String getSourceSystem() {
-        return sourceSystem;
+    public Event withUpdatedTimestamp() {
+        return new Event(
+            id,
+            operationNumber,
+            channel,
+            eventType,
+            payload,
+            Instant.now(),
+            idempotencyKey,
+            retryCount,
+            metadata
+        );
     }
 
-    public Map<String, Object> getMetadata() {
-        return metadata;
-    }
-
-    // Setters
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
-
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
-
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public void setTransactionType(String transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public void setCorrelationId(String correlationId) {
-        this.correlationId = correlationId;
-    }
-
-    public void setIdempotencyKey(String idempotencyKey) {
-        this.idempotencyKey = idempotencyKey;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setSourceSystem(String sourceSystem) {
-        this.sourceSystem = sourceSystem;
-    }
-
-    public void setMetadata(Map<String, Object> metadata) {
-        this.metadata = metadata;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TransactionEvent that = (TransactionEvent) o;
-        return Objects.equals(eventId, that.eventId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(eventId);
-    }
-
-    @Override
-    public String toString() {
-        return "TransactionEvent{" +
-                "eventId='" + eventId + '\'' +
-                ", transactionId='" + transactionId + '\'' +
-                ", eventType='" + eventType + '\'' +
-                ", accountId='" + accountId + '\'' +
-                ", amount=" + amount +
-                ", currency='" + currency + '\'' +
-                ", transactionType='" + transactionType + '\'' +
-                ", timestamp='" + timestamp + '\'' +
-                ", correlationId='" + correlationId + '\'' +
-                ", idempotencyKey='" + idempotencyKey + '\'' +
-                ", description='" + description + '\'' +
-                ", sourceSystem='" + sourceSystem + '\'' +
-                '}';
-    }
-
-    public static TransactionEventBuilder builder() {
-        return new TransactionEventBuilder();
-    }
-
-    public static class TransactionEventBuilder {
-        private String eventId;
-        private String transactionId;
-        private String eventType;
-        private String accountId;
-        private Double amount;
-        private String currency;
-        private String transactionType;
-        private String timestamp;
-        private String correlationId;
-        private String idempotencyKey;
-        private String description;
-        private String sourceSystem;
-
-        public TransactionEventBuilder eventId(String eventId) {
-            this.eventId = eventId;
-            return this;
-        }
-
-        public TransactionEventBuilder transactionId(String transactionId) {
-            this.transactionId = transactionId;
-            return this;
-        }
-
-        public TransactionEventBuilder eventType(String eventType) {
-            this.eventType = eventType;
-            return this;
-        }
-
-        public TransactionEventBuilder accountId(String accountId) {
-            this.accountId = accountId;
-            return this;
-        }
-
-        public TransactionEventBuilder amount(Double amount) {
-            this.amount = amount;
-            return this;
-        }
-
-        public TransactionEventBuilder currency(String currency) {
-            this.currency = currency;
-            return this;
-        }
-
-        public TransactionEventBuilder transactionType(String transactionType) {
-            this.transactionType = transactionType;
-            return this;
-        }
-
-        public TransactionEventBuilder timestamp(String timestamp) {
-            this.timestamp = timestamp;
-            return this;
-        }
-
-        public TransactionEventBuilder correlationId(String correlationId) {
-            this.correlationId = correlationId;
-            return this;
-        }
-
-        public TransactionEventBuilder idempotencyKey(String idempotencyKey) {
-            this.idempotencyKey = idempotencyKey;
-            return this;
-        }
-
-        public TransactionEventBuilder description(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public TransactionEventBuilder sourceSystem(String sourceSystem) {
-            this.sourceSystem = sourceSystem;
-            return this;
-        }
-
-        public TransactionEvent build() {
-            TransactionEvent event = new TransactionEvent();
-            event.eventId = this.eventId;
-            event.transactionId = this.transactionId;
-            event.eventType = this.eventType;
-            event.accountId = this.accountId;
-            event.amount = this.amount;
-            event.currency = this.currency;
-            event.transactionType = this.transactionType;
-            event.timestamp = this.timestamp;
-            event.correlationId = this.correlationId;
-            event.idempotencyKey = this.idempotencyKey;
-            event.description = this.description;
-            event.sourceSystem = this.sourceSystem;
-            return event;
-        }
+    public String getEventId() {
+        return id;
     }
 }
 
-// === ARCHIVO: src/main/java/com/banco/core/CoreIntegrationApplication.java ===
-package com.banco.core;
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/retry/RetryPolicy.java ===
+package com.fintech.integration.infrastructure.retry;
 
-import org.apache.camel.CamelContext;
-import org.apache.camel.builder.RouteBuilder;
-import org.apache.camel.component.kafka.KafkaComponent;
-import org.apache.camel.spring.boot.CamelAutoConfiguration;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.listener.KafkaMessageListenerContainer;
-
-import com.banco.core.application.EventOrchestrator;
-import com.banco.core.domain.TransactionEvent;
-import com.banco.core.infrastructure.core.CoreBankingClient;
-import com.banco.core.infrastructure.idempotency.IdempotencyRepository;
-import com.banco.core.infrastructure.kafka.KafkaEventConsumer;
-import com.banco.core.infrastructure.kafka.KafkaEventProducer;
-
+import com.fintech.integration.domain.Event;
 import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryConfig;
+import io.github.resilience4j.retry.RetryRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Mono;
 
 import java.time.Duration;
-import java.util.UUID;
-import java.util.function.Supplier;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-/**
- * Punto de entrada principal de la aplicación de integración.
- * Configura el contexto de Spring Boot y Camel para la integración
- * del sistema Core Bancario con el bus de eventos (Kafka).
- */
-@SpringBootApplication
-@ImportAutoConfiguration(CamelAutoConfiguration.class)
-@RequiredArgsConstructor
-@Slf4j
-public class CoreIntegrationApplication {
+public class RetryPolicy {
 
-    private final EventOrchestrator eventOrchestrator;
-    private final KafkaEventProducer eventProducer;
-    private final KafkaEventConsumer eventConsumer;
-    private final CoreBankingClient coreBankingClient;
-    private final IdempotencyRepository idempotencyRepository;
+    private static final Logger logger = LoggerFactory.getLogger(RetryPolicy.class);
+    private static final int DEFAULT_MAX_ATTEMPTS = 3;
+    private static final long DEFAULT_WAIT_DURATION_MS = 1000;
+    private static final double DEFAULT_FAILURE_RATE_THRESHOLD = 50;
+    private static final int DEFAULT_SLIDING_WINDOW_SIZE = 10;
+
+    private final RetryRegistry retryRegistry;
     private final CircuitBreakerRegistry circuitBreakerRegistry;
 
-    public static void main(String[] args) {
-        log.info("Iniciando aplicación de integración Core Bancario -> Bus de Eventos");
-        log.info("CorrelationID inicial: {}", UUID.randomUUID().toString());
-        SpringApplication.run(CoreIntegrationApplication.class, args);
+    private int maxAttempts = DEFAULT_MAX_ATTEMPTS;
+    private long waitDurationMs = DEFAULT_WAIT_DURATION_MS;
+    private double failureRateThreshold = DEFAULT_FAILURE_RATE_THRESHOLD;
+    private int slidingWindowSize = DEFAULT_SLIDING_WINDOW_SIZE;
+    private long waitDurationOpenMs = 60000;
+    private boolean circuitBreakerEnabled = true;
+
+    private final Map<String, Retry> retryInstances = new ConcurrentHashMap<>();
+    private final Map<String, CircuitBreaker> circuitBreakerInstances = new ConcurrentHashMap<>();
+    private final AtomicInteger globalRetryCount = new AtomicInteger(0);
+
+    public RetryPolicy(final RetryRegistry retryRegistry, final CircuitBreakerRegistry circuitBreakerRegistry) {
+        this.retryRegistry = retryRegistry;
+        this.circuitBreakerRegistry = circuitBreakerRegistry;
+        initializeDefaults();
     }
 
-    @Bean
-    public RouteBuilder eventRouteBuilder() {
-        return new RouteBuilder() {
-            @Override
-            public void configure() throws Exception {
-                from("kafka:core-transactions?groupId=core-integration-group")
-                    .routeId("core-transactions-route")
-                    .log("Evento recibido de Kafka: ${body}")
-                    .process(exchange -> {
-                        String correlationId = exchange.getIn().getHeader("correlationId", String.class);
-                        if (correlationId == null || correlationId.isBlank()) {
-                            correlationId = UUID.randomUUID().toString();
-                            exchange.getIn().setHeader("correlationId", correlationId);
-                        }
-                        log.info("Procesando evento con correlationId: {}", correlationId);
-                    })
-                    .bean(eventOrchestrator, "processEvent")
-                    .choice()
-                        .when(exchange -> exchange.getIn().getHeader("PROCESSED", Boolean.class, false))
-                            .log("Evento procesado exitosamente")
-                        .otherwise()
-                            .log("Evento no procesado - enviando a DLQ")
-                            .to("kafka:core-transactions-dlq?brokers=${env:KAFKA_BOOTSTRAP_SERVERS}")
-                    .end();
-            }
-        };
+    private void initializeDefaults() {
+        logger.info("Inicializando RetryPolicy con maxAttempts={}, waitDurationMs={}", 
+            maxAttempts, waitDurationMs);
     }
 
-    @Bean
-    public KafkaComponent kafkaComponent(KafkaTemplate<String, String> kafkaTemplate) {
-        KafkaComponent kafka = new KafkaComponent();
-        kafka.setKafkaTemplate(kafkaTemplate);
-        return kafka;
+    public Retry getRetryForEvent(final String eventType) {
+        return retryInstances.computeIfAbsent(eventType, this::createRetryForEventType);
     }
 
-    @Bean
-    public Supplier<TransactionEvent> transactionEventSupplier() {
-        return () -> {
-            log.info("Generando evento de prueba para el bus de eventos");
-            return TransactionEvent.builder()
-                .eventId(UUID.randomUUID().toString())
-                .transactionId("TXN-" + System.currentTimeMillis())
-                .eventType("TRANSACTION_CREATED")
-                .accountId("ACC-" + (int)(Math.random() * 10000))
-                .amount(Math.random() * 10000)
-                .currency("USD")
-                .transactionType(Math.random() > 0.5 ? "DEBIT" : "CREDIT")
-                .timestamp(java.time.Instant.now().toString())
-                .correlationId(UUID.randomUUID().toString())
-                .idempotencyKey("IDEM-" + System.currentTimeMillis())
-                .build();
-        };
+    private Retry createRetryForEventType(final String eventType) {
+        final RetryConfig config = RetryConfig.custom()
+            .maxAttempts(maxAttempts)
+            .waitDuration(Duration.ofMillis(waitDurationMs))
+            .retryExceptions(Exception.class)
+            .build();
+        final Retry retry = retryRegistry.retry(eventType, config);
+        logger.debug("Creado Retry para eventType: {}", eventType);
+        return retry;
+    }
+
+    public CircuitBreaker getCircuitBreakerForEvent(final String eventType) {
+        return circuitBreakerInstances.computeIfAbsent(eventType, this::createCircuitBreakerForEventType);
+    }
+
+    private CircuitBreaker createCircuitBreakerForEventType(final String eventType) {
+        final CircuitBreakerConfig config = CircuitBreakerConfig.custom()
+            .failureRateThreshold(failureRateThreshold)
+            .slidingWindowSize(slidingWindowSize)
+            .waitDurationInOpenState(Duration.ofMillis(waitDurationOpenMs))
+            .permittedNumberOfCallsInHalfOpenState(3)
+            .build();
+        final CircuitBreaker circuitBreaker = circuitBreakerRegistry.circuitBreaker(eventType, config);
+        logger.debug("Creado CircuitBreaker para eventType: {}", eventType);
+        return circuitBreaker;
+    }
+
+    private CircuitBreaker getFallbackCircuitBreaker() {
+        return getCircuitBreakerForEvent("default");
+    }
+
+    public <T> Mono<T> executeWithRetry(
+            final String eventType,
+            final java.util.function.Supplier<Mono<T>> action) {
+        final Retry retry = getRetryForEvent(eventType);
+        final CircuitBreaker circuitBreaker = getCircuitBreakerForEvent(eventType);
+
+        return Mono.defer(() -> action.get())
+            .doOnSuccess(result -> {
+                logger.debug("Operación exitosa para eventType: {}", eventType);
+                globalRetryCount.set(0);
+            })
+            .doOnError(error -> {
+                handleRetryError(eventType, error, globalRetryCount.incrementAndGet());
+            });
+    }
+
+    private void handleRetryError(final String eventType, final Throwable error, final int attempt) {
+        logger.warn("Error en intento {} para eventType {}: {}", attempt, eventType, error.getMessage());
+    }
+
+    public Mono<Duration> calculateNextRetryDelay(final int currentRetryCount) {
+        final long delay = waitDurationMs * (1L << Math.min(currentRetryCount, 5));
+        return Mono.just(Duration.ofMillis(delay));
+    }
+
+    public Mono<Boolean> shouldRetry(final Event event) {
+        return Mono.just(event.retryCount() < maxAttempts);
+    }
+
+    public Mono<Event> scheduleRetry(final Event event) {
+        logger.info("Programando reintento para evento: {}, retryCount: {}", 
+            event.getEventId(), event.retryCount());
+        return calculateNextRetryDelay(event.retryCount())
+            .flatMap(delay -> {
+                logger.debug("Reintento programado en {}ms para evento: {}", delay.toMillis(), event.getEventId());
+                return Mono.just(event);
+            });
+    }
+
+    public void resetRetryState(final String eventType) {
+        retryInstances.remove(eventType);
+        circuitBreakerInstances.remove(eventType);
+        logger.info("Estado de retry reseteado para eventType: {}", eventType);
+    }
+
+    public Map<String, Retry> getAllRetries() {
+        return Map.copyOf(retryInstances);
+    }
+
+    public Map<String, CircuitBreaker> getAllCircuitBreakers() {
+        return Map.copyOf(circuitBreakerInstances);
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
+    }
+
+    public long getWaitDurationMs() {
+        return waitDurationMs;
+    }
+
+    public boolean isCircuitBreakerEnabled() {
+        return circuitBreakerEnabled;
+    }
+
+    public static class RetryExhaustedException extends RuntimeException {
+        public RetryExhaustedException(final String message) {
+            super(message);
+        }
+
+        public RetryExhaustedException(final String message, final Throwable cause) {
+            super(message, cause);
+        }
     }
 }
 
 
-=== ARCHIVO: pom.xml ===
+// === ARCHIVO: pom.xml ===
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+    
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.5.6</version>
         <relativePath/>
     </parent>
-
-    <groupId>com.banco</groupId>
-    <artifactId>core-integration</artifactId>
+    
+    <groupId>com.fintech</groupId>
+    <artifactId>integration</artifactId>
     <version>1.0.0-SNAPSHOT</version>
-    <name>Core Integration</name>
-    <description>Sistema de integración con Core Banking</description>
-
+    <name>fintech-integration</name>
+    <description>Sistema de Integración de Eventos Financieros</description>
+    
     <properties>
         <java.version>21</java.version>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <camel.version>4.4.0</camel.version>
+        <camel.version>4.8.0</camel.version>
         <resilience4j.version>2.2.0</resilience4j.version>
     </properties>
-
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.camel</groupId>
+                <artifactId>camel-spring-boot-bom</artifactId>
+                <version>${camel.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.github.resilience4j</groupId>
+                <artifactId>resilience4j-bom</artifactId>
+                <version>${resilience4j.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-webflux</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-kafka</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-extra</artifactId>
+        </dependency>
+        
+        <!-- Test dependencies -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test-spring-junit5</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.2.5</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
 
+// === ARCHIVO: src/main/java/com/fintech/integration/domain/Event.java ===
+package com.fintech.integration.domain;
+
+import java.time.Instant;
+import java.util.UUID;
+
+public record Event(
+    String eventId,
+    String operationNumber,
+    String channel,
+    String eventType,
+    Instant timestamp,
+    int retryCount
+) {
+    public static Event create(final String operationNumber, final String channel) {
+        return new Event(
+            UUID.randomUUID().toString(),
+            operationNumber,
+            channel,
+            "DEFAULT",
+            Instant.now(),
+            0
+        );
+    }
+
+    public String getIdempotencyKeyValue() {
+        return operationNumber + "|" + channel;
+    }
+
+    public boolean isDuplicateOf(final Event other) {
+        if (other == null) return false;
+        return this.operationNumber.equals(other.operationNumber) 
+            && this.channel.equals(other.channel);
+    }
+
+    public Event withUpdatedTimestamp() {
+        return new Event(
+            this.eventId,
+            this.operationNumber,
+            this.channel,
+            this.eventType,
+            Instant.now(),
+            this.retryCount
+        );
+    }
+
+    public String getEventId() {
+        return eventId;
+    }
+
+    public String getEventType() {
+        return eventType;
+    }
+
+    public int getRetryCount() {
+        return retryCount;
+    }
+
+    public Event withRetryCount(final int newRetryCount) {
+        return new Event(
+            this.eventId,
+            this.operationNumber,
+            this.channel,
+            this.eventType,
+            this.timestamp,
+            newRetryCount
+        );
+    }
+}
+
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/events/EventProducer.java ===
+package com.fintech.integration.infrastructure.events;
+
+import com.fintech.integration.domain.Event;
+import reactor.core.publisher.Mono;
+
+public interface EventProducer {
+
+    Mono<Void> send(Event event);
+
+    Mono<Void> sendWithKey(Event event, String key);
+
+    Mono<Boolean> isAvailable();
+
+    String getTopic();
+
+    default Mono<Event> publish(Event event) {
+        return send(event).thenReturn(event);
+    }
+}
+
+// === ARCHIVO: src/main/java/com/fintech/integration/infrastructure/retry/RetryPolicy.java ===
+package com.fintech.integration.infrastructure.retry;
+
+import com.fintech.integration.domain.Event;
+import io.github.resilience4j.circuitbreaker.CircuitBreaker;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerConfig;
+import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
+import io.github.resilience4j.retry.Retry;
+import io.github.resilience4j.retry.RetryConfig;
+import io.github.resilience4j.retry.RetryRegistry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
+
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
+
+@Component
+public class RetryPolicy {
+
+    private static final Logger logger = LoggerFactory.getLogger(RetryPolicy.class);
+    private static final int DEFAULT_MAX_ATTEMPTS = 3;
+    private static final long DEFAULT_WAIT_DURATION_MS = 300000L;
+    private static final double DEFAULT_FAILURE_RATE_THRESHOLD = 50;
+    private static final int DEFAULT_SLIDING_WINDOW_SIZE = 10;
+
+    private final RetryRegistry retryRegistry;
+    private final CircuitBreakerRegistry circuitBreakerRegistry;
+
+    @Value("${integration.retry.max-attempts:3}")
+    private int maxAttempts;
+
+    @Value("${integration.retry.wait-duration-ms:300000}")
+    private long waitDurationMs;
+
+    @Value("${integration.circuit-breaker.failure-rate-threshold:50}")
+    private double failureRateThreshold;
+
+    @Value("${integration.circuit-breaker.sliding-window-size:10}")
+    private int slidingWindowSize;
+
+    @Value("${integration.circuit-breaker.wait-duration-open-ms:60000}")
+    private long waitDurationOpenMs;
+
+    @Value("${integration.circuit-breaker.enabled:true}")
+    private boolean circuitBreakerEnabled;
+
+    private final Map<String, Retry> retryInstances = new HashMap<>();
+    private final Map<String, CircuitBreaker> circuitBreakerInstances = new HashMap<>();
+    private final AtomicInteger globalRetryCount = new AtomicInteger(0);
+
+    @Autowired
+    public RetryPolicy(
+            final RetryRegistry retryRegistry,
+            final CircuitBreakerRegistry circuitBreakerRegistry) {
+        this.retryRegistry = retryRegistry;
+        this.circuitBreakerRegistry = circuitBreakerRegistry;
+        initializeDefaults();
+    }
+
+    private void initializeDefaults() {
+        final RetryConfig defaultConfig = RetryConfig.custom()
+            .maxAttempts(maxAttempts)
+            .waitDuration(Duration.ofMillis(waitDurationMs))
+            .retryExceptions(Exception.class)
+            .ignoreExceptions()
+            .build();
+
+        retryRegistry.retry("default-retry", defaultConfig);
+        logger.info("RetryPolicy inicializado con {} intentos y {} ms de espera", 
+            maxAttempts, waitDurationMs);
+    }
+
+    public Retry getRetryForEvent(final String eventType) {
+        return retryInstances.computeIfAbsent(eventType, this::createRetryForEventType);
+    }
+
+    private Retry createRetryForEventType(final String eventType) {
+        final String retryName = "retry-" + eventType;
+        logger.debug("Creando retry {} para tipo de evento {}", retryName, eventType);
+
+        final RetryConfig config = RetryConfig.custom()
+            .maxAttempts(maxAttempts)
+            .waitDuration(Duration.ofMillis(waitDurationMs))
+            .retryExceptions(
+                java.io.IOException.class,
+                java.net.SocketTimeoutException.class,
+                org.apache.kafka.common.errors.TimeoutException.class
+            )
+            .build();
+
+        return retryRegistry.retry(retryName, config);
+    }
+
+    public CircuitBreaker getCircuitBreakerForEvent(final String eventType) {
+        if (!circuitBreakerEnabled) {
+            logger.debug("Circuit breaker deshabilitado, retornando fallback para {}", eventType);
+            return getFallbackCircuitBreaker();
+        }
+        return circuitBreakerInstances.computeIfAbsent(eventType, this::createCircuitBreakerForEventType);
+    }
+
+    private CircuitBreaker createCircuitBreakerForEventType(final String eventType) {
+        final String cbName = "circuit-breaker-" + eventType;
+        logger.debug("Creando circuit breaker {} para tipo de evento {}", cbName, eventType);
+
+        final CircuitBreakerConfig config = CircuitBreakerConfig.custom()
+            .failureRateThreshold(failureRateThreshold)
+            .slidingWindowSize(slidingWindowSize)
+            .minimumNumberOfCalls(5)
+            .waitDurationInOpenState(Duration.ofMillis(waitDurationOpenMs))
+            .permittedNumberOfCallsInHalfOpenState(3)
+            .automaticTransitionFromOpenToHalfOpenEnabled(true)
+            .build();
+
+        return circuitBreakerRegistry.circuitBreaker(cbName, config);
+    }
+
+    private CircuitBreaker getFallbackCircuitBreaker() {
+        final CircuitBreakerConfig fallbackConfig = CircuitBreakerConfig.custom()
+            .failureRateThreshold(100)
+            .slidingWindowSize(1)
+            .build();
+        return circuitBreakerRegistry.circuitBreaker("fallback-cb", fallbackConfig);
+    }
+
+    public <T> Mono<T> executeWithRetry(
+            final String eventType,
+            final java.util.function.Supplier<Mono<T>> action) {
+
+        final Retry retry = getRetryForEvent(eventType);
+        final CircuitBreaker circuitBreaker = getCircuitBreakerForEvent(eventType);
+
+        return Mono.defer(() -> {
+            final int currentAttempt = globalRetryCount.incrementAndGet();
+            logger.debug("Ejecutando acción para {} - Intento {}", eventType, currentAttempt);
+
+            return action.get()
+                .doOnSuccess(result -> {
+                    logger.debug("Acción exitosa para {} en intento {}", eventType, currentAttempt);
+                    retry.reset();
+                })
+                .doOnError(error -> {
+                    logger.warn("Error en intento {} para {}: {}", currentAttempt, eventType, 
+                        error.getMessage());
+                    handleRetryError(eventType, error, currentAttempt);
+                })
+                .retryWhen(
+                    io.github.resilience4j.reactor.retry.RetryOperator.of(retry)
+                )
+                .transformDeferred(
+                    io.github.resilience4j.reactor.circuitbreaker.CircuitBreakerOperator.of(circuitBreaker)
+                )
+                .onErrorResume(error -> {
+                    logger.error("Error después de todos los reintentos para {}: {}", eventType, 
+                        error.getMessage());
+                    return Mono.error(new RetryExhaustedException(
+                        "Máximo de reintentos alcanzado para evento tipo: " + eventType, error));
+                });
+        }).subscribeOn(Schedulers.boundedElastic());
+    }
+
+    private void handleRetryError(final String eventType, final Throwable error, final int attempt) {
+        logger.warn("Reintento {} falló para tipo {}: {}", attempt, eventType, error.getMessage());
+
+        if (attempt >= maxAttempts) {
+            logger.error("Se agotaron los reintentos para el evento tipo {}", eventType);
+        }
+    }
+
+    public Mono<Duration> calculateNextRetryDelay(final int currentRetryCount) {
+        final long delayMs = waitDurationMs;
+        final double exponentialBackoffMultiplier = Math.pow(2, currentRetryCount);
+        final long finalDelay = (long) (delayMs * exponentialBackoffMultiplier);
+
+        logger.debug("Calculando delay para retry {}: {} ms (exponential backoff factor: {})", 
+            currentRetryCount, finalDelay, exponentialBackoffMultiplier);
+
+        return Mono.just(Duration.ofMillis(Math.min(finalDelay, waitDurationMs * 4)));
+    }
+
+    public Mono<Boolean> shouldRetry(final Event event) {
+        final String eventType = event.getEventType();
+        final int currentRetries = event.getRetryCount();
+
+        if (currentRetries >= maxAttempts) {
+            logger.warn("Evento {} excedió el máximo de {} reintentos", 
+                event.getEventId(), maxAttempts);
+            return Mono.just(false);
+        }
+
+        final CircuitBreaker cb = getCircuitBreakerForEvent(eventType);
+        if (cb.getState() == CircuitBreaker.State.OPEN) {
+            logger.warn("Circuit breaker OPEN para {}, no se reintenta", eventType);
+            return Mono.just(false);
+        }
+
+        return Mono.just(true);
+    }
+
+    public boolean shouldOpenCircuitBreaker(final String serviceName) {
+        final CircuitBreaker cb = getCircuitBreakerForEvent(serviceName);
+        final CircuitBreaker.Metrics metrics = cb.getMetrics();
+        final float failureRate = metrics.getFailureRate();
+        
+        return failureRate >= failureRateThreshold;
+    }
+
+    public CircuitBreaker.State getCircuitBreakerState(final String eventType) {
+        final CircuitBreaker cb = getCircuitBreakerForEvent(eventType);
+        return cb.getState();
+    }
+
+    public void resetRetryState(final String eventType) {
+        final Retry retry = retryInstances.get(eventType);
+        if (retry != null) {
+            retry.reset();
+            logger.info("Estado de retry reseteado para {}", eventType);
+        }
+
+        final CircuitBreaker cb = circuitBreakerInstances.get(eventType);
+        if (cb != null) {
+            cb.reset();
+            logger.info("Circuit breaker reseteado para {}", eventType);
+        }
+    }
+
+    public Map<String, Retry> getAllRetries() {
+        return new HashMap<>(retryInstances);
+    }
+
+    public Map<String, CircuitBreaker> getAllCircuitBreakers() {
+        return new HashMap<>(circuitBreakerInstances);
+    }
+
+    public int getMaxAttempts() {
+        return maxAttempts;
+    }
+
+    public long getWaitDurationMs() {
+        return waitDurationMs;
+    }
+
+    public boolean isCircuitBreakerEnabled() {
+        return circuitBreakerEnabled;
+    }
+
+    public static class RetryExhaustedException extends RuntimeException {
+        public RetryExhaustedException(final String message, final Throwable cause) {
+            super(message, cause);
+        }
+    }
+}
+
+// === ARCHIVO: src/main/java/com/fintech/integration/application/EventOrchestrator.java ===
+package com.fintech.integration.application;
+
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import com.fintech.integration.infrastructure.core.EventRepository;
+import com.fintech.integration.infrastructure.events.EventProducer;
+import com.fintech.integration.infrastructure.retry.EventRetryHandler;
+import com.fintech.integration.infrastructure.retry.RetryPolicy;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import reactor.core.publisher.Mono;
+
+import java.util.List;
+
+public class EventOrchestrator {
+
+    private static final Logger log = LoggerFactory.getLogger(EventOrchestrator.class);
+    private static final int MAX_RETRY_COUNT = 3;
+    private static final long PROCESSING_TIMEOUT_MS = 30000L;
+
+    private final EventRepository eventRepository;
+    private final EventProducer eventProducer;
+    private final EventRetryHandler retryHandler;
+    private final RetryPolicy retryPolicy;
+
+    public EventOrchestrator(
+            final EventRepository eventRepository,
+            final EventProducer eventProducer,
+            final EventRetryHandler retryHandler,
+            final RetryPolicy retryPolicy) {
+        this.eventRepository = eventRepository;
+        this.eventProducer = eventProducer;
+        this.retryHandler = retryHandler;
+        this.retryPolicy = retryPolicy;
+    }
+
+    public Mono<Event> processEvent(final String operationNumber, final String channel) {
+        final IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+
+        return eventRepository.existsByIdempotencyKey(key)
+            .flatMap(exists -> {
+                if (exists) {
+                    return eventRepository.findByIdempotencyKey(key)
+                        .flatMap(foundEvent -> {
+                            if (foundEvent.isPresent()) {
+                                log.warn("Evento duplicado detectado para la clave de idempotencia: {}", key.getCompositeKey());
+                                return Mono.error(new DuplicateEventException(
+                                    "Evento duplicado detectado para la clave de idempotencia: " + key.getCompositeKey()));
+                            }
+                            return persistAndEmitEvent(operationNumber, channel);
+                        });
+                }
+                return persistAndEmitEvent(operationNumber, channel);
+            });
+    }
+
+    private Mono<Event> persistAndEmitEvent(final String operationNumber, final String channel) {
+        final Event event = Event.create(operationNumber, channel);
+
+        return eventRepository.save(event)
+            .flatMap(savedEvent -> emitToEventBus(savedEvent)
+                .thenReturn(savedEvent)
+                .onErrorResume(error -> handleEmitFailure(savedEvent)));
+    }
+
+    private Mono<Void> emitToEventBus(final Event event) {
+        return retryHandler.handleWithRetry(
+                () -> eventProducer.publish(event),
+                event
+            )
+            .flatMap(processedEvent -> {
+                log.info("Evento {} procesado exitosamente", processedEvent.getEventId());
+                return Mono.empty();
+            });
+    }
+
+    private Mono<Event> handleEmitFailure(final Event event) {
+        log.error("Error al emitir evento {}, marcando para reintento", event.getEventId());
+        return eventRepository.incrementRetryCount(event)
+            .flatMap(updatedEvent -> Mono.error(new EventProcessingException(
+                "Error al procesar evento: " + event.getEventId())));
+    }
+
+    private Mono<Event> processEventFallback(final String operationNumber, final String channel,
+            final Throwable error) {
+        log.error("Fallback activado para operación {}: {}", operationNumber, error.getMessage());
+        return Mono.error(error);
+    }
+
+    public Mono<Event> reprocessEvent(final Event event) {
+        log.info("Re procesando evento: {}", event.getEventId());
+        return retryHandler.handleWithRetry(
+                () -> eventProducer.publish(event),
+                event
+            );
+    }
+
+    public Mono<Long> getPendingEventsCount() {
+        return eventRepository.findByRetryCountLessThan(MAX_RETRY_COUNT)
+            .map(List::size)
+            .defaultIfEmpty(0L);
+    }
+
+    public Mono<List<Event>> recoverPendingEvents() {
+        log.info("Iniciando recuperación de eventos pendientes");
+        
+        return eventRepository.findByRetryCountLessThan(MAX_RETRY_COUNT)
+            .flatMapMany(events -> {
+                log.info("Encontrados {} eventos pendientes para recuperación", events.size());
+                return reactor.core.publisher.Flux.fromIterable(events)
+                    .flatMap(event -> reprocessEvent(event)
+                        .onErrorResume(e -> {
+                            log.error("Error al recuperar evento {}: {}", event.getEventId(), e.getMessage());
+                            return reactor.core.publisher.Mono.empty();
+                        }));
+            })
+            .collectList();
+    }
+
+    public static class DuplicateEventException extends RuntimeException {
+        public DuplicateEventException(final String message) {
+            super(message);
+        }
+    }
+
+    public static class EventProcessingException extends RuntimeException {
+        public EventProcessingException(final String message) {
+            super(message);
+        }
+
+        public EventProcessingException(final String message, final Throwable cause) {
+            super(message, cause);
+        }
+    }
+}
+
+// === ARCHIVO: src/test/java/com/fintech/integration/application/EventOrchestratorTest.java ===
+package com.fintech.integration.application;
+
+import com.fintech.integration.domain.Event;
+import com.fintech.integration.domain.IdempotencyKey;
+import com.fintech.integration.infrastructure.core.EventRepository;
+import com.fintech.integration.infrastructure.events.EventProducer;
+import com.fintech.integration.infrastructure.retry.EventRetryHandler;
+import com.fintech.integration.infrastructure.retry.RetryPolicy;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+@ExtendWith(MockitoExtension.class)
+class EventOrchestratorTest {
+
+    @Mock
+    private EventRepository eventRepository;
+
+    @Mock
+    private EventProducer eventProducer;
+
+    @Mock
+    private EventRetryHandler retryHandler;
+
+    @Mock
+    private RetryPolicy retryPolicy;
+
+    private EventOrchestrator orchestrator;
+
+    @BeforeEach
+    void setUp() {
+        orchestrator = new EventOrchestrator(eventRepository, eventProducer, retryHandler, retryPolicy);
+    }
+
+    @Nested
+    @DisplayName("Escenarios de Idempotencia")
+    class IdempotencyScenarios {
+
+        @Test
+        @DisplayName("Debería rechazar evento duplicado cuando ya existe con misma clave de idempotencia")
+        void shouldRejectDuplicateEvent() {
+            String operationNumber = "OP-2024-001";
+            String channel = "API";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event existingEvent = Event.create(operationNumber, channel);
+
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(true));
+            when(eventRepository.findByIdempotencyKey(key)).thenReturn(Mono.just(Optional.of(existingEvent)));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectErrorMatches(throwable -> throwable.getMessage().contains("duplicado"))
+                    .verify();
+
+            verify(eventRepository, never()).save(any(Event.class));
+            verify(eventProducer, never()).send(any(Event.class));
+        }
+
+        @Test
+        @DisplayName("Debería aceptar evento nuevo cuando no existe clave de idempotencia")
+        void shouldAcceptNewEvent() {
+            String operationNumber = "OP-2024-002";
+            String channel = "BATCH";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event newEvent = Event.create(operationNumber, channel);
+
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(newEvent));
+            when(eventProducer.publish(any(Event.class))).thenReturn(Mono.just(newEvent));
+            when(retryHandler.handleWithRetry(any(), any(Event.class))).thenReturn(Mono.just(newEvent));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectNext(newEvent)
+                    .verifyComplete();
+
+            verify(eventRepository, times(1)).save(any(Event.class));
+            verify(eventProducer, times(1)).send(any(Event.class));
+        }
+
+        @Test
+        @DisplayName("Debería detectar duplicado exacto con mismo operationNumber y channel")
+        void shouldDetectExactDuplicate() {
+            String operationNumber = "OP-2024-003";
+            String channel = "WEB";
+            Event event1 = Event.create(operationNumber, channel);
+            Event event2 = Event.create(operationNumber, channel);
+
+            boolean isDuplicate = event1.isDuplicateOf(event2);
+
+            org.junit.jupiter.api.Assertions.assertTrue(isDuplicate,
+                    "Eventos con mismo operationNumber y channel deben ser duplicados");
+        }
+    }
+
+    @Nested
+    @DisplayName("Escenarios de Manejo de Fallos")
+    class FailureHandlingScenarios {
+
+        @Test
+        @DisplayName("Debería reintentar cuando el producer falla transientemente")
+        void shouldRetryOnTransientFailure() {
+            String operationNumber = "OP-2024-004";
+            String channel = "API";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event event = Event.create(operationNumber, channel);
+
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(event));
+            when(eventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Conexión temporariamente no disponible")))
+                    .thenReturn(Mono.just(event));
+            when(retryHandler.handleWithRetry(any(), any(Event.class))).thenReturn(Mono.just(event));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectNext(event)
+                    .verifyComplete();
+
+            verify(retryHandler, times(1)).handleWithRetry(any(), any(Event.class));
+        }
+
+        @Test
+        @DisplayName("Debería enviar a DLQ después de reintentos fallidos")
+        void shouldSendToDlqAfterFailedRetries() {
+            String operationNumber = "OP-2024-005";
+            String channel = "API";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event event = Event.create(operationNumber, channel);
+
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(event));
+            when(eventProducer.publish(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Fallo permanente")));
+            when(retryHandler.handleWithRetry(any(), any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Máximo de reintentos alcanzado")));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectErrorMatches(throwable -> throwable.getMessage().contains("reintentos"))
+                    .verify();
+
+            verify(eventRepository, times(2)).save(any(Event.class));
+        }
+
+        @Test
+        @DisplayName("Debería usar circuit breaker después de fallos consecutivos")
+        void shouldUseCircuitBreakerAfterConsecutiveFailures() {
+            when(retryPolicy.shouldOpenCircuitBreaker(anyString())).thenReturn(true);
+            when(retryPolicy.getCircuitBreakerState(anyString()))
+                    .thenReturn(io.github.resilience4j.circuitbreaker.CircuitBreaker.State.OPEN);
+
+            boolean shouldOpen = retryPolicy.shouldOpenCircuitBreaker("test-service");
+
+            org.junit.jupiter.api.Assertions.assertTrue(shouldOpen,
+                    "Circuit breaker debería abrirse após fallos consecutivos");
+        }
+    }
+
+    @Nested
+    @DisplayName("Escenarios de Integración")
+    class IntegrationScenarios {
+
+        @Test
+        @DisplayName("Debería procesar evento correctamente end-to-end")
+        void shouldProcessEventEndToEnd() {
+            String operationNumber = "OP-2024-006";
+            String channel = "MOBILE";
+            IdempotencyKey key = new IdempotencyKey(operationNumber, channel);
+            Event event = Event.create(operationNumber, channel);
+
+            when(eventRepository.existsByIdempotencyKey(key)).thenReturn(Mono.just(false));
+            when(eventRepository.save(any(Event.class))).thenReturn(Mono.just(event));
+            when(eventProducer.publish(any(Event.class))).thenReturn(Mono.just(event));
+            when(retryHandler.handleWithRetry(any(), any(Event.class))).thenReturn(Mono.just(event));
+            when(retryPolicy.shouldRetry(any())).thenReturn(Mono.just(true));
+
+            StepVerifier.create(orchestrator.processEvent(operationNumber, channel))
+                    .expectNextMatches(e -> e.getEventId() != null)
+                    .verifyComplete();
+
+            verify(eventRepository).save(any(Event.class));
+            verify(eventProducer).send(any(Event.class));
+            verify(retryHandler).handleWithRetry(any(), any(Event.class));
+        }
+
+        @Test
+        @DisplayName("Debería recuperar eventos pendientes de reproceso")
+        void shouldRecoverPendingEvents() {
+            List<Event> pendingEvents = List.of(
+                    Event.create("OP-001", "API"),
+                    Event.create("OP-002", "BATCH")
+            );
+
+            when(eventRepository.findByRetryCountLessThan(3)).thenReturn(Mono.just(pendingEvents));
+            when(eventProducer.publish(any(Event.class))).thenReturn(Mono.just(Event.create("OP-001", "API")));
+            when(retryHandler.handleWithRetry(any(), any(Event.class)))
+                    .thenReturn(Mono.just(Event.create("OP-001", "API")));
+
+            StepVerifier.create(orchestrator.recoverPendingEvents())
+                    .expectNextCount(2)
+                    .verifyComplete();
+
+            verify(eventRepository, times(2)).findByRetryCountLessThan(3);
+        }
+    }
+}
+
+// === ARCHIVO: pom.xml ===
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.6</version>
+        <relativePath/>
+    </parent>
+    
+    <groupId>com.fintech</groupId>
+    <artifactId>integration</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>integration</name>
+    <description>Fintech Integration Service</description>
+    
+    <properties>
+        <java.version>21</java.version>
+        <camel.version>4.8.0</camel.version>
+        <resilience4j.version>2.2.0</resilience4j.version>
+    </properties>
+    
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-spring-boot-starter</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
+        
         <dependency>
             <groupId>org.apache.camel</groupId>
             <artifactId>camel-kafka</artifactId>
             <version>${camel.version}</version>
         </dependency>
-
+        
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-spring-boot2</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.github.resilience4j</groupId>
+            <artifactId>resilience4j-reactor</artifactId>
+            <version>${resilience4j.version}</version>
+        </dependency>
+        
         <dependency>
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-core</artifactId>
-            <version>3.6.0</version>
         </dependency>
-
+        
         <dependency>
-            <groupId>io.github.resilience4j</groupId>
-            <artifactId>resilience4j-spring-boot3</artifactId>
-            <version>${resilience4j.version}</version>
+            <groupId>reactor.kafka</groupId>
+            <artifactId>reactor-kafka</artifactId>
+            <version>1.3.23</version>
         </dependency>
-
+        
         <dependency>
-            <groupId>org.springframework.kafka</groupId>
-            <artifactId>spring-kafka</artifactId>
-            <version>3.2.0</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
         </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>2.0.9</version>
-        </dependency>
-
+        
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.0</version>
+            <version>5.10.2</version>
             <scope>test</scope>
         </dependency>
-
+        
         <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>5.11.0</version>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-test-spring-junit5</artifactId>
+            <version>${camel.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
+    
     <build>
         <plugins>
             <plugin>
@@ -5674,862 +3526,220 @@ public class CoreIntegrationApplication {
     </build>
 </project>
 
-// === ARCHIVO: src/main/java/com/banco/core/domain/IdempotencyKey.java ===
-package com.banco.core.domain;
+// === ARCHIVO: src/test/java/com/fintech/integration/infrastructure/events/KafkaEventProducerTest.java ===
+package com.fintech.integration.infrastructure.events;
 
-import java.time.Instant;
-import java.util.Objects;
+import com.fintech.integration.domain.Event;
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import reactor.core.publisher.Mono;
+import reactor.test.StepVerifier;
 
-public class IdempotencyKey {
-
-    private String key;
-    private String businessKey;
-    private String eventId;
-    private String transactionId;
-    private Instant createdAt;
-    private Instant expiresAt;
-    private IdempotencyStatus status;
-    private int retryCount;
-    private String lastError;
-
-    public enum IdempotencyStatus {
-        PROCESSING,
-        COMPLETED,
-        FAILED,
-        DUPLICATE
-    }
-
-    public IdempotencyKey() {
-        this.createdAt = Instant.now();
-        this.status = IdempotencyStatus.PROCESSING;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getBusinessKey() {
-        return businessKey;
-    }
-
-    public void setBusinessKey(String businessKey) {
-        this.businessKey = businessKey;
-    }
-
-    public String getEventId() {
-        return eventId;
-    }
-
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
-
-    public String getTransactionId() {
-        return transactionId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public Instant getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public Instant getExpiresAt() {
-        return expiresAt;
-    }
-
-    public void setExpiresAt(Instant expiresAt) {
-        this.expiresAt = expiresAt;
-    }
-
-    public IdempotencyStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(IdempotencyStatus status) {
-        this.status = status;
-    }
-
-    public int getRetryCount() {
-        return retryCount;
-    }
-
-    public void setRetryCount(int retryCount) {
-        this.retryCount = retryCount;
-    }
-
-    public String getLastError() {
-        return lastError;
-    }
-
-    public void setLastError(String lastError) {
-        this.lastError = lastError;
-    }
-
-    public boolean isExpired() {
-        return expiresAt != null && Instant.now().isAfter(expiresAt);
-    }
-
-    public boolean isCompleted() {
-        return status == IdempotencyStatus.COMPLETED;
-    }
-
-    public boolean isProcessing() {
-        return status == IdempotencyStatus.PROCESSING;
-    }
-
-    public boolean isDuplicate() {
-        return status == IdempotencyStatus.DUPLICATE;
-    }
-
-    public boolean canRetry() {
-        return status == IdempotencyStatus.FAILED;
-    }
-
-    public void markAsProcessing() {
-        this.status = IdempotencyStatus.PROCESSING;
-    }
-
-    public void markAsCompleted() {
-        this.status = IdempotencyStatus.COMPLETED;
-    }
-
-    public void markAsFailed(String error) {
-        this.status = IdempotencyStatus.FAILED;
-        this.lastError = error;
-        this.retryCount++;
-    }
-
-    public void markAsDuplicate() {
-        this.status = IdempotencyStatus.DUPLICATE;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        IdempotencyKey that = (IdempotencyKey) o;
-        return Objects.equals(key, that.key);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(key);
-    }
-
-    @Override
-    public String toString() {
-        return "IdempotencyKey{" +
-                "key='" + key + '\'' +
-                ", businessKey='" + businessKey + '\'' +
-                ", status=" + status +
-                ", retryCount=" + retryCount +
-                '}';
-    }
-
-    public static IdempotencyKeyBuilder builder() {
-        return new IdempotencyKeyBuilder();
-    }
-
-    public static class IdempotencyKeyBuilder {
-        private String key;
-        private String businessKey;
-        private String eventId;
-        private String transactionId;
-        private Instant expiresAt;
-
-        public IdempotencyKeyBuilder key(String key) {
-            this.key = key;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder businessKey(String businessKey) {
-            this.businessKey = businessKey;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder eventId(String eventId) {
-            this.eventId = eventId;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder transactionId(String transactionId) {
-            this.transactionId = transactionId;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder expiresAt(Instant expiresAt) {
-            this.expiresAt = expiresAt;
-            return this;
-        }
-
-        public IdempotencyKey build() {
-            IdempotencyKey idempotencyKey = new IdempotencyKey();
-            idempotencyKey.setKey(key);
-            idempotencyKey.setBusinessKey(businessKey);
-            idempotencyKey.setEventId(eventId);
-            idempotencyKey.setTransactionId(transactionId);
-            idempotencyKey.setExpiresAt(expiresAt);
-            return idempotencyKey;
-        }
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/domain/TransactionEvent.java ===
-package com.banco.core.domain;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.math.BigDecimal;
-import java.time.Instant;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Slf4j
-public class TransactionEvent {
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.when;
 
-    @NotBlank(message = "El eventId es obligatorio")
-    private String eventId;
+@ExtendWith(MockitoExtension.class)
+class KafkaEventProducerTest {
 
-    @NotBlank(message = "El transactionId es obligatorio")
-    private String transactionId;
+    private static final String TOPIC = "fintech-events";
+    private static final String BOOTSTRAP_SERVERS = "localhost:9092";
 
-    @NotBlank(message = "El eventType es obligatorio")
-    private String eventType;
+    @Mock
+    private KafkaEventProducer kafkaEventProducer;
 
-    @NotBlank(message = "El accountId es obligatorio")
-    private String accountId;
-
-    @NotNull(message = "El amount es obligatorio")
-    @Positive(message = "El amount debe ser positivo")
-    private Double amount;
-
-    @NotBlank(message = "El currency es obligatorio")
-    private String currency;
-
-    @NotBlank(message = "El transactionType es obligatorio")
-    private String transactionType;
-
-    @NotBlank(message = "El timestamp es obligatorio")
-    private String timestamp;
-
-    private String correlationId;
-
-    @NotBlank(message = "El idempotencyKey es obligatorio")
-    private String idempotencyKey;
-
-    private String description;
-
-    private String sourceSystem;
-
-    private Map<String, Object> metadata;
-
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
+    @BeforeEach
+    void setUp() {
+        Map<String, Object> props = new HashMap<>();
+        props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+        props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        props.put(ProducerConfig.ACKS_CONFIG, "all");
+        props.put(ProducerConfig.RETRIES_CONFIG, 3);
+        props.put(ProducerConfig.RETRY_BACKOFF_MS_CONFIG, 1000);
     }
 
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
+    @Nested
+    @DisplayName("Escenarios de Publicación de Eventos")
+    class EventPublishingScenarios {
 
-    public void setEventType(String eventType) {
-        this.eventType = eventType;
-    }
+        @Test
+        @DisplayName("Debería publicar evento exitosamente en Kafka")
+        void shouldPublishEventSuccessfully() {
+            Event event = Event.create("OP-2024-001", "API");
 
-    public void setAccountId(String accountId) {
-        this.accountId = accountId;
-    }
+            when(kafkaEventProducer.sendEvent(any(Event.class))).thenAnswer(invocation -> {
+                Event e = invocation.getArgument(0);
+                return Mono.just(true);
+            });
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public void setTransactionType(String transactionType) {
-        this.transactionType = transactionType;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public void setCorrelationId(String correlationId) {
-        this.correlationId = correlationId;
-    }
-
-    public void setIdempotencyKey(String idempotencyKey) {
-        this.idempotencyKey = idempotencyKey;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setSourceSystem(String sourceSystem) {
-        this.sourceSystem = sourceSystem;
-    }
-
-    public void setMetadata(Map<String, Object> metadata) {
-        this.metadata = metadata;
-    }
-
-    public boolean isDebit() {
-        return "DEBIT".equalsIgnoreCase(this.transactionType);
-    }
-
-    public boolean isCredit() {
-        return "CREDIT".equalsIgnoreCase(this.transactionType);
-    }
-
-    public String getBusinessKey() {
-        return String.format("%s:%s:%s", this.accountId, this.transactionId, this.idempotencyKey);
-    }
-
-    public void addMetadata(String key, Object value) {
-        if (this.metadata == null) {
-            this.metadata = new HashMap<>();
-        }
-        this.metadata.put(key, value);
-    }
-
-    public Object getMetadata(String key) {
-        return this.metadata != null ? this.metadata.get(key) : null;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TransactionEvent that = (TransactionEvent) o;
-        return Objects.equals(eventId, that.eventId) && 
-               Objects.equals(transactionId, that.transactionId) &&
-               Objects.equals(idempotencyKey, that.idempotencyKey);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(eventId, transactionId, idempotencyKey);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("TransactionEvent{eventId='%s', transactionId='%s', eventType='%s', " +
-                "accountId='%s', amount=%s, currency='%s', transactionType='%s', correlationId='%s', " +
-                "idempotencyKey='%s'}",
-                eventId, transactionId, eventType, accountId, amount, currency, 
-                transactionType, correlationId, idempotencyKey);
-    }
-
-    public static TransactionEventBuilder builder() {
-        return new TransactionEventBuilder();
-    }
-
-    public static class TransactionEventBuilder {
-        private String eventId;
-        private String transactionId;
-        private String eventType = "TRANSACTION_CREATED";
-        private String accountId;
-        private Double amount;
-        private String currency = "USD";
-        private String transactionType;
-        private String timestamp = Instant.now().toString();
-        private String correlationId;
-        private String idempotencyKey;
-        private String description;
-        private String sourceSystem = "CORE_BANKING";
-        private Map<String, Object> metadata = new HashMap<>();
-
-        public TransactionEventBuilder eventId(String eventId) {
-            this.eventId = eventId;
-            return this;
+            StepVerifier.create(kafkaEventProducer.sendEvent(event))
+                    .expectNext(true)
+                    .verifyComplete();
         }
 
-        public TransactionEventBuilder transactionId(String transactionId) {
-            this.transactionId = transactionId;
-            return this;
+        @Test
+        @DisplayName("Debería generar correlationId único para cada evento")
+        void shouldGenerateUniqueCorrelationId() {
+            Event event1 = Event.create("OP-2024-002", "API");
+            Event event2 = Event.create("OP-2024-003", "BATCH");
+
+            String correlationId1 = "corr-" + event1.getEventId();
+            String correlationId2 = "corr-" + event2.getEventId();
+
+            org.junit.jupiter.api.Assertions.assertNotEquals(correlationId1, correlationId2,
+                    "Cada evento debe tener un correlationId único");
         }
 
-        public TransactionEventBuilder eventType(String eventType) {
-            this.eventType = eventType;
-            return this;
-        }
+        @Test
+        @DisplayName("Debería serializar evento correctamente")
+        void shouldSerializeEventCorrectly() {
+            Event event = Event.create("OP-2024-004", "MOBILE");
 
-        public TransactionEventBuilder accountId(String accountId) {
-            this.accountId = accountId;
-            return this;
-        }
+            String serialized = event.getIdempotencyKeyValue();
 
-        public TransactionEventBuilder amount(Double amount) {
-            this.amount = amount;
-            return this;
-        }
-
-        public TransactionEventBuilder currency(String currency) {
-            this.currency = currency;
-            return this;
-        }
-
-        public TransactionEventBuilder transactionType(String transactionType) {
-            this.transactionType = transactionType;
-            return this;
-        }
-
-        public TransactionEventBuilder timestamp(String timestamp) {
-            this.timestamp = timestamp;
-            return this;
-        }
-
-        public TransactionEventBuilder correlationId(String correlationId) {
-            this.correlationId = correlationId;
-            return this;
-        }
-
-        public TransactionEventBuilder idempotencyKey(String idempotencyKey) {
-            this.idempotencyKey = idempotencyKey;
-            return this;
-        }
-
-        public TransactionEventBuilder description(String description) {
-            this.description = description;
-            return this;
-        }
-
-        public TransactionEventBuilder sourceSystem(String sourceSystem) {
-            this.sourceSystem = sourceSystem;
-            return this;
-        }
-
-        public TransactionEventBuilder metadata(Map<String, Object> metadata) {
-            this.metadata = metadata;
-            return this;
-        }
-
-        public TransactionEvent build() {
-            TransactionEvent event = new TransactionEvent();
-            event.setEventId(this.eventId);
-            event.setTransactionId(this.transactionId);
-            event.setEventType(this.eventType);
-            event.setAccountId(this.accountId);
-            event.setAmount(this.amount);
-            event.setCurrency(this.currency);
-            event.setTransactionType(this.transactionType);
-            event.setTimestamp(this.timestamp);
-            event.setCorrelationId(this.correlationId);
-            event.setIdempotencyKey(this.idempotencyKey);
-            event.setDescription(this.description);
-            event.setSourceSystem(this.sourceSystem);
-            event.setMetadata(this.metadata);
-            return event;
-        }
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/domain/IdempotencyKey.java ===
-package com.banco.core.domain;
-
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-
-import java.time.Instant;
-import java.util.Objects;
-
-@Builder
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Slf4j
-public class IdempotencyKey {
-
-    private String key;
-    private String businessKey;
-    private String eventId;
-    private String transactionId;
-    private Instant createdAt;
-    private Instant expiresAt;
-    private IdempotencyStatus status;
-    private int retryCount;
-    private String lastError;
-
-    public enum IdempotencyStatus {
-        PENDING,
-        PROCESSING,
-        COMPLETED,
-        FAILED,
-        DUPLICATE
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public void setBusinessKey(String businessKey) {
-        this.businessKey = businessKey;
-    }
-
-    public void setEventId(String eventId) {
-        this.eventId = eventId;
-    }
-
-    public void setTransactionId(String transactionId) {
-        this.transactionId = transactionId;
-    }
-
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public void setExpiresAt(Instant expiresAt) {
-        this.expiresAt = expiresAt;
-    }
-
-    public void setStatus(IdempotencyStatus status) {
-        this.status = status;
-    }
-
-    public void setRetryCount(int retryCount) {
-        this.retryCount = retryCount;
-    }
-
-    public void setLastError(String lastError) {
-        this.lastError = lastError;
-    }
-
-    public boolean isExpired() {
-        return expiresAt != null && Instant.now().isAfter(expiresAt);
-    }
-
-    public boolean isCompleted() {
-        return status == IdempotencyStatus.COMPLETED;
-    }
-
-    public boolean isProcessing() {
-        return status == IdempotencyStatus.PROCESSING;
-    }
-
-    public boolean isDuplicate() {
-        return status == IdempotencyStatus.DUPLICATE;
-    }
-
-    public boolean canRetry() {
-        return status == IdempotencyStatus.FAILED && retryCount < 3;
-    }
-
-    public void markAsProcessing() {
-        this.status = IdempotencyStatus.PROCESSING;
-        log.debug("Marcando clave de idempotencia {} como PROCESSING", this.key);
-    }
-
-    public void markAsCompleted() {
-        this.status = IdempotencyStatus.COMPLETED;
-        log.info("Clave de idempotencia {} marcada como COMPLETED", this.key);
-    }
-
-    public void markAsFailed(String error) {
-        this.status = IdempotencyStatus.FAILED;
-        this.lastError = error;
-        this.retryCount++;
-        log.warn("Clave de idempotencia {} marcada como FAILED. Error: {}. Reintentos: {}", 
-                this.key, error, this.retryCount);
-    }
-
-    public void markAsDuplicate() {
-        this.status = IdempotencyStatus.DUPLICATE;
-        log.info("Clave de idempotencia {} detectada como DUPLICATE", this.key);
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        IdempotencyKey that = (IdempotencyKey) o;
-        return Objects.equals(key, that.key) && Objects.equals(businessKey, that.businessKey);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(key, businessKey);
-    }
-
-    @Override
-    public String toString() {
-        return String.format("IdempotencyKey{key='%s', businessKey='%s', eventId='%s', " +
-                "transactionId='%s', status=%s, retryCount=%d}",
-                key, businessKey, eventId, transactionId, status, retryCount);
-    }
-
-    public static IdempotencyKeyBuilder builder() {
-        return new IdempotencyKeyBuilder();
-    }
-
-    public static class IdempotencyKeyBuilder {
-        private String key;
-        private String businessKey;
-        private String eventId;
-        private String transactionId;
-        private Instant createdAt = Instant.now();
-        private Instant expiresAt;
-        private IdempotencyStatus status = IdempotencyStatus.PENDING;
-        private int retryCount = 0;
-        private String lastError;
-
-        public IdempotencyKeyBuilder key(String key) {
-            this.key = key;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder businessKey(String businessKey) {
-            this.businessKey = businessKey;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder eventId(String eventId) {
-            this.eventId = eventId;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder transactionId(String transactionId) {
-            this.transactionId = transactionId;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder createdAt(Instant createdAt) {
-            this.createdAt = createdAt;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder expiresAt(Instant expiresAt) {
-            this.expiresAt = expiresAt;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder status(IdempotencyStatus status) {
-            this.status = status;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder retryCount(int retryCount) {
-            this.retryCount = retryCount;
-            return this;
-        }
-
-        public IdempotencyKeyBuilder lastError(String lastError) {
-            this.lastError = lastError;
-            return this;
-        }
-
-        public IdempotencyKey build() {
-            IdempotencyKey idempotencyKey = new IdempotencyKey();
-            idempotencyKey.setKey(this.key);
-            idempotencyKey.setBusinessKey(this.businessKey);
-            idempotencyKey.setEventId(this.eventId);
-            idempotencyKey.setTransactionId(this.transactionId);
-            idempotencyKey.setCreatedAt(this.createdAt);
-            idempotencyKey.setExpiresAt(this.expiresAt);
-            idempotencyKey.setStatus(this.status);
-            idempotencyKey.setRetryCount(this.retryCount);
-            idempotencyKey.setLastError(this.lastError);
-            return idempotencyKey;
-        }
-    }
-}
-
-// === ARCHIVO: src/main/java/com/banco/core/infrastructure/kafka/KafkaEventProducer.java ===
-package com.banco.core.infrastructure.kafka;
-
-import com.banco.core.domain.TransactionEvent;
-import io.github.resilience4j.circuitbreaker.CircuitBreaker;
-import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry;
-import org.apache.camel.ProducerTemplate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.kafka.core.KafkaTemplate;
-import org.springframework.kafka.support.SendResult;
-
-import java.util.concurrent.TimeUnit;
-
-public class KafkaEventProducer {
-    private static final Logger log = LoggerFactory.getLogger(KafkaEventProducer.class);
-    private static final String CIRCUIT_BREAKER_NAME = "kafka-producer-cb";
-    private static final int MAX_RETRY_ATTEMPTS = 3;
-    private static final long RETRY_WAIT_MS = 1000;
-
-    private final KafkaTemplate<String, String> kafkaTemplate;
-    private final ProducerTemplate producerTemplate;
-    private final CircuitBreakerRegistry circuitBreakerRegistry;
-
-    private String transactionEventsTopic;
-    private String dlqTopic;
-    private String acks = "all";
-    private int retries = 3;
-
-    public KafkaEventProducer(KafkaTemplate<String, String> kafkaTemplate,
-                               String transactionEventsTopic,
-                               String dlqTopic) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.transactionEventsTopic = transactionEventsTopic;
-        this.dlqTopic = dlqTopic;
-        this.producerTemplate = null;
-        this.circuitBreakerRegistry = null;
-    }
-
-    public KafkaEventProducer(KafkaTemplate<String, String> kafkaTemplate,
-                               ProducerTemplate producerTemplate,
-                               CircuitBreakerRegistry circuitBreakerRegistry,
-                               String transactionEventsTopic,
-                               String dlqTopic) {
-        this.kafkaTemplate = kafkaTemplate;
-        this.producerTemplate = producerTemplate;
-        this.circuitBreakerRegistry = circuitBreakerRegistry;
-        this.transactionEventsTopic = transactionEventsTopic;
-        this.dlqTopic = dlqTopic;
-    }
-
-    public void sendEvent(TransactionEvent event) {
-        String topic = determineTopic(event);
-        sendEvent(event, topic);
-    }
-
-    public void sendEvent(TransactionEvent event, String topic) {
-        if (event == null) {
-            throw new IllegalArgumentException("Event cannot be null");
-        }
-        if (topic == null || topic.isBlank()) {
-            throw new IllegalArgumentException("Topic cannot be null or empty");
-        }
-
-        String key = event.getEventId();
-        String payload = serializeEvent(event);
-        sendWithResilience(key, payload, event);
-    }
-
-    public void sendToDlq(TransactionEvent event, String errorMessage) {
-        String payload = serializeEventWithError(event, errorMessage);
-        try {
-            kafkaTemplate.send(dlqTopic, event.getEventId(), payload);
-            log.info("Event {} sent to DLQ: {}", event.getEventId(), errorMessage);
-        } catch (Exception e) {
-            log.error("Failed to send event {} to DLQ: {}", event.getEventId(), e.getMessage());
+            org.junit.jupiter.api.Assertions.assertNotNull(serialized,
+                    "El evento serializado no debe ser nulo");
+            org.junit.jupiter.api.Assertions.assertTrue(serialized.contains("OP-2024-004"),
+                    "El evento serializado debe contener el operationNumber");
         }
     }
 
-    private void sendWithResilience(String key, String payload, TransactionEvent event) {
-        try {
-            String result = sendWithRetry(key, payload, event);
-            log.info("Event {} sent successfully to Kafka", event.getEventId());
-        } catch (Exception e) {
-            log.error("Failed to send event {} after retries: {}", event.getEventId(), e.getMessage());
-            throw e;
+    @Nested
+    @DisplayName("Escenarios de Manejo de Errores")
+    class ErrorHandlingScenarios {
+
+        @Test
+        @DisplayName("Debería manejar error de conexión a Kafka")
+        void shouldHandleKafkaConnectionError() {
+            Event event = Event.create("OP-2024-005", "API");
+
+            when(kafkaEventProducer.sendEvent(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Kafka broker no disponible")));
+
+            StepVerifier.create(kafkaEventProducer.sendEvent(event))
+                    .expectErrorMatches(throwable ->
+                            throwable.getMessage().contains("Kafka broker no disponible"))
+                    .verify();
+        }
+
+        @Test
+        @DisplayName("Debería manejar error de serialización")
+        void shouldHandleSerializationError() {
+            when(kafkaEventProducer.sendEvent(any(Event.class)))
+                    .thenReturn(Mono.error(new RuntimeException("Error al serializar evento")));
+
+            StepVerifier.create(kafkaEventProducer.sendEvent(Event.create("OP-ERR", "TEST")))
+                    .expectErrorMatches(throwable ->
+                            throwable.getMessage().contains("serializar"))
+                    .verify();
+        }
+
+        @Test
+        @DisplayName("Debería hacer retry en caso de error transitorio")
+        void shouldRetryOnTransientError() {
+            Event event = Event.create("OP-2024-006", "API");
+            int[] attempt = {0};
+
+            when(kafkaEventProducer.sendEvent(any(Event.class)))
+                    .thenAnswer(invocation -> {
+                        attempt[0]++;
+                        if (attempt[0] < 3) {
+                            return Mono.error(new RuntimeException("Error transitorio"));
+                        }
+                        return Mono.just(true);
+                    });
+
+            StepVerifier.create(kafkaEventProducer.sendEvent(event))
+                    .expectNext(true)
+                    .verifyComplete();
         }
     }
 
-    private String sendWithRetry(String key, String payload, TransactionEvent event) {
-        Exception lastException = null;
-        for (int attempt = 1; attempt <= MAX_RETRY_ATTEMPTS; attempt++) {
-            try {
-                SendResult<String, String> result = kafkaTemplate.send(
-                    transactionEventsTopic, key, payload
-                ).get(10, TimeUnit.SECONDS);
-                return result.getRecordMetadata().topic();
-            } catch (Exception e) {
-                lastException = e;
-                log.warn("Attempt {}/{} failed for event {}: {}", 
-                    attempt, MAX_RETRY_ATTEMPTS, event.getEventId(), e.getMessage());
-                if (attempt < MAX_RETRY_ATTEMPTS) {
-                    try {
-                        Thread.sleep(RETRY_WAIT_MS * attempt);
-                    } catch (InterruptedException ie) {
-                        Thread.currentThread().interrupt();
-                        break;
-                    }
-                }
+    @Nested
+    @DisplayName("Escenarios de Configuración")
+    class ConfigurationScenarios {
+
+        @Test
+        @DisplayName("Debería usar la configuración de Kafka proporcionada")
+        void shouldUseProvidedKafkaConfiguration() {
+            Map<String, Object> props = new HashMap<>();
+            props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "test-server:9092");
+            props.put(ProducerConfig.ACKS_CONFIG, "1");
+            props.put(ProducerConfig.RETRIES_CONFIG, 5);
+
+            KafkaEventProducer testProducer = new KafkaEventProducer(props, TOPIC);
+
+            org.junit.jupiter.api.Assertions.assertNotNull(testProducer,
+                    "Productor debe ser creado con la configuración proporcionada");
+        }
+
+        @Test
+        @DisplayName("Debería configurar topic correctamente")
+        void shouldConfigureTopicCorrectly() {
+            String customTopic = "custom-events-topic";
+
+            Map<String, Object> props = new HashMap<>();
+            props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
+
+            KafkaEventProducer testProducer = new KafkaEventProducer(props, customTopic);
+
+            org.junit.jupiter.api.Assertions.assertNotNull(testProducer,
+                    "Productor debe configurarse con el topic proporcionado");
+        }
+    }
+
+    @Nested
+    @DisplayName("Escenarios de Rendimiento")
+    class PerformanceScenarios {
+
+        @Test
+        @DisplayName("Debería cumplir con latencia máxima de 500ms")
+        void shouldMeetMaxLatencyRequirement() {
+            Event event = Event.create("OP-2024-007", "API");
+
+            when(kafkaEventProducer.sendEvent(any(Event.class)))
+                    .thenReturn(Mono.just(true).delayElement(Duration.ofMillis(100)));
+
+            long startTime = System.currentTimeMillis();
+
+            StepVerifier.create(kafkaEventProducer.sendEvent(event))
+                    .expectNext(true)
+                    .verifyComplete();
+
+            long elapsed = System.currentTimeMillis() - startTime;
+            org.junit.jupiter.api.Assertions.assertTrue(elapsed < 500,
+                    "La latencia debe ser menor a 500ms, pero fue: " + elapsed + "ms");
+        }
+
+        @Test
+        @DisplayName("Debería manejar múltiples eventos concurrentes")
+        void shouldHandleConcurrentEvents() {
+            int eventCount = 100;
+
+            when(kafkaEventProducer.sendEvent(any(Event.class)))
+                    .thenAnswer(invocation -> Mono.just(true));
+
+            var publishers = new java.util.ArrayList<Mono<Boolean>>();
+            for (int i = 0; i < eventCount; i++) {
+                publishers.add(kafkaEventProducer.sendEvent(Event.create("OP-" + i, "API")));
             }
-        }
-        throw new RuntimeException("Failed to send event after " + MAX_RETRY_ATTEMPTS + " attempts", lastException);
-    }
 
-    private String serializeEvent(TransactionEvent event) {
-        return String.format(
-            "{\"eventId\":\"%s\",\"transactionId\":\"%s\",\"eventType\":\"%s\",\"accountId\":\"%s\",\"amount\":%s,\"currency\":\"%s\",\"transactionType\":\"%s\",\"timestamp\":\"%s\",\"correlationId\":\"%s\",\"idempotencyKey\":\"%s\",\"description\":\"%s\",\"sourceSystem\":\"%s\"}",
-            event.getEventId(),
-            event.getTransactionId(),
-            event.getEventType(),
-            event.getAccountId(),
-            event.getAmount(),
-            event.getCurrency(),
-            event.getTransactionType(),
-            event.getTimestamp() != null ? event.getTimestamp() : "",
-            event.getCorrelationId() != null ? event.getCorrelationId() : "",
-            event.getIdempotencyKey(),
-            event.getDescription() != null ? event.getDescription() : "",
-            event.getSourceSystem() != null ? event.getSourceSystem() : ""
-        );
-    }
-
-    private String serializeEventWithError(TransactionEvent event, String errorMessage) {
-        return String.format(
-            "{\"eventId\":\"%s\",\"transactionId\":\"%s\",\"error\":\"%s\",\"originalPayload\":%s}",
-            event.getEventId(),
-            event.getTransactionId(),
-            errorMessage != null ? errorMessage.replace("\"", "'") : "",
-            serializeEvent(event)
-        );
-    }
-
-    public boolean isCircuitBreOpen() {
-        if (circuitBreakerRegistry == null) {
-            return false;
+            Mono.when(publishers)
+                    .as(StepVerifier::create)
+                    .expectComplete()
+                    .verify();
         }
-        CircuitBreaker cb = circuitBreakerRegistry.circuitBreaker(CIRCUIT_BREAKER_NAME);
-        return cb.getState() == CircuitBreaker.State.OPEN;
-    }
-
-    public void sendEventWithCamel(TransactionEvent event) {
-        if (producerTemplate == null) {
-            throw new IllegalStateException("ProducerTemplate not configured");
-        }
-        String payload = serializeEvent(event);
-        String topic = determineTopic(event);
-        producerTemplate.sendBodyAndHeader(topic, payload, "eventId", event.getEventId());
-    }
-
-    public String determineTopic(TransactionEvent event) {
-        if (event == null) {
-            return transactionEventsTopic;
-        }
-        if (event.isDebit()) {
-            return transactionEventsTopic.replace("events", "debit-events");
-        } else if (event.isCredit()) {
-            return transactionEventsTopic.replace("events", "credit-events");
-        }
-        return transactionEventsTopic;
     }
 }
 ```
